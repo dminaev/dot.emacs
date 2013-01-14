@@ -1,0 +1,66 @@
+Starting with tag:
+[TAG 3.0
+forcer@forcix.cx**20070629163845] 
+[Updated NEWS for post-3.0
+forcer@forcix.cx**20070629163917] 
+[emms-player-mplayer.el: Add "eng.srt", "chs.srt", "cht.srt" to
+William Xu <william.xwl@gmail.com>**20070630124728
+ emms-player-mplayer-subtitle-extensions.
+] 
+[New file: emms-playlist-limit.el. And minor updates to emms-playlist-sort.
+William Xu <william.xwl@gmail.com>**20070705160221] 
+[emms-playlist-limit.el: Add default value based on track at point for
+William Xu <william.xwl@gmail.com>**20070708040809
+ emms-playlist-limit-to-*.
+] 
+[emms-playlist-limit.el: Redefine functions emms-playlist-limit-to-* with
+William Xu <william.xwl@gmail.com>**20070708115907
+ macro: define-emms-playlist-limit.
+] 
+[emms-playlist-sort.el: Minor updates.
+William Xu <william.xwl@gmail.com>**20070708120050] 
+[emms-playlist-limit.el: Update Copyright to GPLv3.
+William Xu <william.xwl@gmail.com>**20070708140012] 
+[emms-playlist-limit.el: Minor updates.
+William Xu <william.xwl@gmail.com>**20070709103714] 
+[emms-playlist-limit.el: Add missing line: (define-emms-playlist-limit info-title).
+William Xu <william.xwl@gmail.com>**20070711071022] 
+[Avoid even the most remote possibility of a conflict with color-theme.el and its very bad replace-in-string function
+Michael Olson <mwolson@gnu.org>**20070712211444] 
+[make-number-of-secs-to-seek-configurable.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070712062052
+ 
+ Patch sent by "Alfred M. Szmidt" <ams@gnu.org> in
+ <20070711183504.EFD58301E5@Psilocybe.Update.UU.SE> on the emms-users list (with
+ slight modifications).
+] 
+[emms-playlist-limit.el: (define-emms-playlist-limit) Fix prompt string bug.
+William Xu <william.xwl@gmail.com>**20070717082536] 
+[emms-playlist-sort.el: Remove emms-playlist-sort-prefix to make the
+William Xu <william.xwl@gmail.com>**20070717095454
+ codes more clean. And steal "s" prefix key from
+ `emms-playlist-mode'. (An alternative for emms-playlist-mode could be
+ "v", same as XMMS)
+] 
+[emms-lyrics.el: Set default value for emms-lyrics-dir to ~/music/lyrics.
+William Xu <william.xwl@gmail.com>**20070717100946] 
+[emms-setup.el: Enable emms-score in emms-devel.
+William Xu <william.xwl@gmail.com>**20070717131538] 
+[emms-playlist-sort.el: Bind "s s" to emms-playlist-sort-by-score.
+William Xu <william.xwl@gmail.com>**20070719065003] 
+[emms-player-mpd: Make callback arg for emms-player-mpd-sync-from-emms optional
+Michael Olson <mwolson@gnu.org>**20070723015722] 
+[emms-player-mpd: Fix bug with selecting an individual URL track to play from a streamlist
+Michael Olson <mwolson@gnu.org>**20070723015956] 
+[emms-streams: New option emms-stream-repeat-p
+Michael Olson <mwolson@gnu.org>**20070723020304
+ 
+ Instead of assuming that everyone will want to automatically repeat a
+ streamlist if it runs out of tracks, make this controlled by the
+ `emms-stream-repeat-p' option, which defaults to nil.
+ 
+] 
+[emms-playlist-limit: Use standard enable/disable/toggle interface
+Michael Olson <mwolson@gnu.org>**20070723023452] 
+[Fix compiler warning in emms-setup
+Michael Olson <mwolson@gnu.org>**20070723023532] 

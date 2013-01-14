@@ -1,0 +1,68 @@
+==============================================================================
+                                             Smart Keys
+Context                         Action Key                 Assist Key
+==============================================================================
+Hyperbole
+  On a menu item                Item is activated          Item help
+  On an explicit button         Button is activated        Button help
+  Reading argument
+    1st press at an arg value   Value copied to minibuffer <- same
+    2nd press at an arg value   Value used as argument     <- same
+    In minibuffer               Minibuf arg is applied     Completion help
+  On an implicit button         Button is activated        Button help
+  Within an outline cell        Collapses and expands      Shows tree props
+  Left of an outline cell       Creates a klink            Moves a tree
+  Wrolo Match Buffer            Edits entries and mails to e-mail addresses
+
+Mouse or Keyboard Display Control
+  Line end, not end of buffer
+    smart-scroll-proportional
+      = t   (default)           Makes curr line top line   Bottom line
+      = nil                     Scrolls up a windowful     Scrolls down
+  End of Any Help buffer        Screen restored to previous state
+
+Mouse-only Control
+  Modeline down & wind release  Resize window height       <- same
+  Drag from shared window side
+    or from left of scroll bar  Resize window width        <- same
+  Drag between windows          Create/modify a link but   Swap window buffers
+  Horizontal drag within window
+    Left to right               Scroll to buffer end       Split window across
+    Right to left               Scroll to buffer begin     Delete window
+  Vertical drag within window   Split window sideways      <- same
+  Diagonal drag within window   Save ring screen-config    Restore ring config
+  Click in modeline
+    Left window edge            Bury buffer                Unbury bottom buf
+    Right window edge           Info                       Smart Key summary
+    Otherwise                   Action Key Hook            Assist Key Hook
+
+Special Modes
+  C/C++ Mode                    Jumps to id/include def    Jumps to next def
+  Assembly Language Mode        Jumps to id/include def    Jumps to next def
+  Any Lisp mode                 Jumps to id def            Jumps to next def
+  Emacs Lisp Compiler Error     Jumps to def with error    <- same
+  Grep or Occur match           Jumps to match source line <- same
+  Multi-buffer occur match      Jumps to match source line <- same
+  Outline Major/Minor Modes     Collapses, expands, and moves outline entries
+  Man Apropos                   Displays man page entry    <- same
+  Man Pages                     Follows cross refs, file refs and C code refs
+  Buffer Menu                   Saves, deletes and displays buffers
+
+Emacs Info Reader
+  Menu Entry or Cross Ref       Jumps to referent          <- same
+  Up, Next or Prev Header       Jumps to referent          Jumps to prior node
+  File entry of Header          Jumps to top node          Jumps to (DIR) node
+  End of current node           Jumps to next node         Jumps to prev node
+  Anywhere else                 Scrolls up a windowful     Scrolls down a wind
+
+Subsystems
+  Calendar                      Scrolls or shows appts     Scrolls/marks dates
+  Dired Mode                    Views and deletes files from directory listing
+  GNUS News Reader              Toggles group subscriptions, gets new news,
+                                  and browses articles
+  Mail reader and Summaries     Browses, deletes and expunges messages
+  OO-Browser                    Browses classes and elements
+  Tar Mode                      Views and edits files from tar archive files
+
+Any other context (defaults)    Hyperbole top menu         Smart Key summary
+==============================================================================

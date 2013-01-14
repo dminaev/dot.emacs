@@ -1,0 +1,58 @@
+2008-05-21  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el (bread-library-mark-entry-dirty):   added  a
+	function  to  mark the  current  entry  as  `dirty' when  it  was
+	modified. 
+
+2008-05-16  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread.el (org): bread.el now requires org.
+
+	* bread-library.el (bread-library-add-book-silently):
+	significantly increased speed of harvesting.
+
+2008-05-15  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el (bread-get-metadata): added metadata extraction
+	from PDF, using `pdfinfo'.
+
+2008-05-14  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el (bread-library-harvester): added the harvester
+
+2008-05-13  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el: fixed description saving. Description does not
+	appear  in :PROPERTIES:  now.  This  means that  we  can edit  the
+	description in the normal way and it will be saved.
+
+2008-05-10  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el (bread-get-metadata): added support for multiple
+	authors.
+	(bread-library-org-to-sexp): description is now loaded and saved.
+
+	* bread-library.el (bread-get-metadata):  modified the  function
+	bread-get-metadata to use xml-parse-tag instead of regexps for fb2
+	files
+
+	* bread.el (xml): added requirement for xml.el
+
+2008-05-08  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread-library.el:  added a call  to bread-library-save-db before
+	switching the browse mode, to save the changes made in the current
+	browse mode.
+	(bread-library-render-entry):  changed the  hyperlink  format from
+	automatic  to   bracketed  to  handle   parentheses  in  filenames
+	correctly. 
+	(bread-library-display-library):  move to  the top  of  the buffer
+	when all entries are rendered.
+
+2008-05-06  Dmitri Minaev  <minaev@gmail.com>
+
+	* bread.el (bread-mode): initial release: version 0.1
+
+	*  bread-library.el (bread-library-org-to-sexp):  initial release:
+	version 0.1.
+

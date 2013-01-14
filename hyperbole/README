@@ -1,0 +1,534 @@
+README -- Intro information on Hyperbole.  
+
+The author's work on this project has been sponsored by Motorola Inc.
+
+We hope you enjoy using and developing with Hyperbole.  Suggestions and bug
+reports are welcome, as described later in this document.  Feel free to
+mail or post news containing this file wherever it may be of use.
+
+
+===========================================================================
+*			Table of Contents
+===========================================================================
+			* Hyperbole Overview
+			* What's New
+			* How to Obtain
+			* Installation / Configuration
+			* Quick Reference
+			* Mail Lists
+			* User Quotes
+		        * Why was Hyperbole developed?
+		        * Copyright
+
+
+===========================================================================
+*			Hyperbole Overview
+===========================================================================
+
+Hyperbole is an open, efficient, programmable information management
+and hypertext system.  It is intended for everyday work on any
+platform supported by GNU Emacs.  It works well with versions of Emacs
+that supports windowed systems but can also be used on text only
+systems.
+
+Hyperbole allows hypertext buttons to be embedded within unstructured
+and structured files, mail messages and news articles.  It offers
+intuitive mouse-based control of information display within multiple
+windows.  It also provides point-and-click access to Info manuals, ftp
+archives, Wide-Area Information Servers (WAIS), and the World-Wide Web
+(WWW) hypertext system through encapsulations of software that support
+these protocols.
+
+Hyperbole consists of four parts:
+
+   1.  Info Management: an interactive information management interface,
+       including a powerful rolodex, which anyone can use.  It is easy
+       to pick up and use since it introduces only a few new mechanisms
+       and provides user-level facilities through a menu interface,
+       which you control from the keyboard or the mouse;
+
+   2.  Hypertext Outliner: an outliner with multi-level autonumbering
+       and permanent ids attached to each outline node for use as
+       hypertext link anchors, plus flexible view specifications that
+       can be embedded within links or used interactively;
+
+   3.  Button Types: A set of hyper-button types that provides
+       core hypertext and other behaviors.  Users can make simple
+       changes to button types and those familiar with Emacs Lisp can
+       quickly prototype and deliver new types;
+
+   4.  Programming Library: a set of programming library classes for
+       system developers who want to integrate Hyperbole with another
+       user interface or as a back-end to a distinct system.  (All of
+       Hyperbole is written in Emacs Lisp for ease of modification.
+       Although Hyperbole was initially designed as a prototype, it has
+       been engineered for real-world usage and is well structured.)
+
+A Hyperbole user works with buttons; he may create, modify,
+move or delete buttons.  Each button performs a specific action, such as
+linking to a file or executing a shell command.
+
+There are three categories of Hyperbole buttons:
+
+   1.  Explicit Buttons
+          created by Hyperbole, accessible from within a single document; 
+
+   2.  Global Buttons
+          created by Hyperbole, accessible anywhere within a user's
+          network of documents;
+
+   3.  Implicit Buttons
+          buttons created and managed by other programs or embedded
+          within the structure of a document, accessible from within a
+          single document.  Hyperbole recognizes implicit buttons by
+          contextual patterns given in their type specifications.
+
+Hyperbole buttons may be clicked upon with a mouse to activate them or
+to describe their actions.  Thus, a user can always check how a button
+will act before activating it.  Buttons may also be activated from a
+keyboard.  (In fact, virtually all Hyperbole operations, including menu
+usage, may be performed from any standard character terminal interface, so
+one need not be anchored to a workstation all day).
+
+Hyperbole does not enforce any particular hypertext or information management
+model, but instead allows you to organize your information in large or small
+chunks as you see fit.  The Hyperbole outliner organizes information
+hierarchies which may also contain links to external information sources.
+
+Some of Hyperbole's most important features include:
+
+    Buttons may link to information or may execute procedures, such as
+    starting or communicating with external programs;
+
+    One simply drags between a button source location and a link destination
+    to create or to modify a link button.  The same result can be achieved
+    from the keyboard.
+
+    Buttons may be embedded within electronic mail messages;
+
+    Outlines allow rapid browsing, editing and movement of chunks of
+    information organized into trees (hierarchies);
+
+    Other hypertext and information retrieval systems may be
+    encapsulated under a Hyperbole user interface (a number of samples
+    are provided).
+
+Typical Hyperbole applications include:
+
+    Personal Information Management
+       Overlapping link paths provide a variety of views into an
+       information space.
+
+       A search facility locates buttons in context and permits quick
+       selection.
+
+    Documentation Browsing
+       Embed cross-references in your favorite documentation format.
+
+       Add a point-and-click interface to existing documentation.
+
+       Link code and design documents.  Jump to the definition of an
+       identifier from its use within code or its reference within
+       documentation.
+
+    Brainstorming
+       Capture ideas and then quickly reorganize them with the Hyperbole
+       outliner.  Link to related ideas, eliminating the need to copy
+       and paste information into a single place.
+
+    Help/Training Systems
+       Create tutorials with embedded buttons that show students how
+       things work while explaining the concepts, e.g. an introduction
+       to UNIX commands.  This technique can be much more effective than
+       descriptions alone.
+
+    Archive Managers
+       Supplement programs that manage archives from incoming
+       information streams by having them add topic-based buttons that
+       link to the archive holdings.  Users can then search and create
+       their own links to archive entries.
+
+
+===========================================================================
+*		        What's New in V5.0?
+===========================================================================
+
+  (See "ChangeLog" for more complete details of changes.)
+
+  GENERAL
+
+      This is based on version 4.01 release in 1996. It contains
+      basically the same functionality as 4.01 possibly modified in
+      some areas due to new functionality available in modern versions
+      of Emacs.
+
+      The latest version released by the author Bob Weiner was
+      4.18. New functions and bugs fixed in 4.18 has not been synced
+      into this version. Please use the maillist, bug-hyperbole, to
+      report these types of problems and any other bug or suggestion.
+
+  DOCUMENTATION
+
+    - Documentation is not fully up to date and some reminiscences of
+      version 4.* can still be there.
+
+  EMACS VERSIONS
+
+    - Emacs-21 is supported.
+
+    - The support of the variety of Emacs versions available at 1996
+      and earlier, has been dropped. Some support is still there in
+      the source but will gradually be removed.
+
+  WINDOW CONFIGURATIONS
+
+    - Unnamed configurations are now local to the frame where they
+      were created.
+
+
+===========================================================================
+*			     How to Obtain
+===========================================================================
+
+Hyperbole can be downloaded here: "http://ftp.gnu.org/gnu/hyperbole/"
+
+Unpack the tar archive using the GNU version of the 'zcat' program:
+
+   zcat h*tar.gz | tar xvf -
+or
+   gunzip h*tar.gz; tar xvf h*tar
+
+
+===========================================================================
+*		      Installation / Configuration
+===========================================================================
+
+Hyperbole is built and installed using configure. cd to the directory
+where you unpacked the tar archive, <HYPERBOLE-DIR>.
+
+   cd <HYPERBOLE-DIR>
+
+Now you configure the build by using the configure script.
+
+   ./configure
+
+It is possible to give options to configure. Try the option '--help'
+with configure for more info.
+
+Now you can build and install Hyperbole doing "make" and "make
+install"
+
+If you have downloaded the source using CVS you need to create the
+configure script first using autotools.
+
+----
+
+The Hyperbole Manual is included in two forms:
+
+    "man/hyperbole.info"   - online version
+    "man/hyperbole.texi"   - source form
+
+To add pointers to the Info version of the Hyperbole manual within your Info
+directory, follow these instructions.  If `Info-directory-list' is bound as a
+variable within your Emacs, you can simply set it so that <HYPERBOLE-DIR> is
+an element in the list.  Otherwise, from a shell, cd to the directory given
+by your 'Info-directory' variable and execute the following command:
+
+      (rm hyperbole.info*; cp <HYPERBOLE-DIR>/man/hyperbole.info* .)
+
+Then add an Info menu entry for the Hyperbole manual in your Info "dir" file:
+(the `*' should be placed in the first column of the file):
+
+    * Hyperbole::  GNU Emacs-based everyday information management system.
+	Use {C-h h d d} for a demonstration.  Includes context-sensitive
+        mouse and keyboard support, a powerful rolodex, an autonumbered
+        outliner with hyperlink anchors for each outline cell, and extensible
+        hypertext facilities including hyper-links in mail and news messages.
+
+----
+
+To set up so that all Emacs users have Hyperbole loaded for them, add the
+following lines to a site initialization file such as "site-start.el".
+Otherwise, each user will have to add these lines to his own "~/.emacs"
+initialization file.  The following instructions use the term
+<HYPERBOLE-DIR>/ to refer to your hyperbole/ directory, so substitute your
+own value.
+
+To autoload Hyperbole so that it loads only when needed:
+
+   (defvar hyperb:dir "<HYPERBOLE-DIR>/")
+  "Directory where the Hyperbole executable code is kept.
+It must end with a directory separator character.")
+
+   (load (expand-file-name "hversion" hyperb:dir))
+   (load (expand-file-name "hyperbole" hyperb:dir))
+
+To fully load Hyperbole upon startup, add the additional line:
+
+   (require 'hsite)
+
+That's all there is to the installation.
+
+----
+
+Once Hyperbole has been installed for use at your site, you can invoke it
+with {C-h h} or {M-x hyperbole RET} to bring up the Hyperbole main menu in
+the minibuffer window.
+
+
+===========================================================================
+*			    Quick Reference
+===========================================================================
+
+"MANIFEST" summarizes most of the files in the distribution.
+
+See "DEMO" for a demonstration of standard Hyperbole button
+capabilities.
+
+Naming conventions:
+
+  - All Hyperbole-specific code files begin with an 'h', aside from the
+    Koutliner files which are in the kotl/ subdirectory and begin with a 'k'.
+
+  - Hyperbole user-interface files begin with 'hui-' or 'hmous'.
+
+  - Files that define implicit button types begin with 'hib'.
+
+  - Encapsulations of foreign systems begin with 'hsys-'.
+
+Most of the standard Emacs user interface for Hyperbole is located in
+"hui.el".  Most of the Hyperbole application programming interface can be
+found in "hbut.el".  "hbdata.el" encapsulates the button attribute storage
+handling presently implemented by Hyperbole.  "hmail.el" provides a basic
+abstract interface for folding mail readers other than Rmail into Hyperbole.
+
+See the "(hyperbole.info)Questions and Answers" appendix in the
+Hyperbole manual for information on how to alter the default
+context-sensitive Hyperbole key bindings.
+
+
+===========================================================================
+*			       Mail Lists
+===========================================================================
+
+There are two Hyperbole-related mail lists.  One for discussing using
+hyperbole, hyperbole-users, and the other for reporting bugs,
+bug-hyperbole.
+
+To subscribe to the mail lists use the links below with your web
+browser (or if your using hyperbole just click on them)
+
+http://lists.gnu.org/mailman/listinfo/hyperbole-users
+
+http://lists.gnu.org/mailman/listinfo/bug-hyperbole
+
+   All administration of the Hyperbole mailing lists should be
+   dealt with one of these web addresses.  That includes addition,
+   change, or deletion.
+
+   Don't send administrative requests to the mail lists or people will
+   wonder why you don't know that the list administration is handled on
+   the web interfaces.
+
+So there are two Hyperbole-related mail lists:
+
+<hyperbole-users@gnu.org>
+
+   Mail list for discussion of all issues regarding using Hyperbole.
+
+   Always use your Subject and/or Summary: lines to state the position that
+   your message takes on the topic that it addresses.
+
+   Statements end with periods, questions with question marks (typically),
+   and high energy, high impact declarations with exclamation points.  This
+   simple rule makes all e-mail communication much easier for recipients to
+   handle appropriately.
+
+   If you ask a question, your subject line should end with a ?,
+   e.g. "Subject: How can man page SEE ALSOs be made implicit buttons?"  A
+   "Subject: Re: How can ..." then indicates an answer to the question.
+   Question messages should normally include your Hyperbole and Emacs
+   version numbers and clearly explain your problem and surrounding issues.
+   Otherwise, you will simply waste the time of those who may want to help
+   you.  (Your top-level Hyperbole menu shows its version number and {`M-x
+   emacs-version <RET>'} gives the other.)
+
+   If you ask questions, you should consider adding to the discussion by
+   telling people the kinds of work you are doing or contemplating doing
+   with Hyperbole.  In this way, the list will not be overwhelmed by
+   messages that ask for, but provide no information.
+
+<bug-hyperbole@gnu.org>
+
+   Bug reports and suggestions should go here. It is important here that
+   you include as much info about your environment and program versions
+   as possible.
+
+===========================================================================
+*			      User Quotes
+===========================================================================
+
+
+  *** MAN I love Hyperbole!!!  Wow! ***
+
+				    	-- Ken Olstad
+					   Cheyenne Software, Inc.
+
+-------
+
+  I *love* koutlines.
+
+	   				-- Bob Glickstein
+					   Z-Code Software Corporation
+-------
+
+  I am blind and have been using Hyperbole since 1992.  I used to use a PC as
+  a talking terminal attached to a UNIX system, but then I developed
+  Emacspeak which lets me use Emacs and Hyperbole from standard UNIX
+  workstations with an attached voice synthesizer.
+
+  My main uses are:
+    1) Global and implicit buttons for jumping to ftp sites.
+    2) The rolodex with Emacspeak support.
+    3) Explicit buttons as part of comments made about a structured document.
+       Each button jumps to the document section referred to by the comment.
+       This is very, very useful.
+    4) The Hyperbole outliner, which I find a very useful tool.  I've
+       implemented Emacspeak extensions to support it.
+
+					-- TV Raman
+					   Digital Cambridge Research Lab
+
+-------
+
+  I've been a grateful Hyperbole user for a few years now.  Hyperbole's
+  flexibility and ease of use is a marvel.
+
+  Mainly, I write easy little implicit button types (and corresponding action
+  types) to make my life easier.  For example, I have an implicit button type
+  to bury certain buffers when I click at their bottoms, one that recognizes
+  a bug report record in various contexts and edits it, one that links pieces
+  of test output in a log file to the corresponding test case source code
+  (EXTREMELY helpful in interpreting test output), others that support our
+  homegrown test framework, one that handles tree dired mode the way I'd
+  like, one that completely handles wico menus (I've also overloaded the
+  wconfig actions triggered by diagonal mouse drags with wicos actions), and
+  a couple that support interaction with BBDB.
+
+  Other than that, I keep a global button file with 30 or so explicit buttons
+  that do various little things, and I index saved mail messages by putting
+  explicit link-to-mail buttons in an outline file.
+
+				    	-- Ken Olstad
+					   Cheyenne Software, Inc.
+
+-------
+
+  In general, Hyperbole is an embeddable, highly extensible hypertext
+  tool.  As such, I find it very useful. As it stands now, Hyperbole is
+  particularly helpful for organizing ill-structured or loosely coupled
+  information, in part because there are few tools geared for this purpose.
+  Hyperbole also possesses a lot of potentials in supporting a wider
+  spectrum of structuredness, ranging from unstructured to highly
+  structured environments, as well as structural changes over time.
+
+  Major Uses:
+
+  * Menu interface to our own Epoch-based collaborative support environment
+    called CoReView: This interface brings together all top-level user
+    commands into a single partitioned screen, and allows the end user to
+    interact with the system using simple mouse-clicking instead of the
+    meta-x key.
+
+  * Gateway to internet resources: this includes links to major Internet
+    archive sites of various types of information. Links are made at both
+    directory and file levels.
+
+  * Alternative directory organizer: The hierarchical nature of the Unix
+    file system sometimes makes it difficult to find things quickly and
+    easily using directory navigational tools such as dired. Hyperbole
+    enables me to create various "profile" views of my directory tree, with
+    entries in these views referring to files anywhere in the hierarchy.
+
+  * Organizing and viewing online documentation: using Hyperbole along with
+    Hyper-man and Info makes it truly easy to look up online documentation.
+      
+  * Other desktop organization tasks: including links to various mail
+    folders, saved newsgroup conversation threads, online note-taker,
+    emacs-command invocations, etc.
+
+				    	-- Dadong Wan
+
+-------
+
+  Hyperbole is the first hyper-link system I've run across that is
+  actually part of the environment I use regularly, namely Emacs. The
+  complete flexibility of the links is both impressive and expected -- the
+  idea of making the link itself programmable is clever, and given that one
+  assumes the full power of Emacs.  Being able to send email with buttons
+  in it is a very powerful capability.  Using ange-ftp mode, one can make
+  file references "across the world" as easily as normal file references.
+
+				        -- Mark Eichin
+					   Cygnus Support
+-------
+
+   I just wanted to say how much I enjoy using the Hyperbole outliner.
+   It is a great way to quickly construct very readable technical documents
+   that I can pass around to others.   Thanks for the great work.  
+
+				        -- Jeff Fried
+					   Informix
+
+-------
+
+   The Hyperbole system provides a nice interface to exploring corners of
+   Unix that I didn't know existed before.
+
+					-- Craig Smith
+
+-------
+
+
+===========================================================================
+*		      Why was Hyperbole developed?
+===========================================================================
+
+Hyperbole has been designed to aid in research aimed at Personalized
+Information production/retrieval Environments (PIEs).  Hyperbole is a
+PIE Manager that provides services to PIE Tools.  PIEmail, a mail reader is
+the only PIE Tool developed to date.
+
+An examination of many hypertext environments as background research did
+not turn up any that seemed suitable for the research envisioned, mainly
+due to the lack of rich, portable programmer and user environments.  We also
+tired of trying to manage our own distributed information pools with standard
+UNIX tools.  And so Hyperbole was conceived and raved about until it
+got its name.
+
+
+===========================================================================
+*			       Copyright
+===========================================================================
+
+The following copyright applies to the Hyperbole system as a whole.
+
+Copyright (C) 1989, 1990, 1991, 1992, 1993, 1994, 1995, 2004, 2005,
+2006, 2007  Free Software Foundation, Inc.
+
+Available for use and distribution under the terms of the GNU Public
+License, version 2 or higher.
+
+Hyperbole is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+Hyperbole is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Hyperbole; if not, write to the Free Software Foundation,
+Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA

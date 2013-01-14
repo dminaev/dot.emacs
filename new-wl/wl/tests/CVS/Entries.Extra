@@ -1,0 +1,12 @@
+/ChangeLog////*////
+/check-base64.el////*////
+/check-modules.el////*////
+/test-dist.el////*////
+/test-elmo-date.el////*////
+/test-elmo-imap4.el////*////
+/test-elmo-localdir.el////*////
+/test-elmo-util.el////*////
+/test-rfc2368.el////*////
+/test-utf7.el////*////
+/test-wl-draft.el////*////
+/test-wl-util.el////*////

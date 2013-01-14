@@ -1,0 +1,2041 @@
+[Initial commit (CVS 2005-09-11)
+forcer@forcix.cx**20050911200506] 
+[Playlist buffer rewrite
+forcer@forcix.cx**20050911200536] 
+[emms.el (emms-next-noerror): Always return non-nil when
+forcer@forcix.cx**20050911202113
+ `emms-playlist-select-next' doesn't error out.
+] 
+[emms.el (with-current-emms-playlist): Also recreate when the buffer is
+forcer@forcix.cx**20050912105908
+ dead.
+] 
+[fixing emms-lyric.el and emms-mode-line.el
+lucas@rincevent.net**20050912112331
+ 
+ I don't have any lyric file, so I can't test it. But 
+ there are no errors :)
+ 
+ 
+] 
+[Rename emms-gstreamer.el to emms-player-gstreamer.el
+forcer@forcix.cx**20050912115010] 
+[Fixed emms-mode-line-icon and -playing-time
+lucas@rincevent.net**20050912114449] 
+[renaming the provide, Emacs complains otherwise
+lucas@rincevent.net**20050912115634] 
+[Add pause and seek support to emms.el.
+forcer@forcix.cx**20050912123151
+ This factors out the mplayer support into emms-player-mplayer.el,
+ and removes emms-player-extensions.el.
+] 
+[Add speex support
+forcer@forcix.cx**20050912123529] 
+[Rename emms-lyric.el to emms-lyrics.el
+forcer@forcix.cx**20050912124035] 
+[Rename emms-mpd.el to emms-player-mpd.el
+forcer@forcix.cx**20050912124204] 
+[Select a track after adding, too, if none is selected.
+forcer@forcix.cx**20050912125342] 
+[Fixing the extensions problem.
+lucas@rincevent.net**20050912125805
+ 
+ Just removed the requires, and added require mplayer
+ in emms-default.
+ 
+] 
+[FAQ: Typo fix (Thes -> The)
+forcer@forcix.cx**20050912130801] 
+[emms-player-mpd doesn't need emms-player-extensions anymore.
+forcer@forcix.cx**20050912133923] 
+[Typo: It's emms-playlist-insert-track, not ...-track-insert.
+forcer@forcix.cx**20050912135246] 
+[Rewrote emms-player-gstreamer
+lucas@rincevent.net**20050912144233] 
+[Fixed typo in emms.el
+lucas@rincevent.net**20050912144334
+ 
+ Non quoted hook variable
+ 
+] 
+[Added new generic wrapper for gstreamer
+lucas@rincevent.net**20050912144453] 
+[Removed old gstreamer wrappers
+lucas@rincevent.net**20050912144558] 
+[emms-stream-info.el: Use emms-playlist-selected-track.
+forcer@forcix.cx**20050912150302] 
+[Add pause and resume to the simple player.
+forcer@forcix.cx**20050912152217] 
+[Move gstreamer support into simple player.
+forcer@forcix.cx**20050912152239] 
+[First attempt at reading playing time for .ogg
+lucas@rincevent.net**20050912172312
+ 
+ Problem : it's a bit long to read the info now.
+ We need to optimize that.
+ 
+] 
+[Lots of condition-case fixes.
+forcer@forcix.cx**20050912230657] 
+[Add shuffling and sorting.
+forcer@forcix.cx**20050912232329] 
+[Added `emms-random√' (idea by twb)
+forcer@forcix.cx**20050912233602] 
+[Throw errors for `emms-next' and `emms-previous' at the end/beginning of the playlist
+forcer@forcix.cx**20050913013733] 
+[Keep the selected song correct for shuffling and sorting
+forcer@forcix.cx**20050913020638] 
+[Don't make emms-playlist-sort and emms-playlist-shuffle interactive.
+forcer@forcix.cx**20050913115644] 
+[emms-shuffle-all: Depend on the value of current, not of emms-player-playing-p
+forcer@forcix.cx**20050913120303] 
+[Cleanup of the shuffle/sort stuff
+forcer@forcix.cx**20050913122202] 
+[Call `emms-shuffle' to shuffle a source.
+forcer@forcix.cx**20050913132230] 
+[Fix shuffling in combined sources.
+forcer@forcix.cx**20050913143654] 
+[Remove emms-playlist-kill-track.
+forcer@forcix.cx**20050913144138] 
+[Added `emms-playlist-delete-track-function'.
+forcer@forcix.cx**20050913144350] 
+[Call widen in shuffle and sort.
+forcer@forcix.cx**20050913144610] 
+[Updated define-emms-simple-player examples in emms.texinfo
+forcer@forcix.cx**20050913232630] 
+[Fixing typo in file regexps for gstreamer
+lucas@rincevent.net**20050914110346] 
+[Add `emms-player-simple-regexp'. Also, use it as appropriate.
+forcer@forcix.cx**20050914111945] 
+[emms-playlist-new, emms-playlist-set-playlist-buffer: New commands.
+forcer@forcix.cx**20050914124043] 
+[Added mikmod support (thanks to Martin Schoenmakers)
+forcer@forcix.cx**20050914141335] 
+[Add more mikmod command line args.
+forcer@forcix.cx**20050914141914] 
+[ogg-comment.el: Define macros before using them.
+forcer@forcix.cx**20050914215657] 
+[emms-lyrics.el: Updated commentary and applied standard customization
+william.xwl@gmail.com**20050914145818
+ definitions.
+] 
+[emms.el: Fix seek bug in `emms-player-seek'.
+william.xwl@gmail.com**20050915040717] 
+[emms-playing-time.el: Changed to `emms-player-seeked-hook' to
+william.xwl@gmail.com**20050915041250
+ `emms-player-seeked-functions', defined in `emms.el'.
+] 
+[emms-lyrics.el: Changed to `emms-player-seeked-hook' to
+william.xwl@gmail.com**20050915041558
+ `emms-player-seeked-functions', defined in `emms.el'.
+] 
+[Add `emms-playlist-buffer-p'.
+forcer@forcix.cx**20050915192621] 
+[emms-source-add now checks for an as of yet unset marker, too.
+forcer@forcix.cx**20050915195059] 
+[Removing the old emms-save-playlist
+lucas@rincevent.net**20050915223636] 
+[Fix emms-playlist-new and make emms-playlist-clear use it.
+forcer@forcix.cx**20050916003331] 
+[Adding emms-playlist-save and -active-save
+lucas@rincevent.net**20050916004252
+ 
+ Opening will come soon.
+ 
+] 
+[Cleaned up `emms-playlist-save' a bit
+forcer@forcix.cx**20050916005103] 
+[Provide source insertion
+forcer@forcix.cx**20050916011202] 
+[Shuffle, sort and source-add don't move point anymore.
+forcer@forcix.cx**20050916125153] 
+[Added emms-playlist-mode.el
+forcer@forcix.cx**20050916134001] 
+[Adding m3u playlist format for saving.
+lucas@rincevent.net**20050916113519] 
+[Docstrings for playlist saving functions
+lucas@rincevent.net**20050916113805] 
+[Fixing a typo in emms-playlist-save-active
+lucas@rincevent.net**20050916113911] 
+[Adding emms-playlist-save-active-as-m3u
+lucas@rincevent.net**20050916113946] 
+[Be able to clear the playlist buffer even if it's killed.
+forcer@forcix.cx**20050916135349] 
+[Small fixes
+yonirabkin@member.fsf.org**20050916202237] 
+[Adding emms-playlist-mode-save and -open
+lucas@rincevent.net**20050916212134] 
+[Add `emms-ensure-player-playing-p'
+forcer@forcix.cx**20050916212623] 
+[Making emms-playlist-mode-go respect emms-playlist-buffer
+lucas@rincevent.net**20050916212845] 
+[mpd-updates
+Michael Olson <mwolson@gnu.org>**20050917021138
+ emms-player-mpd.el: Add handler for 'resume.
+ (emms-player-mpd-paused-p): Remove, since we already have
+ emms-player-paused-p.
+ (emms-player-mpd-pause): Use toggle instead of either play or
+ pause.
+] 
+[Inhibit read-only in `emms-playlist-insert-track'
+forcer@forcix.cx**20050917111449] 
+[emms-show now knows when nothing is playing.
+forcer@forcix.cx**20050917113301] 
+[multiple fixes to emms-playlist-mode.el
+yonirabkin@member.fsf.org**20050917113312] 
+[emms-player-mplayer.el: mplayer also knows rm, rmvb, mp4, ...etc.
+william.xwl@gmail.com**20050915154517] 
+[clean-up and emms-playlist-mode-center-current
+yonirabkin@member.fsf.org**20050917115359] 
+[A kinder, gentler emms-playlist-mode-go
+yonirabkin@member.fsf.org**20050917172815] 
+[Added docstrings and clean-up for emms-playlist-mode.el
+yonirabkin@member.fsf.org**20050917184331] 
+[Renaming emms-playlist-save to emms-playlist-mode-save-buffer
+lucas@rincevent.net**20050917230231] 
+[emms-playlist-select should not switch to the playlist buffer.
+forcer@forcix.cx**20050917234943] 
+[Fixing emms-playlist-mode-open-buffer
+lucas@rincevent.net**20050918000605] 
+[Adding a bunch of FIXME tags for the playlist source
+lucas@rincevent.net**20050918002119
+ 
+ When we come to a consensus on the naming, we'll just fix it.
+ Yrk should have a word about it, stream-playlist sounds good.
+] 
+[emms.el missing quote fix, emms-playlist-mode.el kill-track fix
+yonirabkin@member.fsf.org**20050918102240] 
+["font-locking" for inserted, unselected tracks
+yonirabkin@member.fsf.org**20050918110651] 
+[clean-up pseudo font-locking
+yonirabkin@member.fsf.org**20050918111356] 
+[Renaming the "playlist" source to "streamlist".
+lucas@rincevent.net**20050918123045
+ 
+ Things might be broken.
+] 
+[emms-playlist-new: Pass positive argument to mode function.
+forcer@forcix.cx**20050918125107] 
+[Making emms-default now emms-playlist-mode compatible
+lucas@rincevent.net**20050918125105] 
+[emms-playlist-new: No, it's a major mode, DONT pass an argument!
+forcer@forcix.cx**20050918131728] 
+[Big renaming for current buffer/current playlist distinction.
+forcer@forcix.cx**20050918134805
+ All playlist functions which work on the current playlist now are named
+ `emms-playlist-current-...'. Other functions named `emms-playlist-...'
+ work on the current buffer.
+ This affects the following functions:
+ 
+ emms-playlist-clear => emms-playlist-current-clear
+ emms-playlist-selected-track => emms-playlist-current-selected-track
+ emms-playlist-select-next => emms-playlist-current-select-next
+ emms-playlist-select-previous => emms-playlist-current-select-previous
+ emms-playlist-select-random => emms-playlist-current-select-random
+ emms-playlist-select-first => emms-playlist-current-select-first
+ emms-playlist-select-last => emms-playlist-current-select-last
+ emms-playlist-insert-source => emms-playlist-current-insert-source
+] 
+[fixing errors after breakage
+yonirabkin@member.fsf.org**20050918143712] 
+[Ignore read-onliness when opening a playlist-mode-buffer.
+forcer@forcix.cx**20050918153818] 
+[emms-playlist-set-playlist-buffer: Ensure the selected buffer is a playlist.
+forcer@forcix.cx**20050918154758] 
+[comment out emms-info-playlist breakage
+yonirabkin@member.fsf.org**20050918180623] 
+[fix emms-streams.el and emms-player-mplayer.el
+yonirabkin@member.fsf.org**20050918185351] 
+[Make `with-current-emms-playlist' disable read-onlyness.
+forcer@forcix.cx**20050918194432] 
+[include streaming into emms-default and fix streaming info from within the *EMMS Streams* buffer
+yonirabkin@member.fsf.org**20050918193906] 
+[Make `emms-playlist-clear' interactive so that I can map it to a key.
+mwolson@member.fsf.org**20050918200341] 
+[Added 'emms-playlist-clear to default playlist keymap
+yonirabkin@member.fsf.org**20050919065400] 
+[Added 'emms-playlist-clear to the default key-map for emms-playlist-mode
+yonirabkin@member.fsf.org**20050919063744] 
+[Fix track switching error and interactive playlist yanking
+yonirabkin@member.fsf.org**20050919124513] 
+[Fix track switching error and interactive playlist yanking
+yonirabkin@member.fsf.org*-20050919124513] 
+[Fix bugs in lyrics and mode-line modes when switching songs, fix yanking in playlist buffer
+yonirabkin@member.fsf.org**20050919130007] 
+[Make emms-playlist-current-clear an interactive function.
+mwolson@member.fsf.org**20050919135301] 
+[Added emms-playlist-mode-insert-function (fixed sorting and shuffling font-lock)
+yonirabkin@member.fsf.org**20050919160239] 
+[Added track updating to emms.
+forcer@forcix.cx**20050919164537] 
+[Fixed saving/loading for emms-playlist-mode, also added track updating
+forcer@forcix.cx**20050919164624] 
+[use insert function for yanking
+yonirabkin@member.fsf.org**20050919203816] 
+[fixing track killing some more
+yonirabkin@member.fsf.org**20050919210533] 
+[emms-random: Use `emms-playlist-current-select-random'.
+forcer@forcix.cx**20050920150644] 
+[later-do: Work even if the called function errors out.
+forcer@forcix.cx**20050920160128] 
+[emms-info.el rewrite.
+forcer@forcix.cx**20050920163255] 
+[emms-info-mp3info.el updated for newest emms-info.el
+forcer@forcix.cx**20050920165928] 
+[Fix emms-default.el for new emms-info.el
+forcer@forcix.cx**20050920170238] 
+[Remove emms-info-later-do.el
+forcer@forcix.cx**20050920170253] 
+[Fix emms-default.el, and ignore ogg stuff for now.
+forcer@forcix.cx**20050920170859] 
+[Hotfix for emms-streams due to info changed. Please fix later.
+forcer@forcix.cx**20050920171329] 
+[emms-info-track-description: Fall back to old behavior if no title and artist
+forcer@forcix.cx**20050920175244] 
+[Typo fix (findo -> find)
+forcer@forcix.cx**20050920181036] 
+[emms-streams shouldn't overwrite `emms-track-initialize-functions'
+forcer@forcix.cx**20050920182952] 
+[later-do.el emms version
+forcer@forcix.cx**20050920183948] 
+[Use time-less-p instead of <= for times
+forcer@forcix.cx**20050920185652] 
+[Ignore read-onliness when updating a track in a playlist buffer
+forcer@forcix.cx**20050920185705] 
+[Inefficiency removed: Update each track only once :P
+forcer@forcix.cx**20050920192531] 
+[later-do.el: Run timer after function did run to avoid stacking
+forcer@forcix.cx**20050920192602] 
+[Don't set values mp3info has nothing for
+forcer@forcix.cx**20050920195119] 
+[emms-info-mp3info ignores files which are not mp3s
+forcer@forcix.cx**20050920200258] 
+[fix ogg-info
+yonirabkin@member.fsf.org**20050920192219] 
+[clean-up emms-info-ogg.el
+yonirabkin@member.fsf.org**20050920201300] 
+[fix emms-score.el and emms-info-ogg.el borkage
+yonirabkin@member.fsf.org**20050921151000] 
+[emms-player-mplayer.el: Set resume method to nil to just use pause.
+forcer@forcix.cx**20050921165253] 
+[emms-playlist-mode-go: Add buffer-live-p check to circumvent a
+Michael Olson <mwolson@gnu.org>**20050922132424
+ "selecting deleted buffer" error.
+] 
+[emms-playlist-mode: Make sure emms-playlist-buffer-p is set, since we
+Michael Olson <mwolson@gnu.org>**20050922132808
+ destroy all local variables.
+] 
+[emms-playing-time.el: Updated the playing-time retrieval method, so as
+william.xwl@gmail.com**20050922131319
+ to be able to display playing-time again.
+] 
+[emms-info-mp3info: Use number for 'info-playing-time.
+forcer@forcix.cx**20050922145403] 
+[emms-playing-time: Since 'info-playing-time is an int now, changed
+william.xwl@gmail.com**20050922161519
+ `emms-playing-time-display' accordingly.
+] 
+[remove emms-metaplaylist-mode code from emms-playlist-mode
+yonirabkin@member.fsf.org**20050922165801] 
+[Add documentation of the define symbols for emms-info.el.
+forcer@forcix.cx**20050922183214] 
+[emms-info-mp3info: Provide a way to configure the mp3info output coding system.
+forcer@forcix.cx**20050922184657] 
+[emms-playing-time.el: Applied standard customization definitions.
+william.xwl@gmail.com**20050923042230] 
+[emms-lyrics.el: Fixed a bug in `emms-lyrics-start'.
+william.xwl@gmail.com**20050923042355] 
+[eemms-lyrics.el:
+william.xwl@gmail.com**20050923163220
+ 
+ 1 New functions: `emms-lyrics-enable', `emms-lyrics-disable',
+ `emms-lyrics-toggle', for handling hook stuffs.
+ 
+ 2 Removed `emms-lyrics-display-p' where unnecessary now. 
+ 
+ 3 Updated commentary and author name. :-)
+] 
+[emms-playing-time.el: 
+william.xwl@gmail.com**20050923163428
+ 
+ 1 New functions: `emms-playing-time-enable',
+ `emms-playing-time-disable', `emms-playing-time-toggle', for handling
+ hook stuffs. 
+ 
+ 2 Removed `emms-playing-time-display-p' where unnecessary now. 
+ 
+ 3 Updated commentary and author name. :-)
+] 
+[rollback patch to fix adding tracks.
+yonirabkin@member.fsf.org**20050923164324] 
+[add emms-metaplaylist-mode.el
+yonirabkin@member.fsf.org**20050923170348] 
+[Adding emms-info-ogginfo.el and consiquently modifying emms-default
+yonirabkin@member.fsf.org**20050923213008] 
+[Update tracks with a specific function, and provide emms-track-updated-functions
+forcer@forcix.cx**20050926012813] 
+[List all the changes needed in the manual
+yonirabkin@member.fsf.org**20050924132001] 
+[emms-playlist-mode.el: 3rd attempt to not clobber
+Michael Olson <mwolson@gnu.org>**20050924183844
+ emms-playlist-buffer-p.
+] 
+[emms-streams.el: Update `emms-info-file-info-song-artist' so that it
+Michael Olson <mwolson@gnu.org>**20050925160336
+ can deal with the new interface.
+] 
+[emms.el (emms-playlist-new): Use interactive-p rather than
+Michael Olson <mwolson@gnu.org>**20050925165342
+ called-interactively-p, since the latter is not available in Emacs21.
+] 
+[Rename emms-default.el to emms-setup.el.
+forcer@forcix.cx**20050928034207] 
+[some manual fixes (just the start)
+yonirabkin@member.fsf.org**20050926172449] 
+[Another installment of manual changes
+yonirabkin@member.fsf.org**20050928071321] 
+[manual work
+yonirabkin@member.fsf.org**20050929205222] 
+[more manual re-writing
+yonirabkin@member.fsf.org**20050930212451] 
+[emms-setup.el re-write
+yonirabkin@member.fsf.org**20051001100929] 
+[Yet Another Installment of the manual re-write
+yonirabkin@member.fsf.org**20051004134932] 
+[emms-playlist-mode-switch-buffer
+yonirabkin@member.fsf.org**20051004193020] 
+[emms-mode-line: Changed dead `emms-playlist-current-track-changed-hook'
+william.xwl@gmail.com**20051004154656
+ to `emms-track-updated-functions'.
+] 
+[emms-mode-line.el: When artist or title info cann't be achieved, show
+william.xwl@gmail.com**20051004162138
+ file name without directory.
+] 
+[emms-mode-line.el: Made `emms-mode-line-alter' be compatible with
+william.xwl@gmail.com**20051005053723
+ `emms-track-updated-functions'.
+] 
+[emms.el: Should initialize `emms-player-paused-p' to nil at start. Or a
+william.xwl@gmail.com**20051005055332
+ pause + stop would make `emms-player-paused-p' be wrong.
+] 
+[manual work (57% done)
+yonirabkin@member.fsf.org**20051005191315] 
+[emms-playing-time.el: New function: `emms-playing-time-restore-mode-line'.
+william.xwl@gmail.com**20051005064846] 
+[emms-lyrics.el: New function: `emms-lyrics-restore-mode-line'.
+william.xwl@gmail.com**20051005064914] 
+[emms-setup.el: Moved `emms-lyrics' and `emms-playing-time' into
+william.xwl@gmail.com**20051006025155
+ `emms-all'.
+] 
+[emms-setup.el: Added `emms-playlist-sort' to `emms-devel'.
+william.xwl@gmail.com**20051007084601] 
+[emms-playlist-sort.el: New file containing various playlist sort
+william.xwl@gmail.com**20051007084756
+ functions.
+] 
+[Rename `emms-playlist-save-active-as-m3u' to `emms-playlist-save-current-as-m3u'.
+forcer@forcix.cx**20051008071829] 
+[Make emms-mode-line-icon use the good function to get the current track
+lucas@rincevent.net**20051009130300] 
+[A minor spell correction.
+william.xwl@gmail.com**20051016033227] 
+[emms-metaplaylist fix requested by Lukhas
+yonirabkin@member.fsf.org**20051015140904] 
+[manual update (68% done)
+yonirabkin@member.fsf.org**20051013183949] 
+[fix emms-info-ogginfo laguange
+yonirabkin@member.fsf.org**20051015104340] 
+[manual 71% done
+yonirabkin@member.fsf.org**20051017152934] 
+[Add prefix keys support.
+william.xwl@gmail.com**20051026161459] 
+[Don't attempt to dh_installchangelogs ChangeLog in debian/rules.
+Trent Buck <trentbuck@gmail.com>**20050912125754] 
+[Remove TODO from debian/docs.
+Trent Buck <trentbuck@gmail.com>**20050912133353] 
+[Added simple player "playsound".
+Trent Buck <trentbuck@gmail.com>**20051023012053] 
+[Makefile (ChangeLog): Generate ChangeLog from darcs metadata.
+Trent Buck <trentbuck@gmail.com>**20051027133919
+ debian/rules (build-stamp): Have make generate the ChangeLog.
+ (build-arch): Include ChangeLog and debian/changelog in debian package.
+] 
+[debian/rules: swap binary-indep and binary-arch bodies, since emms is packages as source code.
+Trent Buck <trentbuck@gmail.com>**20051027150418] 
+[debian/emms.emacs-install: Leave symlinks in bytecode dir for find-library/function/variable.
+Trent Buck <trentbuck@gmail.com>**20051027172739] 
+[Added a hook for emms-streams
+lucas@rincevent.net**20051103183801] 
+[Added support for toggling default action in streams
+lucas@rincevent.net**20051103183830] 
+[More manual work, but still only 71 percent done
+yonirabkin@member.fsf.org**20051103170157] 
+[Finished rewriting manual
+yonirabkin@member.fsf.org**20051107034232] 
+[Implement an emms-info function using the libtag package.
+Trent Buck <trentbuck@gmail.com>**20051119181528] 
+[emms-info-libtag.el: Fix a couple of typos.
+Trent Buck <trentbuck@gmail.com>**20051119183945] 
+[emms-source-file.el: add missing third clause to AUTOLOAD calls.
+Trent Buck <trentbuck@gmail.com>**20051028142538] 
+[emms-info-mp3info.el (emms-info-mp3find-arguments): use info-tracknumber instead of info-tracknum, so as to be consistent with ogginfo.
+Trent Buck <trentbuck@gmail.com>**20051119150805
+ emms-info.el: Update documentation.
+] 
+[Added `emms-playlist-mode-go-popup' for popuping emms-playlist as a side
+william.xwl@gmail.com**20051119171419
+ window.
+] 
+[Fix emms.texinfo for PDF output (thanks twb)
+yonirabkin@member.fsf.org**20051125175445] 
+[Fix conflicts in emms-playlist-mode.el
+yonirabkin@member.fsf.org**20051120154643] 
+[fix manual sectioning
+yonirabkin@member.fsf.org**20051127085636] 
+[Killing and yanking
+yonirabkin@member.fsf.org**20051205092044] 
+[killing and yanking in the interactive playlist buffer
+yonirabkin@member.fsf.org**20051209163432] 
+[fix emms-playlist-save-as-m3u
+yonirabkin@member.fsf.org**20051218102218] 
+[make emms-playlist-mode emacs21.4 compatible
+yonirabkin@member.fsf.org**20051224105738] 
+[update manual for playlist-mode
+yonirabkin@member.fsf.org**20051220122514] 
+[fix mode-alter bug
+yonirabkin@member.fsf.org**20051203194736] 
+[Move `emms-lyrics-mode' to the end, or it won't work on CVS Emacs.
+william.xwl@gmail.com**20051212094752] 
+[Fixed emms-score.el to accommordate with changes in EMMS2. I've also
+william.xwl@gmail.com**20051213131157
+ reorganized the code structure a little bit and added bunches of new
+ user interface functions.
+] 
+[Added `emms-playlist-sort-by-score'.
+william.xwl@gmail.com**20051213131558] 
+[`emms-score-set-playing' is not really "set", but "add". Fix this. Same
+william.xwl@gmail.com**20051216091938
+ for `emms-score-set-file-on-line'.
+] 
+[Significantly improve (and speed up) MusicPD support.
+Michael Olson <mwolson@gnu.org>**20051231083223] 
+[emms-player-mpd: Make sure the process gets closed autommatically when exiting Emacs.
+Michael Olson <mwolson@gnu.org>**20060101020942] 
+[emms-player-mpd: Fix documentation.  The mpc binary is no longer needed.
+Michael Olson <mwolson@gnu.org>**20060102090752] 
+[Use timers in a way that is compatible with both Emacs and XEmacs.
+Michael Olson <mwolson@gnu.org>**20060104061024] 
+[emms-player-mpd: Docfix, wait 200 millisecs for process to start, add more output when verbose mode is enabled.
+Michael Olson <mwolson@gnu.org>**20060103040456] 
+[emms-player-mpd: Bring this up-to-par with the other backends, in that it can update the current playlist position and load the contents of the current playlist into MusicPD.
+Michael Olson <mwolson@gnu.org>**20060104075237] 
+[Make emms-player-mpd work with emms-playing-time.
+Michael Olson <mwolson@gnu.org>**20060104081359] 
+[Move `emms-cancel-timer' to a compatibility section in emms.el
+forcer@forcix.cx**20060104154238] 
+[emms-player-mpd: Make it the default to sync the MusicPD playlist with the EMMS playlist, since this is what most EMMS users will probably want.
+Michael Olson <mwolson@gnu.org>**20060104224734] 
+[emms-playing-time: Make sure that we don't start more than one timer instance.
+Michael Olson <mwolson@gnu.org>**20060104224902] 
+[emms-player-mpd: Quote file argument so that filenames with spaces are treated correctly.
+Michael Olson <mwolson@gnu.org>**20060105014642] 
+[emms-player-mpd: Implement blocking so that code in timers doesn't conflict.
+Michael Olson <mwolson@gnu.org>**20060107064358] 
+[emms-player-mpd: Detect when the server has stopped, and call emms-player-stopped.
+Michael Olson <mwolson@gnu.org>**20060107081052] 
+[New XEmacs compatibility function: emms-replace-regexp-in-string
+Michael Olson <mwolson@gnu.org>**20060105172144] 
+[emms-stream-info: Use emms-replace-regexp-in-string.
+Michael Olson <mwolson@gnu.org>**20060106032048] 
+[emms-player-mpd: Escape specials in filenames like the other MPD clients do.
+Michael Olson <mwolson@gnu.org>**20060106032121] 
+[Use emms-replace-regexp-in-string.
+Michael Olson <mwolson@gnu.org>**20060106032400] 
+[Rename m3u-playlist source to "playlist" and support .pls files.  The playlist-parsing routine has been moved to a separate function, since the MusicPD player also needs to use it.  Detect URLs in playlists and use type of 'url when creating tracks for them.
+Michael Olson <mwolson@gnu.org>**20060107053310] 
+[add two macros, one to emms.el and the other to emms-playlist-mode.el. The former fixes a bug in which the software attempts to access a completely narrowed buffer and the latter because it looks nicer.
+yonirabkin@member.fsf.org**20060109083856] 
+[Pass correct parameter to `run-at-time', to make sure only one timer is
+william.xwl@gmail.com**20060118131412
+ running.
+] 
+[update README file
+yoni-r@actcom.com**20060216181847] 
+[playlist mode yank bug fix
+yoni-r@actcom.com**20060226171121] 
+[emms-player-mpd: Do a seek when the song has changed in case several seconds have elapsed between detection and song change.
+Michael Olson <mwolson@gnu.org>**20060302032315] 
+[emms-player-simple.el: Added alsaplayer support. Thanks to indio on #emacs.
+forcer@forcix.cx**20060305045259] 
+[emms-player-simple.el (alsaplayer): Fixed regexp.
+forcer@forcix.cx**20060305154938] 
+[emms-source-file: Yes, playlist does work. (Removed comment)
+forcer@forcix.cx**20060306211535] 
+[fixed copyright years and copyright holder
+yonirabkin@member.fsf.org**20060315155834] 
+[finished updating copyrights
+yonirabkin@member.fsf.org**20060315190720] 
+[emms-player-mpd: Implement importing the current MusicPD playlist into EMMS and fix a couple of bugs.
+Michael Olson <mwolson@gnu.org>**20060320061455] 
+[emms-player-mpd: Try to get values for name and port from environment.  Fix awkwardness in `emms-player-mpd-block'.
+Michael Olson <mwolson@gnu.org>**20060320065153] 
+[emms-player-mpd: Make pausing work after importing a playlist from MusicPD.
+Michael Olson <mwolson@gnu.org>**20060320071337] 
+[emms-player-mpd: Make importing of MusicPD playlist a bit less error-prone.
+Michael Olson <mwolson@gnu.org>**20060323135109] 
+[re-organization of emms-setup levels
+yonirabkin@member.fsf.org**20060322104611] 
+[Added `emms-playlist-sort' to the Emms manual.
+yonirabkin@member.fsf.org**20060323125334] 
+[Added MusicPD to the Emms manual.
+yonirabkin@member.fsf.org**20060323164844] 
+[emms-player-mpd.el (emms-info-mpd): Prevent an error when we can't connect to a MusicPD instance.  This prevents EMMS from causing Emacs to stop reading initialization settings.
+Michael Olson <mwolson@gnu.org>**20060326230003] 
+[All stable extentions documented
+yonirabkin@member.fsf.org**20060324232506] 
+[emms-streams.el (emms-stream-default-list): Add "Voices from Within"
+forcer@forcix.cx**20060329050712] 
+[Move emms-parse-playlist to emms-source-file.el, rename to emms-source-file-parse-playlist
+forcer@forcix.cx**20060401185913] 
+[Added emms-source-playlist.el, moved stuff from emms.el there
+forcer@forcix.cx**20060401203820] 
+[Added emms-play-playlist
+forcer@forcix.cx**20060401204306] 
+[Use insert-file instead of insert-file-literally to get around coding system problems
+forcer@forcix.cx**20060401205125] 
+[Makefile: Update .PHONY, add .PRECIOUS line for generated files, add rule for creating HTML version of documentation.
+Michael Olson <mwolson@gnu.org>**20060401180331] 
+[Makefile: Use correct extension in new HTML rule.
+Michael Olson <mwolson@gnu.org>**20060401184547] 
+[Some minor modifications
+lucas@rincevent.net**20060401181821] 
+[emms-info-libtag.el: Add a warning about the possible conflict with emms-info-mp3info
+lucas@rincevent.net**20060401185421] 
+[README: Added a paragraph about libtag.
+lucas@rincevent.net**20060401190443] 
+[Remove emms-pbi*.el at forcer's request.
+Michael Olson <mwolson@gnu.org>**20060401193306] 
+[Remove emms-pl-manip.el
+Michael Olson <mwolson@gnu.org>**20060401194358] 
+[emms-player-mpd: Use simpler value for connect function.
+Michael Olson <mwolson@gnu.org>**20060401190427] 
+[emms-mode-line: Add toggle functions and autoload cookies.
+Michael Olson <mwolson@gnu.org>**20060401191825] 
+[Make all add-on files toggle-able.
+Michael Olson <mwolson@gnu.org>**20060401210634] 
+[emms-streams: Add prefix to utility functions.
+Michael Olson <mwolson@gnu.org>**20060401210849] 
+[Makefile: Don't show Emacs commandline.  Remove generated HTML file in clean rule.
+Michael Olson <mwolson@gnu.org>**20060401232522] 
+[Fix a variety of compilation errors and warnings.
+Michael Olson <mwolson@gnu.org>**20060401232610] 
+[emms-lyrics: Make this behave like other add-ons.
+Michael Olson <mwolson@gnu.org>**20060401232918] 
+[emms-player-mpd: Don't use define-emms-simple-player, since we provide our own versions of the functions that it produces.
+Michael Olson <mwolson@gnu.org>**20060401233036] 
+[Remove emms-tageditor.el, since it only works with emms-pbi.el.  It might be useful to re-add this, once it has been rewritten.  But first, let's get a release out the door :^) .
+Michael Olson <mwolson@gnu.org>**20060401233146] 
+[emms-source-playlist: Add support for m3u and pls playlists.
+Michael Olson <mwolson@gnu.org>**20060402024556] 
+[emms-streams: Make some options customizable.  Fix compiler warnings.
+Michael Olson <mwolson@gnu.org>**20060402031546] 
+[Update manual and emms-setup with the preferred way of invoking emms-playing-time and emms-lyrics from .emacs.  Update MusicPD section of manual.
+Michael Olson <mwolson@gnu.org>**20060402144407] 
+[emms-playlist-sort.el, quote FORM argument to eval-after-load
+forcer@forcix.cx**20060402160555] 
+[Make sure that negated character classes in regexps include the newline character, so that there is no possibility of empty lines being matched.
+Michael Olson <mwolson@gnu.org>**20060402175002] 
+[emms-player-mpd: Never set emms-player-stopped-p, since this is only to be done when the user explicitly stops the music.
+Michael Olson <mwolson@gnu.org>**20060402184833] 
+[New variable: `emms-lyrics-coding-system'. It's the coding system used
+william.xwl@gmail.com**20060403134922
+ in the output of lyrics. (I sent this before, maybe some unexpected
+ problem happened.)
+] 
+[Updated manual for emms-lyrics.
+william.xwl@gmail.com**20060403140416] 
+[emms-player-mpd: If the MusicPD daemon goes away, make sure that we can still stop EMMS.
+Michael Olson <mwolson@gnu.org>**20060406034553] 
+[emms-playlist-mode: Make it possible to use edebug on `with-inhibit-read-only' forms.
+Michael Olson <mwolson@gnu.org>**20060406042615] 
+[emms-source-playlist: Get things working to my satisfaction, like saving playlists in different formats and (optionally) being prompted for which format.
+Michael Olson <mwolson@gnu.org>**20060409003540] 
+[emms-playlist-mode: Use emms-playlist-save instead of a custom function.
+Michael Olson <mwolson@gnu.org>**20060409005234] 
+[Add new playlist sources to documentation.
+Michael Olson <mwolson@gnu.org>**20060409005306] 
+[emms-playlist-mode: Remove obsolete function.
+Michael Olson <mwolson@gnu.org>**20060409052556] 
+[emms-info-libtag.el: libtag can also handle Speex files.
+Trent Buck <trentbuck@gmail.com>**20051120065009] 
+[emms-info-libtag.el: remove unused variables.
+Trent Buck <trentbuck@gmail.com>**20051204181347] 
+[emms-player-mplayer.el: mplayer supports FLAC, too.
+trentbuck@gmail.com**20060226055450] 
+[patch resolution
+Trent Buck <trentbuck@gmail.com>**20060409205547] 
+[emms.el: Introduce and use `emms-source-old-buffer'
+forcer@forcix.cx**20060410122623] 
+[emms-source-file.el: Fix dired source.
+forcer@forcix.cx**20060410122652] 
+[emms-player-mpd: Major rewrite to use a custom transaction queue implementation, which includes adjusting most functions to use callbacks and closures.
+Michael Olson <mwolson@gnu.org>**20060411004345] 
+[emms-player-mpd: A few minor tweaks.
+Michael Olson <mwolson@gnu.org>**20060411013942] 
+[emms-playlist-mode: Fix a bug where too many overlays were being added when the track was updated.
+Michael Olson <mwolson@gnu.org>**20060411025931] 
+[emms-player-mpd: Reset some extra state data on stop.
+Michael Olson <mwolson@gnu.org>**20060411030023] 
+[emms-player-mpd: Remove obsolete option.
+Michael Olson <mwolson@gnu.org>**20060411030539] 
+[emms-player-mpd: Make sure inserted text from emms-player-mpd-show goes to the right buffer.
+Michael Olson <mwolson@gnu.org>**20060411033552] 
+[emms-player-mpd: Fix minor typo in comments.
+Michael Olson <mwolson@gnu.org>**20060411041037] 
+[emms-player-mpd: Set timer interval to be 1 by default and adjust docstring.
+Michael Olson <mwolson@gnu.org>**20060411225417] 
+[emms-player-mpd: Make emms-player-mpd-show take a callback argument so that it's easy to make a /NP command for Emacs-based IRC clients.
+Michael Olson <mwolson@gnu.org>**20060412032655] 
+[emms-player-mpd: Make last compiler warning go away with some `put' trickery.
+Michael Olson <mwolson@gnu.org>**20060412032926] 
+[Make `emms-player-started' function, which serves the same purpose as `emms-player-stopped', in that it is meant to be called by the player.  emms-player-mpd needs this so that it can tell EMMS exactly when playback has begun.
+Michael Olson <mwolson@gnu.org>**20060412035132] 
+[emms-player-mpd: Don't start the timer upon playing a track if `emms-player-mpd-sync-playlist' is nil.
+Michael Olson <mwolson@gnu.org>**20060412052632] 
+[emms-libtag.el : Make it id3v1 friendly by removing all the trailing whitespace in metadata
+lucas@rincevent.net**20060413161451] 
+[Added `emms-playlist-sort-by-natural-order'. Thanks to Matthew Kennedy
+william.xwl@gmail.com**20060414114543
+ <mkennedy@gentoo.org>.
+] 
+[Fix face definitions syntax (emms-playlist-mode, emms-metaplaylist-mode)
+forcer@forcix.cx**20060420201021] 
+[Provide emms-propertize compatibility function.
+forcer@forcix.cx**20060420210744] 
+[Use %S not %s for tracks in errors.
+forcer@forcix.cx**20060420210952] 
+[emms-player-mpd: Use better check to see if we are given valid output from "mpd --version".  This should improve results for the case where mpd is installed on a different machine.  Thanks to Adam Sj√∏gren for the report.
+Michael Olson <mwolson@gnu.org>**20060420222600] 
+[emms-player-mpd: Use better default for emms-player-mpd-supported-regexp.
+Michael Olson <mwolson@gnu.org>**20060420223819] 
+[Move propertize compatibility function to the others.
+forcer@forcix.cx**20060420230737] 
+[Update AUTHORS.
+Michael Olson <mwolson@gnu.org>**20060421113456] 
+[Make XEmacs21 and Emacs21 happy.
+Michael Olson <mwolson@gnu.org>**20060420234749] 
+[emms.el: Fix compiler warning for Emacs22.
+Michael Olson <mwolson@gnu.org>**20060420235746] 
+[emms-metaplaylist-mode.el: new function to create a new empty EMMS playlist.
+lucas@rincevent.net**20060420223126] 
+[emms-metaplaylist-mode.el: new function : emms-metaplaylist-set-active to set the active playlist buffer from the metaplaylist menu
+lucas@rincevent.net**20060420224114] 
+[emms-metaplaylist-mode.el: New keybinding to emms-metaplaylist-new-buffer.
+lucas@rincevent.net**20060421191956
+ 
+ Yes, it's a small patch...
+] 
+[emms-player-mpd: Implement and document support for changing the volume.
+Michael Olson <mwolson@gnu.org>**20060421214306] 
+[emms-player-mpd: Prompt for volume change amount.
+Michael Olson <mwolson@gnu.org>**20060421215128] 
+[emms-player-mpd: Make sure that emms-player-finished-hook is called once the playlist is exhausted.
+Michael Olson <mwolson@gnu.org>**20060421224715] 
+[emms-player-mpd: Add disconnect function, for when you want to keep playing music, but not keep track of it in Emacs.
+Michael Olson <mwolson@gnu.org>**20060422034842] 
+[emms.el: Fix docstring of emms-player-finished-hook.
+forcer@forcix.cx**20060422132832] 
+[emms.el: Simple playlists shouldn't be bothered by read-onliness.
+forcer@forcix.cx**20060423201939] 
+[fixed Makefile
+yoni-r@actcom.com**20060425114636] 
+[emms-playlist-mode: Add face entries for light backgrounds.
+Michael Olson <mwolson@gnu.org>**20060425142716] 
+[Rename with-widened-buffer to emms-with-widened-buffer.
+Michael Olson <mwolson@gnu.org>**20060425191558] 
+[emms-playlist-mode: Call kill-line instead of kill-region to fix a minor bug.
+Michael Olson <mwolson@gnu.org>**20060429134204] 
+[Install correctly with Debian _and_ make install.
+forcer@forcix.cx**20060429183958] 
+[emms-print-metadata.1: New file.
+forcer@forcix.cx**20060429184129] 
+[emms-print-metadata.c: Don't segfault if argument doesn't exist.
+forcer@forcix.cx**20060429185448] 
+[debian/changelog: 2.0-1 release version.
+forcer@forcix.cx**20060429174536] 
+[emms.el: Change version to 2.0
+forcer@forcix.cx**20060429174710] 
+[Don't generate ChangeLog in debian/rules - darcs isn't there anymore then.
+forcer@forcix.cx**20060429191044] 
+[Don't delete ChangeLog with make clean, we can't regenerate it without _darcs
+forcer@forcix.cx**20060429191407] 
+[debian/emms-extras.manpages: New file
+forcer@forcix.cx**20060429192811] 
+[TAG 2.0
+forcer@forcix.cx**20060429193319] 
+[emms-playlist-mode.el: Don't put a period after the mode map. This hangs 21.4 on display.
+forcer@forcix.cx**20060503234351] 
+[emms-playlist-mode: Implement the option (disabled by default) of opening a new EMMS buffer for a playlist, when hitting RET on one.
+Michael Olson <mwolson@gnu.org>**20060510040730] 
+[emms-source-playlist: Do not expand names of files in playlists, as this can cause problems with emms-player-mpd in some configurations.
+Michael Olson <mwolson@gnu.org>**20060516081257] 
+[emms-player-mpd: Add a few checks to make sure that the given buffer exists before trying to do anything with it.
+Michael Olson <mwolson@gnu.org>**20060517035419] 
+[emms-player-mpd: Overhaul for streamlist support, and fix a few miscellaneous issues.
+Michael Olson <mwolson@gnu.org>**20060524055707] 
+[emms-player-mpd: Fix bug that caused unconditional reloading of the entire MusicPD playlist whenever the track was changed manually.
+Michael Olson <mwolson@gnu.org>**20060524061655] 
+[emms-player-mpd: When showing the currently-playing song, prepend the name of the radio station, if it exists.
+foo**20060524195911] 
+[emms-playlist-mode: Make "d" kill the entire line.  This seems to be a good compromise of those who use C-k and those who want more standard object-killing behavior.
+foo**20060524200008] 
+[emms-player-mpd: Use more robust method of detecting whether we need to force-feed MusicPD our playlist.
+Michael Olson <mwolson@gnu.org>**20060525014253] 
+[emms-player-mpd: Make seek work correctly.
+Michael Olson <mwolson@gnu.org>**20060525033120] 
+[emms-streams: Make hitting RET on a URL do the right thing, improve cursor movement, and mark the buffer as unmodified after performing a save.
+Michael Olson <mwolson@gnu.org>**20060529030043] 
+[emms-streams: Implement kill and yank.
+Michael Olson <mwolson@gnu.org>**20060530040114] 
+[emms-streams: Re-implement yank and kill so that they do the right thing with emms-stream-list.
+Michael Olson <mwolson@gnu.org>**20060530045429] 
+[allow nonzero ogginfo exit plus some reindenting
+Martin Schoenmakers <aiviru@diamond-age.net>**20060530130411
+ 
+ When ogginfo gave a nonzero value on exit, any valid data would get tossed
+ if there was any. This prevented emms from showing info for files that are
+ tagged but a bit odd.
+ 
+ Also reindented emms-info-ogginfo accordingly, which incidentally removed
+ some tabs in favour of spaces.
+ 
+] 
+[emms-streams: When the user wants emms-streams to play the selected stream instead of add it, create our own playlist buffer.  When quitting, if we own the current playlist buffer, kill it.
+Michael Olson <mwolson@gnu.org>**20060530144243] 
+[emms-streams: Re-add space after prompt and use completion for type.
+Michael Olson <mwolson@gnu.org>**20060530190620] 
+[Add emms-volume and emms-volume-amixer.
+Martin Schoenmakers <aiviru@diamond-age.net>**20060530223500
+ 
+ New files: emms-volume.el provides some general volume changing things,
+ including a minor mode to more easily change volume when not in the
+ EMMS buffer. emms-volume-amixer.el is a backend using amixer.
+ 
+] 
+[AUTHORS: Add Martin Schoenmakers. Welcome! :-)
+forcer@forcix.cx**20060530230723] 
+[emms-volume-amixer.el: Provide a way to set the control for amixer
+forcer@forcix.cx**20060531001102] 
+[emms-volme.el: Add some requires.
+forcer@forcix.cx**20060531001118] 
+[emms-volume.el: Minor cosmetic cleanup
+forcer@forcix.cx**20060531002351] 
+[emms-volume.el: Cosmetic stuff, defvar -> defcustom
+forcer@forcix.cx**20060531003343] 
+[Make handling of multiple playlist buffers less error-prone.
+Michael Olson <mwolson@gnu.org>**20060531203810] 
+[Put volume options in their own customize group.
+Martin Schoenmakers <aiviru@diamond-age.net>**20060601193853
+ 
+ Added a separate emms-volume group for customize and put things there instead
+ of in the main thing.
+] 
+[Remove debian-extras package as requested by ftpmasters (debian)
+forcer@forcix.cx**20060603125644] 
+[Make sure we never have an empty track description when inserting a song into a playlist buffer.
+Michael Olson <mwolson@gnu.org>**20060604194940] 
+[Miscellaneous minor cleanups.
+Michael Olson <mwolson@gnu.org>**20060604195311] 
+[emms-player-mpd: Differentiate between files and URLs when it makes sense to do so.
+Michael Olson <mwolson@gnu.org>**20060604195449] 
+[Add some sources for inserting playlists without inserting their contents, and likewise for directories of playlist files.  Exclude some files and directories from being added when walking directories.
+Michael Olson <mwolson@gnu.org>**20060604195602] 
+[Sort file names from `emms-source-file-directory-tree-function'.
+forcer@forcix.cx**20060605053347] 
+[emms-info caching (thanks to Damien Elmes)
+forcer@forcix.cx**20060605142507] 
+[AUTHORS: Damien Elmes address updated
+forcer@forcix.cx**20060605143028] 
+[info-cache-dirty/coding
+Damien Elmes <emms@repose.cx>**20060605163339
+ 
+ * mark the info cache as dirty when it's modified, so we don't have to
+   write it out all the time
+ * save the cache as mule-utf-8 - comments? i'm not sure if this is
+   correct
+] 
+[AUTHORS: fixed Lucas' e-mail address
+lucas@rincevent.net**20060606090957] 
+[emms-playlist-mode.el - now with less overlay!
+forcer@forcix.cx**20060606135908] 
+[emms-playlist-mode doesn't need overlay compatibility anymore
+forcer@forcix.cx**20060606141539] 
+[emms-info: Fix bug that occurs after clearing the current playlist and trying to re-add songs to it.
+Michael Olson <mwolson@gnu.org>**20060606144439] 
+[refactor caching code into emms-cache.el
+Damien Elmes <emms@repose.cx>**20060607125345
+ * caching support is now provided via two function vars in emms.el,
+   emms-cache-get-function and emms-cache-set-function
+ * (emms-standard) or above will enable caching support
+ * you'll need to remove .emms-cache or s/emms-info-cache/emms-cache-db/
+] 
+[Cleaned up the cached code in emms.el a bit
+forcer@forcix.cx**20060607134238] 
+[Typo, defvar => defcustom for emms-cache-set-function
+forcer@forcix.cx**20060607134647] 
+[Add autoloads to emms-setup.el
+forcer@forcix.cx**20060607150030] 
+[emms sources now switch add/play behavior when a prefix argument is supplied.
+forcer@forcix.cx**20060607150502] 
+[emms-playlist-mode: Stop overlay from being attached to text inserted before it
+forcer@forcix.cx**20060607155511] 
+[emms.el: The currently playing marker now should stay where it is, even for yanks
+forcer@forcix.cx**20060607155759] 
+[fix damien elmes's email address
+Damien Elmes <emms@repose.cx>**20060607154000] 
+[Mark the cache as dirty for each modification.
+forcer@forcix.cx**20060607161049] 
+[Very basic support for recording the time you last played a track.
+lucas@rincevent.net**20060607172830
+ 
+ * emms-last-played.el: New file.
+   Nothing fancy right now, more to come soon.
+ * emms-setup.el: emms-devel now requires and setups emms-last-played.
+] 
+[emms.el, simplified emms-property-region considerably.
+forcer@forcix.cx**20060607202310] 
+[Fix typo in emms-property-region
+forcer@forcix.cx**20060607203558] 
+[Make emms-property-region bulletproof.
+Michael Olson <mwolson@gnu.org>**20060607215113] 
+[emms-playlist-mode: When making new overlays, do not allow the rear to advance.  This prevents some display issues.  If we really need to modify the text there, we should be using (insert-before-markers).
+Michael Olson <mwolson@gnu.org>**20060607215212] 
+[emms.el: Change directory to / before starting the player.
+forcer@forcix.cx**20060608025659] 
+[emms-playlist-mode: Facify tracks on startup.
+forcer@forcix.cx**20060608123052] 
+[add a metadata browser - emms-browser.el
+Damien Elmes <emms@repose.cx>**20060608084400
+ * preliminary work on a metadata browser - still alpha, but it's
+   useable for me
+ * also updated my email address in emms-cache.el (whoops)
+] 
+[fix RET on trailing \n
+Damien Elmes <emms@repose.cx>**20060608090703
+ \n isn't propertized which means hitting RET on a playlist or browser
+ entry fails. this patch moves the point before trying to read the
+ properties.
+] 
+[small typo fix
+Damien Elmes <emms@repose.cx>**20060608032546] 
+[avoid rebuilding the browser window each time
+Damien Elmes <emms@repose.cx>**20060608092623] 
+[update modeline when changing browsing method
+Damien Elmes <emms@repose.cx>**20060608094037] 
+[browser sorting, and bug fixes
+Damien Elmes <emms@repose.cx>**20060608105253
+ - sort tracks when they're added to the playlist
+ - fix a bug where we didn't uniquify the buffer
+ - distinguish between files and urls
+ - modify emms-playlist-sort to accept an optional region
+] 
+[refactor browser mode creation code
+Damien Elmes <emms@repose.cx>**20060608123618
+ - make the rendering function (browse-by-artist, etc) responsible for
+   the mode name
+ - fix a bug where the wrong buffer is used
+] 
+[NEWS is new
+forcer@forcix.cx**20060608125507] 
+[emms-metaplaylist-mode: Fix bug introduced by the recent emms-playlist-mode overhaul.  Add faces for light backgrounds.
+Michael Olson <mwolson@gnu.org>**20060608143846] 
+[Fix compiler warnings in emms-cache.el.
+Michael Olson <mwolson@gnu.org>**20060608184612] 
+[Standardize copyright notices.  Add COPYING file.  Mention license in README.
+Michael Olson <mwolson@gnu.org>**20060608194123] 
+[emms-cache: Add standard enable/disable/toggle interface and do a docfix for emms-cache-set-function.
+Michael Olson <mwolson@gnu.org>**20060609040108] 
+[emms-cache: Small compiler fix.
+Michael Olson <mwolson@gnu.org>**20060609041606] 
+[update emms-cache.el commentary
+Damien Elmes <emms@repose.cx>**20060609064935] 
+[emms-setup: Get rid of pointless compiler warning.
+Michael Olson <mwolson@gnu.org>**20060609042002] 
+[emms-player-mpd: Fix minor bug when importing the current MusicPD playlist into EMMS.
+Michael Olson <mwolson@gnu.org>**20060609043538] 
+[emms-player-mpd: Rename volume functions to better match the namespace created by emms-volume.el.
+Michael Olson <mwolson@gnu.org>**20060609043643] 
+[emms-player-mpd: Add functionality to dump MusicPD data into the EMMS cache.  This allows for easy integration with emms-browser.el.
+Michael Olson <mwolson@gnu.org>**20060609043831] 
+[browse subcategories (eg artist->album->title)
+Damien Elmes <emms@repose.cx>**20060609185950
+ - subcategories can now be expanded and contracted, and added to
+   playlist
+ - see the new keybindings at the top of the file
+ - add new faces for the various sublevels (only the dark background
+   colours are useful at the moment - any light background users want
+   to fix that?)
+ - fix a bug in emms-smart-browse with (recenter)
+] 
+[Add mpd volume settings to custom
+Martin Schoenmakers <aiviru@diamond-age.net>**20060609231150
+ 
+ Small patchlet so mpd users can use custom to change the volume setting
+ backend to use the appropriate volume functions.
+] 
+[emms-info: Never return 0 for info-mtime, since emms-time-less-p does not like this.  Use nil instead.
+Michael Olson <mwolson@gnu.org>**20060610230409] 
+[Use better exclude regexp, so that people can load music files with '#' in the middle of the name.
+Michael Olson <mwolson@gnu.org>**20060610230507] 
+[emms-cache: add pruning support, make save/load interactive
+Damien Elmes <emms@repose.cx>**20060611095400] 
+[updated manual about emms-foobar-file prefix toggling
+yoni-r@actcom.com**20060611163901] 
+[browser: sorting, bugfixes
+Damien Elmes <emms@repose.cx>**20060612051800
+ - add sorting for subitems (albums, tracks, etc)
+ - make isearching expand the current entry automatically
+ - rename subitems-exist to subitems-visible (clearer)
+] 
+[debian: Install info file as well
+forcer@forcix.cx**20060612191255] 
+[debian: add changelog for 2.0-2
+forcer@forcix.cx**20060612191609] 
+[removed superfluous comment (actually testing darcs send)
+yoni-r@actcom.co.il**20060611185407] 
+[fix bug in emms-playlist-mode-center-current
+yoni-r@member.fsf.org**20060613090604] 
+[added the section "Finding files and speed" to the manual
+yoni-r@member.fsf.org**20060613100136] 
+[emms-lyrics.el: Fix file-exists-p error when finding lyrics file for
+william.xwl@gmail.com**20060614032114
+ streams. At present, will just take care of tracks with 'file type.
+] 
+[browser: refactor data format, bugfixes; emms: add emms-track-p
+Damien Elmes <emms@repose.cx>**20060614160048
+ 
+ Subitems are now stored in a tree of "bdata" objects, which is
+ generated when initially displaying the buffer. This makes rendering
+ simpler and also fixes some bugs where tracks were not being sorted
+ correctly in the browser and/or the playlist.
+ 
+ Adding items to the playlist now inserts 'group' names when you add a
+ whole album, artist, etc at a time. These names will be thrown away if
+ you run emms-shuffle. The sorting routines will correctly sort the
+ buffer, throwing away the group tags, but then throw an error because
+ the buffer is not the size they expected it to be. Other playlist
+ manipulation routines like next/previous should skip over the group
+ names - if they don't, it's a bug in the playlist code.
+ 
+ An example of the new interface is at:
+ http://repose.cx/dump/emms-browser.png
+] 
+[browser: expand/collapse levels, tab through entries
+Damien Elmes <emms@repose.cx>**20060614180725] 
+[browser: make defcustom lines user variables
+Damien Elmes <emms@repose.cx>**20060615013606] 
+[info: display progress when adding async
+Damien Elmes <emms@repose.cx>**20060615012854] 
+[playlist-mode: add 'C' to clear playlist
+Damien Elmes <emms@repose.cx>**20060615013417] 
+[browser: require emms-playlist-sort
+Damien Elmes <emms@repose.cx>**20060615015543] 
+[playlist: enable undo, add extra undo binding
+Damien Elmes <emms@repose.cx>**20060615022826] 
+[browser: handle nil track numbers
+Damien Elmes <emms@repose.cx>**20060615023650] 
+[browser: fix for the tracknumber fix patch
+Damien Elmes <emms@repose.cx>**20060615051156] 
+[add player-mpg321-remote
+Damien Elmes <emms@repose.cx>**20060615063027
+ - allows seeking in files
+ - handles files with errors in them (the mpg321 simple version skips
+   over the files)
+] 
+[mpg321-remote: defvar mask-stop-message
+Damien Elmes <emms@repose.cx>**20060615094217] 
+[Add Adam Sjoegren (copyright got assigned)
+forcer@forcix.cx**20060615225714] 
+[mpg321-remote: fix bug related to the player stopping
+Damien Elmes <emms@repose.cx>**20060616011318] 
+[mpg321-remote: fix race condition
+Damien Elmes <emms@repose.cx>**20060616103159] 
+[browser: fix sorting on tracks without a track number
+Damien Elmes <emms@repose.cx>**20060616110222] 
+[browser: collapse before expanding (expand-to-level-2, etc)
+Damien Elmes <emms@repose.cx>**20060616110612] 
+[browser: remember position when hitting 1,2,3 etc
+Damien Elmes <emms@repose.cx>**20060616131926] 
+[browser: fix centering when adding new tracks to the playlist
+Damien Elmes <emms@repose.cx>**20060616132746] 
+[browser: put track number first (better for compilation albums)
+Damien Elmes <emms@repose.cx>**20060616153258] 
+[Rename `emms-score-show' to `emms-score-show-playing'. Add
+william.xwl@gmail.com**20060616162244
+ `emms-score-show-file-on-line'.
+] 
+[emms-player-mpd: Make the playable-p function return nil if we cannot start a connection to mpd.
+Michael Olson <mwolson@gnu.org>**20060616233847] 
+[define-emms-simple-player: Check for existence of the player executable.
+forcer@forcix.cx**20060617023535] 
+[browser: bugfixes, sort/display by year
+Damien Elmes <emms@repose.cx>**20060618122507
+ - fix a bug with add-and-play on a single file
+ - display album year if available
+ - sort albums first by year
+ - add c-1, c-2 etc keybindings to quickly browse by artist, album,
+   etc. (conflicts with standard keybindings - assumption is that
+   digit-argument is probably not very useful in the browser mode)
+] 
+[AUTHORS: Update William's info.
+william.xwl@gmail.com**20060618120236] 
+[emms-player-mplayer.el: Enable mplayer's slave mode for seek support by
+william.xwl@gmail.com**20060618120337
+ default.
+] 
+[README : Advanced configuration : added item about seeking.
+lucas@rincevent.net**20060620065241] 
+[README: fix a small typo
+Damien Elmes <emms@repose.cx>**20060620091959] 
+[cache: add a routine to refresh metadata info
+Damien Elmes <emms@repose.cx>**20060622114528] 
+[browser: uniquify track names, mpg321-remote: restart dead process
+Damien Elmes <emms@repose.cx>**20060622111421] 
+[browser: use the filename if no useful metadata is available
+Damien Elmes <emms@repose.cx>**20060622112720] 
+[README: added a note about compiling emms-print-metadata, since it apparently wasn't obvious...
+lucas@rincevent.net**20060622231759] 
+[function name change + testing emms-patches mailing-list
+yoni-r@member.fsf.org**20060622204637] 
+[browser: preliminary browsing support
+Damien Elmes <emms@repose.cx>**20060623142837] 
+[browser: more search stuff
+Damien Elmes <emms@repose.cx>**20060623150406
+ - fix bug where we clobber emms-browser-buffer
+ - clear search on new search
+ - add new keybindings - 's a', 's s', etc. to search for different fields.
+] 
+[browser: fix bug with read-only buffer
+Damien Elmes <emms@repose.cx>**20060623150933] 
+[browser: another read-only bug
+Damien Elmes <emms@repose.cx>**20060623171252] 
+[emms-browser.el: emms-browser-goto-random moves the point to a random line in the browser.
+lucas@rincevent.net**20060625112441] 
+[emms-cache.el: Move the pruning code inside emms-cache-refresh.
+lucas@rincevent.net**20060625095901] 
+[cache: rename function, remove obsolete one, only mark dirty if necessary
+Damien Elmes <emms@repose.cx>**20060625105130] 
+[cache: readability fix
+Damien Elmes <emms@repose.cx>**20060625110138] 
+[emms-browser.el: fix bad keybinding for emms-browser-goto-random
+lucas@rincevent.net**20060625113348] 
+[emms-cache.el: fix missing paren in emms-cache-sync
+lucas@rincevent.net**20060625162044] 
+[emms-last-played: Count the number of times a track has been played.
+lucas@rincevent.net**20060625175654
+ 
+ By default, EMMS will now store the number of times you play a track.
+] 
+[make M-> act like a normal Emacs buffer for emms-playlist-mode
+yoni-r@member.fsf.org**20060626141534] 
+[emms-playlist-mode-window-width defcustom + emms-playlist-mode-center-when-go
+yoni-r@member.fsf.org**20060626160415] 
+[emms-browser: add C-j as an alternative to C-RET for console users
+lucas@rincevent.net**20060627220759] 
+[browser: cover display, compilation support,more
+Damien Elmes <emms@repose.cx>**20060629132444
+ - added optional rendering of cover images in the browser and playlist
+   (see http://repose.cx/dump/browser-images.png)
+ - display artist name if browsing by album
+ - add `emms-browser-get-track-field-function', which allows you to
+   customise the way the browser sorts the cache into various albums,
+   artists, etc. includes a function (not on by default) which finds
+   the artist name by the directory, not tag info - this prevents
+   making lots of top level artist entries for artists who only appear
+   on a compilation
+] 
+[browser: fix bug with custom cover fetching function
+Damien Elmes <emms@repose.cx>**20060629141356] 
+[browser: add 'd' to open dired on the current directory
+Damien Elmes <emms@repose.cx>**20060629175424] 
+[browser: d for dired (missing half)
+Damien Elmes <emms@repose.cx>**20060630124050] 
+[browser: bind 'C' to clear the playlist from the browser window.
+lucas@rincevent.net**20060630220804] 
+[Make emms-cache and emms-browser work with XEmacs.
+Michael Olson <mwolson@gnu.org>**20060702001247] 
+[Allow player to set the exact elapsed time of a track.  emms-player-mpd and emms-player-mpg321-remote both need this.
+Michael Olson <mwolson@gnu.org>**20060702012131] 
+[Fix more XEmacs issues.
+Michael Olson <mwolson@gnu.org>**20060702020302] 
+[cache: set coding cookie in cache file
+Damien Elmes <emms@repose.cx>**20060702030320] 
+[emms-browser: Use point-at-bol instead of line-beginning-position for XEmacs compatibility.
+Michael Olson <mwolson@gnu.org>**20060702033721] 
+[browser: beginnings of format string support
+Damien Elmes <emms@repose.cx>**20060702091318] 
+[browser: add default covers, fix bug
+Damien Elmes <emms@repose.cx>**20060704044020] 
+[browser: don't need point-at-bol, code has been refactored
+Damien Elmes <emms@repose.cx>**20060704044315] 
+[browser: add no-cover documentation
+Damien Elmes <emms@repose.cx>**20060704125634] 
+[browser: set missing elements to 'misc' to prevent failure
+Damien Elmes <emms@repose.cx>**20060704131400] 
+[browser: make faces dependent on type, not level
+Damien Elmes <emms@repose.cx>**20060704140109
+ 
+ also renamed the faces - you'll need to customize them again if you've
+ customized them before.
+] 
+[browser: indent albums, don't propertize indent
+Damien Elmes <emms@repose.cx>**20060704153422] 
+[browser: refactor level handling code
+Damien Elmes <emms@repose.cx>**20060705114748
+ - remove insert-track-function, it's not needed
+ - playlist indentation is now handled the same way as the browser,
+   using format strings
+ - dynamically bind the relative level to make the above work
+ - indent tracks a little more to make them visibly "under" albums
+] 
+[browser: propertize playlist tracks in formatting code
+Damien Elmes <emms@repose.cx>**20060705131640] 
+[browser: don't rely on target to determine track properties
+Damien Elmes <emms@repose.cx>**20060705133450
+ Using 'track means that the format string symbols aren't generated
+ properly.
+ 
+ Note that these recent changes means that the browser and the playlist
+ share the same face. It's not too hard to change this - what do you
+ think? Should the browser and playlist track face be different?
+] 
+[browser: lvl is a bad name (fixes a bug)
+Damien Elmes <emms@repose.cx>**20060705134200] 
+[browser: add filtering support (see comments at top)
+Damien Elmes <emms@repose.cx>**20060706063045] 
+[browser: add lookup of artist/album in wikipedia
+Damien Elmes <emms@repose.cx>**20060706073102] 
+[browser: don't use text-mode-map as parent
+Damien Elmes <emms@repose.cx>**20060706073532] 
+[playlist: don't assume there's a track at point
+Damien Elmes <emms@repose.cx>**20060706095138
+ this makes RET on an group heading play the first track instead of
+ failing
+] 
+[browser: use generated name on top level enteries
+Damien Elmes <emms@repose.cx>**20060706112523
+ this fixes a bug where 'various' albums end up being classified under
+ the first author of the first various album
+] 
+[mplayer: use quiet mode (stops skipping when emacs is busy)
+Damien Elmes <emms@repose.cx>**20060710141939] 
+[mplayer: use really-quiet (might help on video files with lots of errors?)
+Damien Elmes <emms@repose.cx>**20060710142405] 
+[mplayer: -playlist must be the last arg when streaming
+Damien Elmes <emms@repose.cx>**20060710143807] 
+[browser: improve filtering, update docs
+Damien Elmes <emms@repose.cx>**20060710172313] 
+[browser: add next/previous filter support
+Damien Elmes <emms@repose.cx>**20060710180451] 
+[browser: fix keybindings
+Damien Elmes <emms@repose.cx>**20060710182403] 
+[resolve bug reported by sebatian about the q key
+yoni-r@member.fsf.org**20060710220453] 
+[add more lookup functions, a filter-changed hook, and fix an indent problem
+Damien Elmes <emms@repose.cx>**20060719114958] 
+[browser: fix a few cover bugs
+Damien Elmes <emms@repose.cx>**20060726143832] 
+[browser: add some documentation related to singles and filters
+Damien Elmes <emms@repose.cx>**20060726181758] 
+[Makefile: Don't split info output
+forcer@forcix.cx**20060727141340] 
+[emms-info: If the file does not exist, don't update its info and file-mtime.  This fixes an error.
+Michael Olson <mwolson@gnu.org>**20060727183504] 
+[emms-info: On second thought, with remote players, info should be fetched even when the file does not exist on the local system.  So we should always fetch info when file-mtime is nil.
+Michael Olson <mwolson@gnu.org>**20060729022523] 
+[emms-player-mpd: Allow a password to be sent to the MusicPD server.
+Michael Olson <mwolson@gnu.org>**20060730215000] 
+[emms-streams: Don't prompt for fd.  Determine it automatically instead.
+Michael Olson <mwolson@gnu.org>**20060730220232] 
+[emms-player-mpd: Add support for updating MusicPD's database and improve documentation.
+Michael Olson <mwolson@gnu.org>**20060730223147] 
+[emms-cache.el: New variable, emms-cache-file-coding-system, which will
+william.xwl@gmail.com**20060731170049
+ allow user to set cache file's coding system explicitly.
+] 
+[emms-info-mp3info.el: New function, emms-iconv, for converting string
+william.xwl@gmail.com**20060731170503
+ between different coding systems. The conversion is necessary when
+ emms-info-mp3info-coding-system is different from
+ emms-cache-file-coding-system.
+] 
+[emms-cache: Change default coding system to utf-8.  Fix byte-compilation warning.
+Michael Olson <mwolson@gnu.org>**20060801024119] 
+[emms-cache: Replace use of 'utf-8 with emms-cache-file-coding-system.
+Michael Olson <mwolson@gnu.org>**20060802035000] 
+[emms-player-mpd: Use better algorithm to detect whether the user has requested a stop or whether we have run out of tracks.  Thanks to dds for the report.
+Michael Olson <mwolson@gnu.org>**20060803030044] 
+[Set correct SEPARATORS parameter for split-string.
+william.xwl@gmail.com**20060805004338] 
+[emms-player-mpd: Correctly fetch track data when using remote MusicPD server.
+Michael Olson <mwolson@gnu.org>**20060804183813] 
+[emms-player-mpd: Use better logic for last patch.
+Michael Olson <mwolson@gnu.org>**20060804185308] 
+[emms-player-mpd: Emacs21 fix.
+Michael Olson <mwolson@gnu.org>**20060806022640] 
+[emms-playing-time: Don't require emms-info-mp3info, since none of its functions are used directly.
+Michael Olson <mwolson@gnu.org>**20060806022659] 
+[emms-player-mpd: Make supported formats regexp customizable.
+Michael Olson <mwolson@gnu.org>**20060811184859] 
+[emms-player-mpd: Really kill the client process, as documented, instead of waiting for it to time out.
+Michael Olson <mwolson@gnu.org>**20060811185849] 
+[added emms-with-excluded-directories to emms-source-file
+yoni-r@member.fsf.org**20060812194959] 
+[emms-info-ogginfo.el: Add check for retrieving ogginfo.
+william.xwl@gmail.com**20060813171527] 
+[AUTHORS: Removed zeus, he said he never did anything big to emms, only
+forcer@forcix.cx**20060816002434
+ mp3player, and that code is long gone.
+] 
+[The coding system of choice is utf-8, not legacy-1
+forcer@forcix.cx**20060817015611] 
+[browser: add last-played support
+Damien Elmes <emms@repose.cx>**20060817144049
+ You can now define filters to display only tracks played in the last
+ week, month, etc.
+] 
+[emms.el: Provide and use `emms-player-next-function'.
+forcer@forcix.cx**20060817161404] 
+[browser: add documentation for a bunch of features
+Damien Elmes <emms@repose.cx>**20060817154518] 
+[browser: only display '. ' if there's a valid track number
+Damien Elmes <emms@repose.cx>**20060817160007] 
+[emms-score.el: Make use of `emms-player-next-function'.
+william.xwl@gmail.com**20060817170709] 
+[emms-player-mpd: Get rid of error messages when closing the MusicPD process after playing the last track in the playlist.
+Michael Olson <mwolson@gnu.org>**20060818050516] 
+[browser: move from emms-devel to emms-all
+Damien Elmes <emms@repose.cx>**20060819175220] 
+[added the emms browser to the manual
+yoni-r@member.fsf.org**20060820124739] 
+[manual: fix a spelling mistake (thanks yrk for adding the browser!)
+Damien Elmes <emms@repose.cx>**20060820131856] 
+[browser: few compat fixes for emacs21
+Damien Elmes <emms@repose.cx>**20060822100508] 
+[Fix compilation warnings and don't clobber namespace
+Michael Olson <mwolson@gnu.org>**20060822130608] 
+[browser: pitchfork's search page has changed
+Damien Elmes <emms@repose.cx>**20060824030539] 
+[browser: don't scroll the playlist to the bottom when switching back
+Damien Elmes <emms@repose.cx>**20060824131135] 
+[Include the tq.el file from Emacs 22 with EMMS, instead of re-implementing it in emms-player-mpd.el.
+Michael Olson <mwolson@gnu.org>**20060827052155] 
+[emms-player-mpd: Use regexp-opt instead of mapconcat.
+Michael Olson <mwolson@gnu.org>**20060825203258] 
+[Release 2.1 version update
+forcer@forcix.cx**20060903115710] 
+[TAG 2.1
+forcer@forcix.cx**20060903115728] 
+[browser/cache: support deleting files, make emms-cache-dirty a defsubst
+Damien Elmes <emms@repose.cx>**20060922090553] 
+[Added `seek-to' to emms.el and emms-player-mplayer.el.
+yoni-r@member.fsf.org**20060922085513] 
+[emms-playing-time.el now works with `seek-to'.
+yoni-r@member.fsf.org**20060922094757] 
+[Added a link to the online version of the manual.
+yoni-r@member.fsf.org**20060923210401] 
+[browser: add deletion started/finished message
+Damien Elmes <emms@repose.cx>**20060923051128] 
+[Added `emms-pause' to emms-playlist-mode.el bound to to ``P''.
+yoni-r@member.fsf.org**20060925202010] 
+[Added emms-bookmarks.el
+yoni-r@member.fsf.org**20060924141826] 
+[DoTheRightThing with player pausing and emms-bookmarks.el
+yoni-r@member.fsf.org**20060926071538] 
+[mms-for-mplayer
+mlang@delYsid.org**20060926124951
+ mplayer also supports mms:// URLs
+] 
+[pause-for-alsaplayer
+mlang@delYsid.org**20060928211555
+ Get pause/resume working for alsaplayer
+] 
+[emms-lyrics.el: Minor Cleanups.
+william.xwl@gmail.com**20060929081721] 
+[emms-playing-time.el: Minor cleanups.
+william.xwl@gmail.com**20060929081908] 
+[midi-files-via-timidity
+mlang@delYsid.org**20060929231452
+ A simple-player definition for timidity
+] 
+[seek-for-alsaplayer
+mlang@delYsid.org**20060929221527
+ Add relative seek support for alsaplayer
+] 
+[emms-player-mpd: Only display error if we are certain that url.el is not up-to-date
+Michael Olson <mwolson@gnu.org>**20061004032213] 
+[Added seeking to the playlist keymap, and updated the manual.
+yoni-r@member.fsf.org**20061006180139] 
+[fix faulty emms-playlist-mode keybinding, fix due to William and Damien.
+yoni-r@member.fsf.org**20061007064730] 
+[browser: require sort (fixes bug with sort-fold-case being void)
+Damien Elmes <emms@repose.cx>**20061010125718] 
+[browser: ensure the RNG is seeded before use
+Damien Elmes <emms@repose.cx>**20061011151535] 
+[jackd-support-for-emacs
+mlang@delYsid.org**20061008152002
+ jackd is a pro-audio server which can be used as a backend for
+ alsaplayer, mplayer, and lots of other linux audio apps.
+ This module allows to start jackd from within emacs, and
+ connect/disconnect jack client ports.
+] 
+[Added delYsid
+forcer@forcix.cx**20061021151250] 
+[FluidSynth midi file player
+mlang@delYsid.org**20061015194104] 
+[emms-player-mpd: Implement seek-to support
+Michael Olson <mwolson@gnu.org>**20061017205106] 
+[emms-browser: Fix compiler warning
+Michael Olson <mwolson@gnu.org>**20061017205310] 
+[Since emms-player-seeked-to-functions and emms-player-time-set-functions hooks do the same thing, replace the former with the latter
+Michael Olson <mwolson@gnu.org>**20061017210238] 
+[Documentation cleanups in emms-player-mpd and emms-source-playlist
+Michael Olson <mwolson@gnu.org>**20061017215345] 
+[emms-player-mpd: When using the emms-volume interface, allow the user to specify the amount of change in the volume
+Michael Olson <mwolson@gnu.org>**20061017220404] 
+[emms-player-mplayer.el: Mplayer also supports .vob files.
+william.xwl@gmail.com**20061021062319] 
+[Add NEWS items since version 2.1
+Michael Olson <mwolson@gnu.org>**20061017222117] 
+[emms-player-mpd: Work properly with tracks inserted by emms-browser
+Michael Olson <mwolson@gnu.org>**20061022011050] 
+[emms-player-mpd: Update version recommendation
+Michael Olson <mwolson@gnu.org>**20061022012223] 
+[emms-playlist-mode: Fix typo in hook name
+Michael Olson <mwolson@gnu.org>**20061022022812] 
+[emms-playlist-mode: Handle case where selection has not been set but user wants to delete a region
+Michael Olson <mwolson@gnu.org>**20061022201724] 
+[NEWS: Version 2 is version 2.0
+forcer@forcix.cx**20061023020321] 
+[emms-player-mpd: Handle errors that occur when we begin playback
+Michael Olson <mwolson@gnu.org>**20061022215310] 
+[NEWS: Add entry for recent emms-player-mpd change
+Michael Olson <mwolson@gnu.org>**20061023125738] 
+[emms.el: Move macros to the top of the file.
+forcer@forcix.cx**20061025175106] 
+[emms-player-mpd: Deal with change in output when getting supported file types
+Michael Olson <mwolson@gnu.org>**20061028042119] 
+[bind SPC to `scroll-up' in emms-playlist-mode and update manual.
+yoni-r@member.fsf.org**20061106143048] 
+[emms-playing-time.el: New variable `emms-playing-time-style', it
+william.xwl@gmail.com**20061112123308
+ supports two styles at present, `time' and `bar'.
+] 
+[Don't add subdirectories for directory and playlist-directory source insert methods
+Michael Olson <mwolson@gnu.org>**20061119041900] 
+[emms.el: Fix compiler warning
+Michael Olson <mwolson@gnu.org>**20061119051946] 
+[emms.el: In emms-playlist-set-playlist-buffer, prompt user from available EMMS playlist buffers rather than all buffers, and display feedback upon setting the current buffer, since this is not an easy change to see
+Michael Olson <mwolson@gnu.org>**20061119052023] 
+[emms-playlist-mode: Implement adding the thing at point to the current playlist.  If it is a playlist, add its contents instead.  Map this to the "a" key.
+Michael Olson <mwolson@gnu.org>**20061119052254] 
+[emms-playlist-mode: Bind "b" key to emms-playlist-set-playlist-buffer.
+Michael Olson <mwolson@gnu.org>**20061119052907] 
+[manual: Add documentation for new emms-playlist-mode keybindings
+Michael Olson <mwolson@gnu.org>**20061119052935] 
+[Default to current buffer when setting the current EMMS playlist buffer.
+Michael Olson <mwolson@gnu.org>**20061119053410] 
+[emms.el: Fix bug introduced by recent changes to emms-playlist-set-playlist-buffer
+Michael Olson <mwolson@gnu.org>**20061119204738] 
+[emms-info-mp3info.el: Replace `emms-iconv' with decode-coding-string and
+william.xwl@gmail.com**20061120075851
+ encode-coding-string.
+] 
+[Add emms-mark and emms-history
+wenbinye@gmail.com**20061121093951] 
+[Add emms-mp3tag and emms-i18n
+Wenbin Ye <wenbinye@gmail.com>**20061205065407] 
+[Edit all track, set tag to file for mp3
+Wenbin Ye <wenbinye@gmail.com>**20061205112209] 
+[Fix lyrics minibuffer display. Amixer display playback and more useful commands
+Wenbin Ye <wenbinye@gmail.com>**20061127154113] 
+[AUTHORS: Added Ye Wenbin
+forcer@forcix.cx**20061205224950] 
+[Fix a silly bug in emms-mp3tag. Remove timestamp.
+Ye Wenbin <wenbinye@gmail.com>**20061206020710] 
+[emms-lastfm.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061206112823
+ 
+ This patch adds emms-lastfm.el, its setup to emms-setup.el and myself
+ to AUTHORS.
+] 
+[emms-mp3tag support ogg, add more documentation. fix some error
+Ye Wenbin <wenbinye@gmail.com>**20061206153528] 
+[emms-i18n changes, add playlist navigate command, uniq playlist command
+Ye Wenbin <wenbinye@gmail.com>**20061207063510] 
+[emms.el: Improve `emms-uniq-list' to not use cl.el.
+forcer@forcix.cx**20061207094656] 
+[Rename emms-mp3tag.el to emms-tag-editor.el
+Michael Olson <mwolson@gnu.org>**20061207141945] 
+[emms-tag-editor: Rename functions to match file name
+Michael Olson <mwolson@gnu.org>**20061207142310] 
+[Fix various byte-compiler warnings throughout
+Michael Olson <mwolson@gnu.org>**20061207143511] 
+[emms-player-mpd: Document how to use MusicPD to change the volume via emms-volume.el
+Michael Olson <mwolson@gnu.org>**20061208223509] 
+[emms-info-mp3info: Make use of `emms-i18n-call-process-simple'.
+william.xwl@gmail.com**20061208031029] 
+[emms-setup: Add `emms-i18n' to `emms-devel'.
+william.xwl@gmail.com**20061208031213] 
+[emms-i18n: Rename functions to match file name.
+william.xwl@gmail.com**20061208031325] 
+[Remove emms-volume-amixer-raise/lower commands, use emms-volume-change-function
+Ye Wenbin <wenbinye@gmail.com>**20061208052019] 
+[change raise/lower-function to change-functon, add change-amount
+Ye Wenbin <wenbinye@gmail.com>**20061208052114] 
+[emms-lyrics: Make `emms-lyrics-find-lyric-function' customizable and add
+william.xwl@gmail.com**20061211070439
+ `emms-lyrics-find-current-lyric'.
+] 
+[submitting-when-paused.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061212200324
+ 
+ This patch enables emms-lastfm.el to submit the current track even if
+ the playback has been paused and resumed. It's done by canceling the
+ `emms-lastfm-timer' when pausing and reenabling it on resume.
+] 
+[replace-next-line-with-forward-line.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061220205010
+ 
+ The docstring of `next-line' suggest to use `forward-line' instead, so
+ use that...
+] 
+[emms.texinfo: Update emms-playing-time info.
+william.xwl@gmail.com**20061218160551] 
+[fix-regression-in-lastfm.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061216132209
+ 
+ My last path enabled emms-lastfm.el to submit tracks even if you paused
+ them. I tested this extensively! But I didn't test if it still submits
+ them if you don't pause it. Of course it didn't. ;-)
+ 
+ The problem was that I rely on `emms-playing-time' to calculate when a
+ track has to be submitted. But in `emms-player-started-hook' my new
+ track function was run *before* `emms-playing-time' was set to 0 again.
+] 
+[warn-if-playing-time-deactivated.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061219085443
+ 
+ New emms-lastfm-activate warns the user if he disabled emms-playing-time
+ completely and points him to the right docs.
+] 
+[emms-mode-line: Rename `emms-playing-time-toggle' to `emms-mode-line-toggle'.
+william.xwl@gmail.com**20061218111747] 
+[emms-playing-time: Add stuffs for controlling displaying on mode line
+william.xwl@gmail.com**20061218112057
+ while still enabling emms-playing-time module at backgrond.
+] 
+[play-lastfm-streams.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061227205745
+ 
+ This patch has two major parts:
+ 
+ 1. Make emms-lastfm.el conforming to other emms plugins, meaning that there
+    are those three user functions:
+ 
+      `emms-lastfm' -- The usual prefix arg toggle
+      `emms-lastfm-enable'
+      `emms-lastfm-disable'
+ 
+ 2. It adds the ability to play lastfm:// streams. New user functions:
+ 
+     `emms-lastfm-playback'
+     `emms-lastfm-playback-similar-artists'
+     `emms-lastfm-playback-global-tag'
+ 
+   Sadly there are 2 FIXMEs in the code:
+ 
+     1. Major problem: It doesn't work for lastfm urls which contain blanks. If
+        someone is familiar with the url library, he could tell me how to fix
+        it. (retrieving urls with whitespaces)
+ 
+     2. Minor problem: There's some ugly (but working) code to ensure the
+        execution doesn't continue before a sentinel has been run.  
+] 
+[emms-playlist-sort.el: Reorganize codes && add `emms-playlist-sort-by-list'.
+William Xu <william.xwl@gmail.com>**20061225054559] 
+[fix-lastfm-streams-with-spaces.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061229155921] 
+[lastfm-skip-love-ban-plus-renaming.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20061230115944
+ 
+ First, I renamed all things "emms-lastfm-playback" to "emms-lastfm-radio",
+ which fits much better.
+ 
+ Then I added the functionality of loving/skipping/banning the song you're
+ listening to on Last.fm Radio. 
+] 
+[metadata-for-lastfm-streams.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070102222433
+ 
+ Now the Artist and Title of the current song are displayed in the mode-line
+ when listening to a last.fm stream.
+ 
+ Additionally I made all user options customizable.
+] 
+[fix-broken-multibyte-chars-in-http-responses.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070103140726
+ 
+ If a `url-retrieve' returns a buffer containing multibyte strings, they were
+ displayed as \123\456. The bug occured mostly when listening to Last.fm radio
+ playing a track with non-ascii title or artist.
+ 
+ Thanks to fledermaus at #emacs for investigating what went wrong and putting
+ together the function `http-decode-buffer'. The bug seems to be fixed with it.
+] 
+[artist-fan-radio-and-texinfo-docs-for-lastfm.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070103205523
+ 
+ This patch adds a new function to emms-lastfm.el:
+ 
+   `emms-lastfm-radio-artist-fan'
+ 
+ I also added a chapter about Last.fm in emms.texinfo. It compiles for me and
+ looks good, but it wold be nice if someone could have a short look at it. It's
+ my first work with texinfo.
+] 
+[Remove emms-volume-mpd-raise/lower, make chapter in manual for emms-volume.el
+Michael Olson <mwolson@gnu.org>**20070105000820] 
+[emms-streams: Try to reconnect to station if briefly disconnected
+Michael Olson <mwolson@gnu.org>**20070105000942] 
+[emms-compat: New file that contains compatibility functions for emms; this make emms.el a bit cleaner-looking
+Michael Olson <mwolson@gnu.org>**20070105032247] 
+[emms-url: New file containing the url.el interaction routines from emms-lastfm.el.  I plan to use these in other parts of EMMS as well.
+Michael Olson <mwolson@gnu.org>**20070105034035] 
+[emms-player-mpd: Use functions in emms-url.el
+Michael Olson <mwolson@gnu.org>**20070105035233] 
+[emms-lastfm: Use emms-url.el, fix compiler warnings, and be kind to the namespace
+Michael Olson <mwolson@gnu.org>**20070105035342] 
+[emms-playlist-sort: Add compile-time dependency on cl.el to avoid a warning
+Michael Olson <mwolson@gnu.org>**20070105040231] 
+[Make jack.el use emms-compat.el rather than cl.el, and tidy up emms-compat.el
+Michael Olson <mwolson@gnu.org>**20070105042701] 
+[emms-url: Only escape spaces and newlines, on second thought
+Michael Olson <mwolson@gnu.org>**20070105073821] 
+[emms-lastfm: Use emms-cancel-timer, fix FIXME section, make emms-lastfm-radio-request-metadata more flexible
+Michael Olson <mwolson@gnu.org>**20070105073906] 
+[Add support for playing Last.fm streams using emms-streams interface
+Michael Olson <mwolson@gnu.org>**20070105230616] 
+[emms-lastfm: Add emms-lastfm-np, which displays the current song information as a message or inserts it at point
+Michael Olson <mwolson@gnu.org>**20070105235058] 
+[emms-lastfm: Remove periods from end of messages
+Michael Olson <mwolson@gnu.org>**20070106011559] 
+[emms-player-xine.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070106173701] 
+[emms-volume-texinfo.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070107104105
+ 
+ Adds docs for emms-volume-minor-mode and replaces defvars with defopts in the
+ last.fm chapter.
+] 
+[relative-seeking-for-xine.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070108205923] 
+[emms-streams: Make sure type is a symbol, not a string
+Michael Olson <mwolson@gnu.org>**20070108191308] 
+[fix-ampersands-and-question-marks-in-lastfm.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070113104902
+ 
+ Roman Lagunov reported a bug: the last.fm plugin failed scrobbling tracks with
+ & in artist/title/album. The same applies to streams containing an ampersand.
+ 
+ So I added ?& and ?? to `emms-url-specials'. But because both are needed to
+ submit values via HTTP GET now you have to `emms-escape-url' only the arguments
+ that may contain special chars instead the complete url, e.g.:
+ 
+            (url-retrieve
+             (concat emms-lastfm-server
+                     "?hs=true&p=1.1"
+                     "&c=" emms-lastfm-client-id
+                     "&v=" (number-to-string emms-lastfm-client-version)
+                     "&u=" (emms-escape-url emms-lastfm-username))
+ 
+ instead of
+ 
+            (url-retrieve
+             (emms-escape-url
+              (concat emms-lastfm-server
+                     "?hs=true&p=1.1"
+                     "&c=" emms-lastfm-client-id
+                     "&v=" (number-to-string emms-lastfm-client-version)
+                     "&u=" emms-lastfm-username))
+] 
+[Manual: Add periods to end of menu entry descriptions, update menus, minor grammar and style fixes
+Michael Olson <mwolson@gnu.org>**20070113234824] 
+[restart-lastfm-plugin-when-md5challenge-expired.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070116202013] 
+[New macro emms-walk-tracks
+Michael Olson <mwolson@gnu.org>**20070129091141
+ 
+ This macro makes it easy to write code which steps forward through the
+ tracks of the current buffer iteratively.
+] 
+[Distinguish `emms-track-description' and `emms-track-force-description'
+Michael Olson <mwolson@gnu.org>**20070129091330
+ 
+ The idea is that emms-track-force-description is only allowed to be
+ used when inserting descriptions into a playlist buffer.  This lets us
+ distinguish between the content and layout of the text, for add-ons
+ like emms-mark that want to do something decorative with the text.
+ 
+] 
+[emms-playlist: Pay attention to selection when updating
+Michael Olson <mwolson@gnu.org>**20070129091716
+ 
+ Make sure that we preserve the current selection if updating the
+ currently-selected track..
+ 
+] 
+[emms-mark: Overhaul and turn into a derived mode
+Michael Olson <mwolson@gnu.org>**20070129091833
+ 
+ Make emms-mark integrate better with the rest of EMMS by turning it
+ into a derived mode of emms-playlist-mode.  This allows it to have its
+ own keymap derived from emms-playlist-mode, and be easily enabled and
+ disabled without messing up the output from emms-show.
+ 
+ It will operate on a buffer-by-buffer basis, but can easily be made
+ the default playlist mode if desired.
+ 
+ We have to avoid calling emms-playlist-mode a second time when
+ starting emms-mark-mode, so that the selection does not disappear.
+ Thus, it must be its own function, rather than using
+ define-derived-mode.
+ 
+] 
+[emms-mark: Save the keymap properly
+Michael Olson <mwolson@gnu.org>**20070129150940] 
+[emms-tag-editor: Make editing of ogg vorbis comments work properly
+Michael Olson <mwolson@gnu.org>**20070129154657
+ 
+ It turns out we have to have the "-t" option before each bit of track
+ information, not just the first.  Also, avoid sending empty track
+ information to vorbiscomment.
+ 
+] 
+[NEWS: Update
+Michael Olson <mwolson@gnu.org>**20070207142227] 
+[Add `emms-lyrics-catchup' for dealing with external lyrics crawler.
+William Xu <william.xwl@gmail.com>**20070208033306] 
+[emms-texinfo: Add stubs for emms-mark and emms-tag-editor
+Michael Olson <mwolson@gnu.org>**20070215171211
+ 
+ I've added "write me" chapters to the manual for emms-mark.el and
+ emms-tag-editor.el, because they need to be written before the
+ release.  Hopefully others will volunteer to write them :^) .
+ 
+] 
+[Fix several XEmacs compatibility issues
+Michael Olson <mwolson@gnu.org>**20070215231146] 
+[Speed up emms-play-directory-tree by about factor 10
+mlang@delYsid.org**20070221140553
+ Most of the speedup comes from using nconc in later-do instead
+ of append (and therefore, not excessively copying lists).
+ I see a factor of 10 speedup when generating the playlist
+ for 37000 audio files.
+] 
+[improve-emms-mark-and-write-docs.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070222165136
+ 
+ Fixed emms-mark-track so that you can (un)mark backwards
+ with `C-u -3 m'.
+ 
+ Wrote texinfo docs for emms-mark.el.
+] 
+[Move dictionary definitions higher to avoid compiler warning
+Michael Olson <mwolson@gnu.org>**20070223040135] 
+[manual: Mention how to set the default EMMS playlist mode
+Michael Olson <mwolson@gnu.org>**20070223040831] 
+[emms-player-mpd: Miscellaneous docfixes
+Michael Olson <mwolson@gnu.org>**20070227180444] 
+[NEWS: Mention changes in emms-playing-time.
+William Xu <william.xwl@gmail.com>**20070225061342] 
+[emms.texinfo: Update lyrics section.
+William Xu <william.xwl@gmail.com>**20070301091537] 
+[emms-lyrics.el: Add lyrics auto-scrolling support.
+William Xu <william.xwl@gmail.com>**20070302055649] 
+[emms-lyrics.el: Rename `emms-lyrics-find-current-lyric' to
+William Xu <william.xwl@gmail.com>**20070302103240
+ `emms-lyrics-visit-lyric', and enhance it by adding searching from
+ internet support.
+] 
+[emms-lyrics.el: Add chinese lyrics lookup support to
+William Xu <william.xwl@gmail.com>**20070302141102
+ `emms-lyrics-visit-lyric'.
+] 
+[emms-lyrics.el: Fix a function name typo.
+William Xu <william.xwl@gmail.com>**20070305042950] 
+[emms-lyrics: Fix several compiler warnings
+Michael Olson <mwolson@gnu.org>**20070302065810] 
+[emms-lyrics: Fix compiler warnings
+Michael Olson <mwolson@gnu.org>**20070302152148] 
+[emms-player-mpd: Stylize Lisp code in documentation
+Michael Olson <mwolson@gnu.org>**20070304075903] 
+[quickstart-guide.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070304124948] 
+[Manual: Minor fixes in new Quickstart chapter
+Michael Olson <mwolson@gnu.org>**20070305144251] 
+[emms-lyrics.el: Find chinese lyrics based on filename instead of `title'
+William Xu <william.xwl@gmail.com>**20070305053910
+ from the tag info. (thus to avoid dealing with different tag info coding
+ systems.)
+] 
+[emms-setup.el: Add emms-tag-editor module to `emms-devel'.
+William Xu <william.xwl@gmail.com>**20070305054414] 
+[browser: display a help message on an empty deck
+Damien Elmes <emms@repose.cx>**20070305131445] 
+[emms.texinfo: Add possible solutions for asynchronical issue for lyrics.
+William Xu <william.xwl@gmail.com>**20070305064615] 
+[emms-lyrics.el: Update comments about "Known problems".
+William Xu <william.xwl@gmail.com>**20070305065844] 
+[Resolve conflict in change to manual
+Michael Olson <mwolson@gnu.org>**20070306023616] 
+[Avoid print wrong history value.
+Ye Wenbin <wenbinye@gmail.com>**20070307030452] 
+[Obsolete emms-mark-unmark-regexp, use C-u M-x emms-mark-regexp instead
+Ye Wenbin <wenbinye@gmail.com>**20070308140837] 
+[Fix a typo error
+Ye Wenbin <wenbinye@gmail.com>**20070308141101] 
+[Make name readonly in emms-tag editor buffer
+Ye Wenbin <wenbinye@gmail.com>**20070308141123] 
+[Record programs error in log buffer
+Ye Wenbin <wenbinye@gmail.com>**20070308141209] 
+[Add two extra command in tag editor. Rename emms-tag-editor-replace-all
+Ye Wenbin <wenbinye@gmail.com>**20070308141238] 
+[Change document about emms-mark-regexp, and add more
+Ye Wenbin <wenbinye@gmail.com>**20070308141340] 
+[Add doc for emms-tag-editor
+Ye Wenbin <wenbinye@gmail.com>**20070308141415] 
+[put filename as last argument in emms-tag-editor-tag-file
+Ye Wenbin <wenbinye@gmail.com>**20070316075015] 
+[Don't display message when encounter error
+Ye Wenbin <wenbinye@gmail.com>**20070316075057] 
+[fix-mp3-tagging-args-order.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070316144749] 
+[Fix conflicts in emms-tag-editor patch
+Michael Olson <mwolson@gnu.org>**20070317070451] 
+[emms-streams: Add a bunch of radio stations
+Michael Olson <mwolson@gnu.org>**20070318064813] 
+[emms-playlist-sort.el: Add `emms-string<', making string sort case
+William Xu <william.xwl@gmail.com>**20070308115507
+ insensitive. (This makes more sense in cases like sorting according to
+ artist, etc)
+] 
+[emms-playlist-sort.el: Make `emms-string<' silent when some argument is
+William Xu <william.xwl@gmail.com>**20070317092305
+ nil.
+] 
+[emms-setup.el: Add `emms-volume' to `emms-devel'.
+William Xu <william.xwl@gmail.com>**20070318104435] 
+[emms-volume-amixer.el: Add more docs for variable
+William Xu <william.xwl@gmail.com>**20070318105444
+ `emms-volume-amixer-control'.
+] 
+[emms-playing-time.el: Minor docstring updates.
+William Xu <william.xwl@gmail.com>**20070319051306] 
+[Bump copyright years to 2007 and standardize statement
+Michael Olson <mwolson@gnu.org>**20070319145852
+ 
+ Files made by those who haven't yet completed the assignment process
+ remain copyrighted by that person.  Those who have assigned have their
+ files changed to be copyrighted by the FSF, but retain their Author
+ line for the sake of giving proper credit.
+] 
+[emms-mode-line.el: Make `emms-mode-line-toggle' just work..
+William Xu <william.xwl@gmail.com>**20070320115727] 
+[NEWS: emms-lyrics now support lyrics auto-scrolling.
+William Xu <william.xwl@gmail.com>**20070320115825] 
+[emms-source-playlist.el: emms-source-playlist-parse-m3u,
+William Xu <william.xwl@gmail.com>**20070320120017
+ emms-source-playlist-parse-pls recognize `mms://' as urls now.
+] 
+[emms-streams: Fix nectarine URL
+Michael Olson <mwolson@gnu.org>**20070320114903] 
+[Fix order of emms-cache-set-function arguments.
+Ye Wenbin <wenbinye@gmail.com>**20070408111309] 
+[Fix no changes found when val is change to empty
+Ye Wenbin <wenbinye@gmail.com>**20070408113129] 
+[fix mp3info arguments order
+Ye Wenbin <wenbinye@gmail.com>**20070408113504] 
+[emms-player-mpd: Integrate with emms-lastfm to show track
+Michael Olson <mwolson@gnu.org>**20070408205000
+ 
+ * emms-lastfm (emms-lastfm-np): Expand to take optional callback
+   argument.  Rename `arg' to `insertp' for clarity.
+ 
+ * emms-player-mpd (emms-player-mpd-show-1): Detect if emms-lastfm is
+   activated, and if the current track is a LastFM URL.  If so, call
+   emms-lastfm-np rather than continuing on.
+   (emms-player-mpd-show): Docfix.
+ 
+] 
+[Fix use of `message', silence mpd-show if callback given and no song playing
+Michael Olson <mwolson@gnu.org>**20070408233853] 
+[emms-lastfm: Don't show status messages when getting metadata
+Michael Olson <mwolson@gnu.org>**20070409014302] 
+[emms-player-mpd: Fix erroneous extra message and be more careful about the current buffer
+Michael Olson <mwolson@gnu.org>**20070409051913] 
+[emms-url: Avoid stringp errors when fetch of page failed
+Michael Olson <mwolson@gnu.org>**20070409055428] 
+[emms-lastfm: Take care of url buffers sooner
+Michael Olson <mwolson@gnu.org>**20070409055513
+ 
+ I removed emms-lastfm-buffer and just had all of the sentinel-type
+ functions delete their buffer as soon as they are done with it.  I was
+ worried about functions stepping on one another's buffers, especially
+ when one of them is in a timer.
+ 
+ Take advantage of the fact that url sentinel functions are guaranteed
+ to have current buffer be the one we want.  Also, pass a buffer
+ argument to emms-http-decode-buffer to satisfy my paranoia about
+ buffer change.
+ 
+] 
+[emms-streams: Update Digitally Imported URLs
+Michael Olson <mwolson@gnu.org>**20070425015813] 
+[emms-tag-editor.el: Valid emms-track line should start from beginning of
+William Xu <william.xwl@gmail.com>**20070426071317
+ the line, so that we can copy & paste stuffs tainted with 'emms-track
+ property as well.
+] 
+[emms-lyrics.el: (emms-lyrics-display): Fix "displaying only on minibuf"
+William Xu <william.xwl@gmail.com>**20070514085722
+ bug, it works now.
+] 
+[add .m4a support to mplayer plugin
+Damien Elmes <emms@repose.cx>**20070511213548] 
+[emms-player-mplayer.el:
+William Xu <william.xwl@gmail.com>**20070515053552
+ (emms-player-mplayer-start-with-subscript-checker): New function. Now
+ mplayer could prompt you to select subscripts when possible. To use,
+ just make it override `emms-player-mplayer-start'.
+] 
+[emms-player-mplayer.el: Minor lexical change, "subscript" -> "subtitle".
+William Xu <william.xwl@gmail.com>**20070515055745] 
+[emms-player-mplayer: Use emms-remove-if-not
+Michael Olson <mwolson@gnu.org>**20070515124505
+ 
+ emms-remove-if-not is to be used instead of remove-if-not, because the
+ latter is only available in the CL library, and we're not supposed to
+ depend on that if our code gets included in Emacs.
+] 
+[emms-streams: Stream maintenance
+Michael Olson <mwolson@gnu.org>**20070516235859
+ 
+ Remove gotwoot.net, since it has been down for a month.  Add several
+ community stations (including KRUU which is powered by Free Software).
+ Relabel Mostly Classical as a SKY.fm station, and add their Jazz
+ station.
+ 
+] 
+[Set tag even if the tag is empty
+Ye Wenbin <wenbinye@gmail.com>**20070521062827] 
+[Highlight text to replace, add doc for the command
+Ye Wenbin <wenbinye@gmail.com>**20070521065107] 
+[add document for some commands
+Ye Wenbin <wenbinye@gmail.com>**20070521070049] 
+[Deactivate mark when mark activate
+Ye Wenbin <wenbinye@gmail.com>**20070521070130] 
+[tq.el: Fix edge case
+Michael Olson <mwolson@gnu.org>**20070526211610] 
+[tq.el: Add year to copyright header to match Emacs 22
+Michael Olson <mwolson@gnu.org>**20070530010248] 
+[add-function-emms.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070605075453
+ 
+ The new function `emms' calls `emms-playlist-mode-go' and queries for a
+ directory of music files to add to the playlist, if it is empty.
+] 
+[emms-playlist-mode.el: (emms) `emms-add-file' actually understands both
+William Xu <william.xwl@gmail.com>**20070605085746
+ file and directories, so let's use `emms-add-file'.
+] 
+[volume-autoloads
+Martin Schoenmakers <aiviru@diamond-age.net>**20070605132340
+ 
+ This patch adds autoload comments to the emms-volume 'UI' functions, as well
+ as to the 'backend' function in emms-volume-amixer file. This seems like the
+ right thing to do, offhand, not really knowing much about autoload stuff ;)
+] 
+[emms-mark, emms-tag-editor: Improve documentation and messages
+Michael Olson <mwolson@gnu.org>**20070606020643] 
+[emms-streams.el: update DNA Lounge Live address, add DNA Lounge Radio
+lucas@rincevent.net**20070606090620] 
+[Fix bug in transpose tag
+Ye Wenbin <wenbinye@gmail.com>**20070609023409] 
+[Add command emms-tag-editor-guess-tag-filename
+Ye Wenbin <wenbinye@gmail.com>**20070609023733
+ 
+ I'm not familiar to regexp internal, so the 
+ emms-tag-editor-compile-pattern may not robust or have bugs. Any advice 
+ will be wellcome.
+] 
+[emms-mark: Set emms-playlist-buffer-p
+Michael Olson <mwolson@gnu.org>**20070610164738] 
+[emms-tag-editor: Fix compiler warning
+Michael Olson <mwolson@gnu.org>**20070610164902] 
+[remove-xine-from-default-players-list.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070611062849
+ 
+ See Message-ID: <m31wgmuv97.fsf@fleche.redhat.com> on the mailing list.
+] 
+[Fix a typo 
+Ye Wenbin <wenbinye@gmail.com>**20070609025545] 
+[Write ogg tag use upcase fields
+Ye Wenbin <wenbinye@gmail.com>**20070614155806] 
+[Rename track file after confirm by user
+Ye Wenbin <wenbinye@gmail.com>**20070614155834] 
+[emms-player-mplayer.el: New variable: emms-player-mplayer-subtitle-extensions.
+William Xu <william.xwl@gmail.com>**20070621155548] 
+[emms-player-mplayer.el: Use `emms-replace-regexp-in-string' instead of
+William Xu <william.xwl@gmail.com>**20070621155753
+ `replace-regexp-in-string'.
+] 
+[emms-player-mplayer.el: Load in all found subtitles instead of forcing
+William Xu <william.xwl@gmail.com>**20070624071131
+ user to choose one.
+] 
+[emms-last-played.el: update headers, (C) is now to FSF
+lucas@rincevent.net**20070625080705] 
+[emms-player-mplayer.el: Turn on
+William Xu <william.xwl@gmail.com>**20070625041949
+ emms-player-mplayer-start-with-subtitle-checker by default. I think it
+ is very helpful for playing movies.
+] 
+[update headers of emms-history.el and so on.
+Ye Wenbin <wenbinye@gmail.com>**20070626023252] 
+[some-manual-fixes-and-addition.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070626112320
+ 
+ Fixed some markup in the tag editor section and made some clearifications in
+ the last.fm section.
+] 
+[change-copyright-of-manual-to-fsf.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070626114123] 
+[change-all-file-headers-to-gpl3-or-later.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070626141221] 
+[simplify-lastfm-timer-cancelation-and-bump-version.dpatch
+Tassilo Horn <tassilo@member.fsf.org>**20070626191355] 
+[Mention location of mailing list and website
+Michael Olson <mwolson@gnu.org>**20070629022117] 
+[NEWS: Now emms-player-mplayer is capable of loading movie subtitles.
+William Xu <william.xwl@gmail.com>**20070626071626] 
+[COPYING and gpl.texi updated for GPLv3
+forcer@forcix.cx**20070629160924] 
+[Remove debian directory, it's maintained elsewhere now
+forcer@forcix.cx**20070629161023] 
+[Remove debian procedures from the RELEASE file
+forcer@forcix.cx**20070629161733] 

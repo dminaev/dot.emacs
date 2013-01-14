@@ -1,0 +1,28 @@
+;;; -*-Emacs-Lisp-*-
+
+;; FLIM-ELS: list of FLIM modules to install
+
+;;; Code:
+
+(setq flim-modules '(std11
+		     luna mime-def
+		     mel mel-q mel-u mel-g
+		     eword-decode eword-encode
+		     mime mime-parse mmbuffer mmcooked mmdbuffer
+		     mailcap
+		     smtp smtpmail))
+
+(if (and (fboundp 'base64-encode-string)
+	 (subrp (symbol-function 'base64-encode-string)))
+    nil
+  (if (fboundp 'dynamic-link)
+      (setq flim-modules (cons 'mel-b-dl flim-modules))
+    )
+  (setq flim-modules (cons 'mel-b-el flim-modules))
+  )
+
+(require 'pccl)
+(unless-broken ccl-usable
+  (setq flim-modules (cons 'mel-b-ccl (cons 'mel-q-ccl flim-modules))))
+
+;;; FLIM-ELS ends here

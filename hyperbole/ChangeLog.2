@@ -1,0 +1,375 @@
+Sat Nov  4 04:41:49 1995  Bob Weiner  <weiner@gnu.ai.mit.edu>
+
+* kotl/kfill.el (fill-paragraph): Fixed interface problem with Emacs 19
+    which expected justify-flag = 'full.
+
+* hmail.el (hmail:region): Fixed bug with wrong current buffer that caused
+    outliner {C-c @} command to fail.
+
+Fri Nov  3 22:40:34 1995  Bob Weiner  <weiner@gnu.ai.mit.edu>
+
+* hsys-w3.el: Renamed entries in this file and added
+    action-key-url-function definition in "hyperbole.el", which can be
+    used to change the display function used when a URL is activated with
+    the Action Key.  Also, loaded this library by default instead of
+    requiring that it be set up in "hsite.el".
+
+Fri Nov  3 19:25:24 1995  Bob Weiner  <weiner@gnu.ai.mit.edu>
+
+* kotl/kotl-mode.el (kotl-mode): Fixed so re-narrows a formatted koutline
+    to just its cells when invoked.
+
+Fri Nov  3 19:29:58 1995  Bob Weiner  <weiner@gnu.ai.mit.edu>
+
+* kotl/kvspec.el (kvspec:blank-lines): Modified to allow toggling blank
+    lines in a read-only outline and to not change the modification status
+    of the buffer when kvspec:toggle-blank-lines is used.
+
+Fri Nov  3 01:28:44 1995  Bob Weiner  <weiner@gnu.ai.mit.edu>
+
+* man/hypb-mouse.txt: Updated to reflect new smart-scroll-proportional
+    default setting.
+
+* hsite-ex.el (hpath:display-alist): Fixed bug that tried to kill *info*
+    buffer when it didn't exist.  Also fixed bug in call to Info-find-node
+    which gave too many args under Emacs 19.
+
+==============================================================================
+V4.01 changes ^^^^:
+==============================================================================
+
+Thu Nov  2 00:52:26 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:cell-help): Fixed this, the {C-c h} command
+    to properly deal with a cell-ref = 0.  In this case, always display
+    the 0 cell's attributes before any other attribute data.
+
+* kotl/kview.el (kcell-view:previous): Fixed bug that moved to a hidden
+    cell when visible-p flag was given.
+
+Wed Nov  1 02:05:36 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/klink.el (klink:parse): Changed to require a common following any
+    pathname in a link to prevent parsing, <3g |en>, as a pathname followed
+    by a viewspec.
+
+* kotl/kview.el (kcell-view:child):
+                (kcell-view:child-p)
+                (kcell-view:sibling-p): Added optional visible-p parameter to
+    find only visible matches.
+    
+* kotl/kotl-mode.el: Fixed improper modification of global
+    minor-mode-alist and mode-line-format values.
+
+Tue Oct 31 00:45:44 1995  Bob Weiner  <weiner@mot.com>
+
+* wrolo.el (rolo-mail-to): Added to compose mail to current or next e-mail
+    address when in a rolodex or mail buffer.  Bound to {m} in rolodex
+    match buffer and added as Rolo/Mail menu item.
+
+* hsite-ex.el (smart-scroll-proportional): Changed default to t, so can do
+    proportional scrolling by default.  Scrollbars are often available
+    when non-proportional scrolling is desired.
+
+* kotl/kotl-mode.el (kotl-mode:to-valid-position): Optimized a bit further.
+
+Mon Oct 30 01:37:31 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:copy-to-buffer): Made the default buffer to
+    copy to the buffer in the other window of this frame, if any.  Also
+    fixed bug that caused more than one tree to be copied if there was no
+    successor for the tree but there was a following higher level cell.
+
+* hsys-www.el: Removed this library that encapsulated the old CERN
+    command-line WWW browser.  No one would want to use that today.  Use
+    hsys-w3.el instead.
+
+* hypb.el (hypb:insert-region): Added to deal with region copying used by
+    hmail:region and kotl-mode:copy-to-buffer.
+
+* kotl/kview.el (kcell-view:child-p): Added.
+
+* wrolo.el (rolo-isearch): Added to search for next occurrence of current
+    match regexp and then allow user to add characters to narrow the
+    search, bound to {M-s}.
+* man/hyperbole.texi (Rolo Keys): Documented {M-s} binding.
+
+* kotl/kview.el (kcell-view:contents): Added optional POS argument.
+
+* kotl/kimport.el (kimport:file): Added to import different file types
+    based upon buffer name suffixes.  Default is to import as text.
+
+* kotl/kimport.el: Rewrote all of these functions to handle importation
+    at an arbitrary level in an existing koutline.
+
+Sun Oct 29 01:26:25 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:demote-tree): 
+   	            (kotl-mode:promote-tree): Fixed bug that could leave
+   point in a non-editable portion of a koutline.
+
+* hibtypes.el (grep-msg): Added support for IBM AIX xlc C compiler errors.
+    Also made this higher priority that `pathname' implicit button type so
+    that if activate within a doubly quoted pathname followed by a line
+    number, the line number is used.
+
+* kotl/kotl-mode.el (kotl-mode:fill-paragraph): Fixed bugs that kept it
+    from filling paragraphs where point was not on the first paragraph
+    line but the first line did not need filling.
+
+* hui-mini.el (Win/PopRing):
+              (Win/YankRing): Changed so they redisplay the Win menu.
+    This lets you repeatedly yank or pop window configurations until you reach
+    the one you want.
+
+* kotl/kview.el (kcell-view:create): Fixed so if no-fill is in the kcell's
+    attribute list, rather than passed in as the `no-fill' argument, its
+    value is still used.
+
+* kotl/kotl-mode.el (kotl-mode:add-cell): Added extra argument so can pass
+    in a list of attributes for the cell, as a property list.
+                    (kotl-mode:split-cell): Fixed so original cell
+    attributes are propagated to the newly created cell.
+
+* kotl/kfile.el (kfile:create): Modified to handle importation of a
+    foreign text buffer when kotl-mode calls this function within a
+    foreign format buffer.
+
+Sat Oct 28 02:32:12 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/klink.el (klink:create): 
+ 	        (link-to-kotl): 
+		(klink:parse): 
+		(klink:cell-ref-regexp): 
+* kotl/kvspec.el (kvspec:string-format): 
+* hactypes.el (link-to-kcell): 
+* kotl/kotl.el (kcell:ref-to-id): 
+* kotl/kotl-mode.el (kotl-mode:goto-cell): Changed viewspec preface
+    character from : to |.  Augment viewspec characters preceded by a
+    colon are ignored, for now.
+
+Fri Oct 27 15:16:11 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kview.el (kview:set-label-separator): Rewrote so properly changes
+    the separator in the current view.  Made it interactive and removed
+    input argument, kview.  Use local buffer value of kview instead.
+    Added key binding for it, {C-c M-l}.
+* kotl/kprop-em.el:
+  kotl/kprop-xe.el (kproperty:replace-separator): Added, called by above
+    function.
+
+* kotl/kprop-xe.el (kproperty:properties): Changed definition since
+    text-properties-at did not return the list of kproperties.
+
+Thu Oct 26 00:06:49 1995  Bob Weiner  <weiner@mot.com>
+
+* hui-mini.el (hui:menus): Simplified a number of documentation display
+    entries.
+
+* kotl/kotl.el (kcell:read-only-attributes): Added, lists cell attributes
+    that may not be modified by a user.
+
+* kotl/kotl-mode.el (kotl-mode:insert-file-contents): Renamed from
+    kotl-mode:insert-file.  Now use that name to import a file as a
+    sequence of sibling cells, rather than one monolithic cell, bound to
+    {C-x i}, overloading the standard insert-file.
+                    (kotl-mode:get-cell-attribute): Added.
+                    (kotl-mode:set-cell-attribute): Added, bound to {C-c C-i}.
+		    (kotl-mode:cell-help): Renamed from :kcell-help.
+		    (kotl-mode:print-attributes): Renamed from :print-properties.
+
+* kotl/klabel.el (klabel:level): Added to compute the level of a given label.
+                 (klabel:level-alpha): Renamed from kimport:aug-label-level.
+		 (klabel:level-legal): Added.
+
+* kotl/kimport.el (kimport:kcells): Added to insert kcell contents from
+    one koutline to another.
+                  (kimport:text): Generalized greatly so can import into
+    an existing or non-existing koutline and can take buffer, buffer-name or
+    file arguments.
+                  (kimport:aug-post-outline): 
+	          (kimport:star-outline): Fixed and speeded up.  Code had
+    somehow broken over time.
+                  (kimport:text): 
+                  (kimport:text-cells): Added to import text paragraph as
+    cells all at the same level.
+
+Wed Oct 25 02:24:35 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kfile.el (kfile:update): Added kotl-mode setting to the first line
+    of koutline files so they are read in with the right mode even if they
+    do not have a file suffix of .kotl.
+                (kfile:read-name): Relaxed to allow files without .kotl suffix.
+
+* kotl/kotl-mode.el (kfile:write): Fixed bug that failed to restore local
+    hook settings after renaming buffer.  This would cause invalid
+    koutlines to be written after a rename.
+*                   (kotl-mode): Fixed bug that treated a koutline that
+    has been read in and formatted for editing as an unformatted koutline.
+
+* hibtypes.el (text-toc):
+  hactypes.el (text-toc): Added to use README table of contents as
+    implicit buttons.
+
+* hbut.el (ibut:label-set): Expanded doc string.
+
+* README: Rewrote installation instructions.
+* man/hyperbole.texi: Reorganized manual for clarity.  Added obtaining
+    Hyperbole, installing it and filled out the whole Hyperbole Outliner
+    chapter.
+
+Tue Oct 24 03:52:40 1995  Bob Weiner  <weiner@mot.com>
+
+* man/hyperbole.texi (Configuration): Renamed from Initializing.
+
+Mon Oct 23 01:00:54 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:top-cells): Simplified and fixed to utilize
+    blank lines setting.
+
+* kotl/kmenu.el (id-popup-kotl-menu): 
+                (id-menubar-kotl): Added View Menu and moved view-related
+    tree operations from Tree menu to here.  Also added Find and
+    Find-Read-Only menu entries so can edit/view other koutlines.
+    Added Append-Cell and Set-Cell-Attributes menu items.
+* hui-mini.el (hui:menus): Renamed Otl/Below to Otl/Downto so could add
+    Otl/Blanks to toggle blanks on and off.  Changed name and function of
+    Otl/View to Otl/Vspec.  Now prompts for and activates a view spec.
+    User can use {C-x C-r} to view a koutline instead.
+
+* README: Updated What's New section to V4.00.
+
+* man/hyperbole.texi (Hyperbole Views): Rewrote and expanded to explain
+    new view specs.
+
+* man/hyperbole.texi (Hook Variables): 
+  wrolo.el (rolo-yank):
+           (wrolo-yank-reformat-function):  Added this variable to
+    allow user to reformat yanked entries.
+
+* kotl/kvspec.el (kvspec:toggle-blank-lines): Added, bound to {C-c b}.
+
+* kotl/kfile.el (kfile:read-v4): Added for V4 format which initializes
+    view spec local variables read from the file.
+                (kfile:update): Save current viewspec to file.
+		(kfile:version): Updated file format to V4.0.
+
+* kotl/kotl.el (kcell:ref-to-id): 
+  kotl/kotl-mode.el (kotl-mode:goto-cell): Fixed to ignore relative specs
+    and to utilize view specs.
+
+* kotl/EXAMPLE.kotl: Updated to explain view spec handling.
+
+Sun Oct 22 00:38:45 1995  Bob Weiner  <weiner@mot.com>
+
+* hbut.el (ebut:key-src): Fixed bug that prevented match to
+    hbut:source-prefix line when in a collapsed outline line.
+    rolo-edit-entry would not work when rolodex match entries were
+    collapsed.
+
+* kotl/kotl-mode.el (kotl-mode:append-cell): Added to append the contents
+    of one cell to another, bound to {C-c +}.
+
+* kotl/kvspec.el: Added this file to control Koutliner view specification.
+                 (kvspec:activate): Added to interactively set view specs
+                 and bound to {C-c C-v}.
+                 (kvspec:no-blank-lines): Renamed from kotl-mode:shorten-all.
+                 (kvspec:blank-lines): Renamed from kotl-mode:extend-all.
+
+* kotl/kmenu.el (kotl-menubar-menu): 
+  hui-menu.el (hyperbole-menubar-menu): 
+  wrolo-menu.el (wrolo-menubar-menu): Fixed bug when current-menubar was
+    nil, would not display menubar entry under Emacs 19 even though it should.
+
+Sat Oct 21 01:07:32 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kview.el (kview:default-blank-lines): 
+		(kview:default-levels-to-show): 
+		(kview:default-lines-to-show): Added these variables.
+          	(kview:create): Use their values.
+		(kcell-view:create): Use kview's blank-lines setting.
+
+* kotl/kprop-xe.el (kproperty:remove): Fixed bug that ignored open-ended
+    properties.
+  kotl/kprop-em.el (kproperty:remove): Rewrote to remove only those
+    properties with matching values.
+
+* kotl/kotl-mode.el (kotl-mode:extend-all):
+                    (kotl-mode:shorten-all): Rewrote to use invisible
+    properties.
+* kotl/kfile.el (kfile:shorten-after-saving):
+                (kfile:extend-before-save): Removed.  No longer needed
+    since blank lines are removed using invisible characters.
+
+* kotl/kprop-em.el (kproperty:put):
+* kotl/kprop-xe.el (kproperty:put):   Changed calling interface to take a
+    list of properties.
+
+* kotl/kfill.el (kfill:prefix-table): Generalized supercite citation prefix.
+
+Tue Oct 17 01:21:37 1995  Bob Weiner  <weiner@mot.com>
+
+* hinit.el (hyperb:check-dir-user): Call make-directory function if
+    available.
+
+Mon Oct 16 01:02:19 1995  Bob Weiner  <weiner@mot.com>
+
+* wrolo.el (rolo-file-list): Set to c:/_rolodex.otl under MS-DOS and Windows.
+* hbmap.el (hbmap:dir-user): Set to c:/_hyperb/ under MS-DOS and Windows.
+* hbut.el (hattr:filename): Set to _hypb under MS-DOS and Windows.
+
+Sun Oct 15 17:32:46 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:copy-region-as-kill): Don't trigger error
+    when called in a read-only buffer.
+
+Fri Oct  6 12:56:57 1995  Bob Weiner  <weiner@mot.com>
+
+* hui-mouse.el (hkey-alist): Moved Smart Menu display code closer to
+    highest priority so that hkey-always-display-menu works as advertised.
+
+* hui-window.el (hmouse-modeline-depress): Fixed so does not false under
+    Emacs 19 when depress in a minibuffer window.  This fixes the problem
+    of the Action Key not properly selecting Hyperbole minibuffer menu items.
+
+Thu Oct  5 14:31:56 1995  Bob Weiner  <weiner@mot.com>
+
+* hui-menu.el (hyperbole-menubar-menu): Added omitted (require 'lmenu) for
+    Emacs 19 that prevented Hyperbole menubar from appearing under Emacs 19.
+
+Wed Oct  4 12:41:24 1995  Bob Weiner  <weiner@mot.com>
+
+* hsite-ex.el (hkey-always-display-menu): Added this definition to prevent
+    it from being unbound if smart-menu is invoked and the Smart Menu system
+    is loaded under InfoDock.
+
+Wed Sep 27 01:56:53 1995  Bob Weiner  <weiner@mot.com>
+
+* wrolo.el (rolo-edit): Modified to treat an empty string argument for
+    NAME as a null argument, so one can just hit RET interactively.  Also,
+    modified to automatically select rolodex file when called
+    interactively if rolo-file-list has only one element.
+
+* wrolo.el (wrolo-mode-map): Added {e} binding to edit the entry at point
+    within the rolodex match buffer.
+* man/hyperbole.texi (Rolo Keys): Documented {e} key.
+
+Mon Sep 25 11:15:49 1995  Bob Weiner  <weiner@mot.com>
+
+* kotl/kotl-mode.el (kotl-mode:indent-line): 
+                    (kotl-mode:indent-region): Added.  Each signals an
+    error to force user to hit SPC to indent lines.
+                    (kotl-mode): Set indent-line-function and
+   indent-region-function.
+
+* hyperbole.el (hmail:msg-narrow): Added autoload.
+
+Fri Sep 22 17:14:05 1995  Bob Weiner  <weiner@mot.com>
+
+* hsite-ex.el (hpath:display-alist): Fixed bug in handling info-suffix
+    variable scoping that prevented Action Key from browsing info files in
+    dired.
+
+==============================================================================
+V4.00 changes ^^^^:
+==============================================================================

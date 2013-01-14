@@ -1,0 +1,82 @@
+--- INTRODUCTION ---
+DEMO                - Demonstration of basic Hyperbole button capabilities.
+README              - Intro information on Hyperbole.  
+Makefile            - Build Hyperbole directories and distributions.
+hversion.el         - Hyperbole version, system and load path information.
+hyperbole.el        - Sets up Hyperbole for autoloading and use.
+ChangeLog           - Summary of changes in recent Hyperbole releases.
+
+--- DOCUMENTATION ---
+man/hyperbole.info  - The Hyperbole Manual  (online version, top-level).
+man/hyperbole.info-N- The Hyperbole Manual  (online version, subpart N).
+man/hyperbole.texi  - The Hyperbole Manual  (source form).
+man/hypb-mouse.txt  - Summarizes Smart Key behaviors in different contexts.
+
+--- USER INTERFACE ---
+hmous-info.el       - Walks through Info networks using one key.
+hmouse-drv.el       - Smart Key/Mouse driver functions.
+hmouse-key.el       - Load "hmouse-sh.el" or "hmouse-reg.el" for Smart Key bindings.
+hmouse-mod.el       - Action Key acts as CONTROL modifier and Assist Key as META modifier. (Optional)
+hmouse-reg.el       - System-dependent Smart Mouse Key bindings (no shift key).
+hmouse-sh.el        - System-dependent Smart Mouse Key bindings (using shift key).
+hmouse-tag.el       - Smart Key support of programming language tags location.
+hui-em19-b.el       - GNU Emacs V19 button highlighting and flashing support.
+hui-ep-but.el       - Support for highlighting/flashing buttons under Epoch.
+hui-epV4-b.el       - Epoch V4-specific button support.
+hui-menu.el         - InfoDock/Emacs menubar menu of Hyperbole commands.
+hui-mini.el         - One line command menus for Hyperbole.
+hui-mouse.el        - Use key or mouse key for many functions, e.g. Hypb menus.
+hui-window.el       - Smart Mouse Key window and modeline depress/release actions.
+hui-xe-but.el       - XEmacs button highlighting and flashing support.
+hui.el              - GNU Emacs user interface to Hyperbole.
+wrolo-menu.el       - Pulldown and popup menus of Hyperbole rolodex commands.
+
+--- APPLICATION PROGRAMMING INTERFACE ---
+hact.el             - Hyperbole button action handling.
+hargs.el            - Obtains user input through Emacs for Hyperbole.
+hbmap.el            - Hyperbole button map maintenance for queries and lookups.
+hbut.el             - Hyperbole button constructs.
+hhist.el            - Maintains history of Hyperbole buttons selected.
+hmail.el            - Support for Hyperbole buttons embedded in e-mail messages.
+hmoccur.el          - Multi-buffer or multi-file regexp occurrence location.
+hpath.el            - Hyperbole support routines for handling UNIX paths.  
+htz.el              - Timezone-based time and date support for Hyperbole.
+hypb.el             - Miscellaneous Hyperbole support features.
+set.el              - Provide general mathematical operators on unordered sets.
+wconfig.el          - Saves and yanks from save ring of window configurations.
+wrolo.el            - Hierarchical, multi-file rolodex system
+wrolo-logic.el      - Performs logical retrievals on rolodex files
+
+--- MAIL SYSTEM SUPPORT ---
+hmh.el              - Support for Hyperbole buttons in mail reader:   Mh.
+hrmail.el           - Support for Hyperbole buttons in mail reader:   Rmail.
+hsmail.el           - Support for Hyperbole buttons in mail composer: mail.
+hvm.el              - Support for Hyperbole buttons in mail reader:   Vm.
+
+--- HYPERBOLE OUTLINER ---
+kotl/MANIFEST       - Summary of outliner files.
+kotl/SAMPLE.kotl    - Sample outline document explaining outliner features.
+
+--- USENET NEWS SUPPORT ---
+hgnus.el            - Support Hyperbole buttons in news reader/poster: Gnus.
+
+--- HYPERBOLE INTERNALS ---
+file-newer          - Perl script which returns 1 if file 1 is newer than file 2.
+h-skip-bytec.lsp    - Functions that should not be byte-compiled.
+hactypes.el         - Default action types for Hyperbole.
+hbdata.el           - Hyperbole button attribute accessor methods.
+hibtypes.el         - Hyperbole System Implicit Button Types.
+hib-kbd.el          - Implicit button type for key sequences delimited with {}.
+hib-doc-id.el       - Implicit button type for document id index entries.
+hinit.el            - Standard initializations for Hyperbole hypertext system.
+hlvar.el            - Permits use of Hyperbole variables in local variable lists.
+hsite-ex.el         - Site-specific setup template for Hyperbole.
+hvar.el             - Variable manipulation routines for Hyperbole.
+smart-clib-sym      - Test whether symbol appears within a set of C libraries.
+TAGS                - Tags lookup table for this and kotl/ directories.
+
+--- EXTERNAL SYSTEM ENCAPSULATIONS ---
+hsys-hbase.el       - Hyperbole support for the Hyperbase system.
+hsys-wais.el        - Hyperbole support for WAIS browsing.
+hsys-w3.el          - Hyperbole support for Emacs W3 World-Wide Web (WWW) browsing.
+

@@ -1,0 +1,568 @@
+* Overview
+
+This file demonstrates simple usage of the basic Hyperbole button-action
+types and shows how Hyperbole can support a style of self-documenting,
+interactive files.  See the glossary in the Hyperbole Manual,
+"(hyperbole.info)Glossary", if terms used here are unfamiliar to you.
+
+* Smart Keys
+
+Hyperbole provides two context-sensitive keys, the Action Key and the Assist
+Key, jointly referred to as Smart Keys.  The Action Key is the shift-middle
+mouse button on a 3-button mouse or shift-left button on a two button mouse
+or {M-RET} on your keyboard.  The Assist Key is the shift-right mouse button
+or {C-u M-RET}.  (InfoDock users may also use the middle mouse button as the
+Action Key.)
+
+See also the later section, <(Smart Mouse Keys)>.
+
+
+** Button Activation and Help
+
+This button prints the <(factorial)> of 5 in the minibuffer when activated
+with the Action Key.  (Once you have Hyperbole installed, just press the
+Action Key on the word, <(factorial)>.)  If you instead press the Assist Key,
+you get help for the preceding button.  The help provides a summary report of
+the button.  You will see that it utilizes the 'eval-elisp' action type.  You
+can also see who created it.  Try it.
+
+Note that the create-time and mod-time are displayed using your own
+timezone but they are stored as universal times.  So if you work with
+people at other sites, you can mix their buttons with your own within
+the same document and see one unified view of the modification times on
+each button.  These times will also be useful for sorting buttons by
+time when such features are provided in future Hyperbole releases.
+
+** Smart Scrolling
+
+By default, the variable smart-scroll-proportional is set to t (TRUE).  This
+makes a press of the Action Key at the end of a line scroll forward, so that
+the current line is placed at the top of the window; the Assist Key does the
+reverse when pressed at the end of line; it places the current line at the
+bottom of the window.  This is called proportional scrolling because the
+amount of scrolling is relative to the point's position in the window.  Try
+it and then come back here.
+
+Alternatively, if this variable is set to nil (FALSE), the Smart Keys scroll
+forward or backward a windowful when at the end of a line, regardless of
+which line point is on, just as {C-v} and {M-v} do.
+
+Let's try windowful scrolling a bit.  Click this button and then practice
+scrolling: <(toggle-scroll-proportional)>.  If you prefer the default
+proportional scrolling, click on the previous button again to restore it.
+
+If you always want windowful scrolling, you'll have to add a setting of
+smart-scroll-proportional to your "~/.emacs" file after the point at which
+you load Hyperbole or else set it as part of hyperb:init-hook, which executes
+whenever Hyperbole is loaded, e.g.:
+
+   (setq hyperb:init-hook
+    (list (function (lambda () (setq smart-scroll-proportional nil)))))
+
+
+** Hyperbole Menus
+
+To display the top-level Hyperbole menu, click the Action Key anywhere
+within this paragraph or alternatively, use {C-h h}.  Clicking within the
+paragraph, applies the default operation, given by action-key-default-function,
+since the Action Key finds no more specialized context.  The default
+operation happens to bring up the Hyperbole menu.
+
+{q} or {C-g} will quit from the menu without invoking any commands if you
+just want to take a look.  A menu item is selected by pressing the Action Key
+over it or by typing its first letter in upper or lower case.
+
+A click of the Assist Key on a menu item gives help on it.
+
+
+** Help Buffers
+
+Context-sensitive Action Key help typically is bound to {C-h A}.  {C-u C-h A}
+displays the same kind of help for the Assist Key.  Try it.
+
+Any buffer whose name ends in `Help*' is presumed to be a temporary buffer
+that one wants to inspect and then remove from view.  If you click either the
+Action or Assist Key at the end of a help buffer, the buffer is buried from
+view and your window configuration is restored to its state prior to
+displaying the help.  If you have removed the Smart Key help buffer, bring it
+back.  Then press one of the Smart Keys at its end to remove it.  Note how
+your window configuration is restored.
+
+Remember that this works for any help buffer, whether or not Hyperbole
+generated it.
+
+* Explicit Button Samples
+
+Hyperbole is pretty forgiving about the format of explicit buttons.  For
+example, all of the following represent the same button, as long as one
+clicks on the *first* line of the button, within the button delimiters:
+
+  <(factorial button)>
+
+  <( factorial      button)>
+
+  Pam>  <(factorial
+  Pam>    button)>
+
+  ;; <(factorial
+  ;;   button)>
+
+  /* <( factorial      */
+  /*    button )> */
+
+
+If your <(Info-directory-list)> or <(Info-directory)> variables include the
+directory that contains the online GNU Emacs manual, activation of the
+next button will tell you about <(keyboard macros)>.  Can't remember a
+Hyperbole term?  Check out the Hyperbole Manual <(glossary)>.
+
+Here is a <(keyboard macro)> button.  It displays documentation for the first
+Emacs Lisp function that follows it, e.g. (hbut:report).  You can see that a
+button label can consist of a number of words, up to a set <(maximum
+length)>.
+
+A <(shell command)> button can do many things, such as display the length of
+this file.  While such commands are executing, you can perform other
+operations.  If you create a button that runs a shell command which
+displays its own window system window, i.e. a window outside of Emacs, use
+'exec-window-cmd' rather than 'exec-shell-cmd' as its action type.
+
+You can link to files such as your <(.login)> file.  Or directories,
+like the <(tmp directory)>.  When creating file links, if the file you
+are linking to is loaded in a buffer, you are prompted as to whether you
+want the link to jump to the present point in that buffer.  If so, the
+link will always jump there, so position point within the referent file
+to take advantage of this feature.  Note how a separate window is used
+when you activate file link buttons.  Most basic Hyperbole action types
+display their results in this manner.
+
+You can make a button an alias for another by using the 'link-to-ebut'
+action type.  This <(factorial alias)> button does whatever the earlier
+<(factorial)> button does.
+
+The 'link-to-mail' action type allows you to reference mail messages
+that you have stored away.  We can't demonstrate it here since we don't
+have the mail messages that you do.
+
+Hyperbole buttons may also be embedded within mail messages.  Even
+buttons copied into mail replies can work:
+
+    Emile said:
+    >
+    > Hyperbole is better than home baked bread but not as filling.
+    > The following sample button displays a message, <(as long as 
+    > you click within its first line)>.
+
+
+* Implicit Button Samples
+
+** Key Sequence Buttons
+
+Any Emacs key sequence delimited with braces may be executed by
+activating it as a button, for example {C-u C-p} should leave point four
+lines above the button line.  A help request upon the key sequence
+displays the documentation for its command binding, i.e. what it does.
+If it does not represent a bound key sequence, it will not be
+treated as a key sequence button.
+
+** Implicit Path Links
+
+Any doubly quoted pathname acts as an implicit button that either displays the
+referenced path within a buffer, passes it to an external viewer program, or
+runs a function that operates upon the path.  These are 'pathname' implicit
+buttons.  For example, activate "README".
+
+Most pathnames simply link to the files that they name and so are simply
+displayed for editing.  The variable 'hpath:suffixes' is a list of filename
+suffix strings that are added to or removed from pathnames when searching for
+a match.  "So if "README.gz" existed, the pathname button "README" would
+display it.  If you use the Emacs "crypt.el" package, then compressed files
+will be uncompressed before they are displayed.  Activate "README.gz" and
+you'll see that the README file is displayed as desired.
+
+The variable 'hpath:display-alist' contains pairs of pathname expressions and
+edit functions.  When a pathname matches an expression, the associated edit
+function is invoked upon the pathname.
+
+The variable 'hpath:find-alist' determines the file suffixes which should be
+viewed with external programs.  It also specifies the associated viewer
+program for each different window system under which Hyperbole may be run.
+See its documentation for more details.  Under the X window system, for
+example, if you have the 'xv' program, all of the following file formats may
+be displayed as images: gif, tiff, xbm, pm, pbm, and jpeg.
+
+Several prefix characters may be attached to pathnames to indicate that
+a different action should be taken when the button is activated.
+An exclamation point prefix indicates that the full pathname should be run
+as a non-windowed shell program.  For example, try "!/bin/date".
+An ampersand prefix means run the full pathname as a windowed program, e.g.
+"&/usr/bin/X11/xeyes".  Finally, a hyphen indicates that the filename should
+be evaluated as an Emacs Lisp program, e.g. "-hibtypes.elc", rather than
+displayed.
+
+If you use the ange-ftp or efs add-on to GNU Emacs, such remote pathnames
+will work as well.  (The latest version of ange-ftp may always be obtained
+via anonymous ftp to:
+  "/anonymous@alpha.gnu.ai.mit.edu:ange-ftp/ange-ftp.tar.gz"). 
+
+Once you have *loaded* the ange-ftp or the efs package (or you use a version
+of Emacs 19 which autoloads ange-ftp), if you are on the Internet, you can
+click on any of the following to browse the contents of the Hyperbole
+distribution at the University of Illinois at Urbana (limit the amount
+you do this so as not to deny others access to the archive):
+
+	 "/anonymous@cs.uiuc.edu:pub/xemacs/infodock/"
+          /anonymous@128.174.252.1:/pub/xemacs/infodock/
+	  /cs.uiuc.edu:pub/xemacs/infodock/
+
+You can see that for ange-ftp/efs pathnames, Hyperbole recognizes them with
+or without the double quote delimiters.  These same pathnames can be used
+within explicit buttons which link to files or directories.  The HTML
+(HyperText Markup Language) ftp pathname format used by World-Wide-Web
+browsers is also recognized:
+
+	 "ftp://cs.uiuc.edu/pub/xemacs/infodock/
+
+
+GNU Info (filename)node references such as "(hyperbole.info)Glossary" or
+"(emacs)Glossary", work similarly, thanks to the 'Info-node' button type.
+Try one of the Glossary buttons above.
+
+If you want to quickly learn how to create explicit buttons, see
+"(hyperbole.info)Drags" and "(hyperbole.info)Menus".
+
+So now when browsing the many documents that refer to filenames or Info
+nodes in this way, you can just click on the name to see the contents.
+(If a doubly quoted string references a local pathname that does not
+exist within the file system, it will not be considered a pathname
+button by Hyperbole.)  Pathname implicit buttons provide one example of
+how Hyperbole can improve your working environment without you having to
+do any work at all.
+
+
+Hyperbole provides a history command which returns you to previous button
+locations in the reverse order of the way you traverse them.  You access it
+by selecting the Hist command from the top-level Hyperbole menu, {C-h h h}.
+Remember this because you will want to use that command to return to this
+DEMO later.
+
+Now suppose you want to browse through a number of files within the
+Hyperbole distribution.  You could use the Emacs dired subsystem,
+"(emacs)Dired", but a faster way is to note that files named MANIFEST
+and DIR are used to summarize the files in a directory, so we can use
+each of their entries as an implicit button (of 'dir-summary' type) to
+take us to the file.
+
+Let's look at "MANIFEST".  Now click anywhere within a line in the MANIFEST
+file and you see that it is displayed as expected.  (Remember to use the
+Hyperbole history command to return here.)  You can get help on these buttons
+just like any others.
+
+Table of contents entries in "README" files act similarly.  Click on "README"
+to view that file and then click on a table of contents entry to jump to the
+associated section in the "README" file.
+
+** World-Wide-Web URL Buttons
+
+If you use the w3 World-Wide-Web browser add-on to GNU Emacs, you can browse
+URLs (universal resource locators) from within any buffer just as you would
+any other implicit button, once you do some initial setup.
+
+First you must ensure that you load the Hyperbole library that supports URL
+viewing.  Either your "hsite.el" file should require hsys-w3 as part of
+'hibtypes:begin-load-hook' or you should move point after the following line
+and hit {C-x C-e} to evaluate it.
+
+         (progn (require 'w3) (require 'hsys-w3))
+
+Now try using the Action Key on:
+
+         "http://www.ncsa.uiuc.edu"
+
+** Grep, Occurrence, Debugger and Compiler Error Buttons, and Cscope Analyzer
+   Lines
+
+The output of 'grep -n', the UNIX line pattern matcher, can be
+activated as buttons that jump to each matched line within its source
+file; use {M-x grep RET}.
+
+Compiler error messages also serve as implicit buttons that jump to
+associated source lines; use {M-x compile RET}.  GDB, DBX or XDB stack frames
+along with GDB breakpoint listing lines also link to source lines.
+
+{M-x occur RET} (find matches in a single buffer) and {M-x moccur RET}
+(find matches across multiple buffers and files) also produce implicit
+button output that displays associated source lines.
+
+If you have the Cscope C/C++ code analyzer from the AT&T Toolchest and have
+loaded the cscope.el library add-on for GNU Emacs, then the output lines from
+a cscope query serve as implicit buttons which jump to associated source
+lines.  Cscope goes beyond the basic Emacs tags facility to allow you to see
+the callers of a function and the functions called by a specific routine.
+
+** Annotated Bibliography Buttons
+
+Here's a use of an annotated bibliography reference implicit button
+which allows you to see a bibliography entry such as [Stallman 87] when
+you activate the button between brackets.
+
+** Completion Buttons
+
+Often when Emacs or Hyperbole prompts for an argument in the
+minibuffer, a list of possible argument completions is available by
+pressing {?}.  A single Action Key press on any of these completions
+inserts it into the minibuffer for your inspection.  A second press on
+the same completion causes it to be used as the argument value and any
+succeeding argument prompt is then displayed.  Test this technique
+with a {C-x C-f} (find-file) and then a {?}.
+
+** Hyperbole Source Buttons
+
+If you ask for help on the [Stallman 87] button, the first line of the
+help buffer will look like this:
+
+@loc> "DEMO"
+
+except it will contain the full pathname of the file.  If the button
+were embedded within a buffer without an attached file, the first line
+of the help buffer might look like:
+
+@loc> #<buffer *scratch*>
+
+If you click on the buffer name, the buffer will be displayed just as a
+file buffer would.  This type of implicit button is called a
+'hyp-source' button.
+
+You can also activate any explicit buttons shown in a help buffer.
+
+** UNIX Man Apropos Buttons
+
+Below are some lines output by the UNIX 'apropos' command (with a little
+touchup for display purposes).  A button activation anywhere within such
+a line recognizes the line as an apropos entry and tries to display the
+man page for the entry.  Try it.  (If you happen to use the 'superman'
+package which fetches man pages in the background, you'll have to wait
+for the next version of superman which removes incompatibilities with
+the standard man page fetch command before you can use these
+'man-apropos' implicit buttons.)
+
+grep, egrep, fgrep (1V) - search a file for a string or regular expression
+rm, rmdir (1)           - remove (unlink) files or directories
+touch (1V)              - update the access and modification times of a file
+cat (1V)                - concatenate and display 
+
+** Internet Request For Comments (RFC) Document Browsing
+
+If you are on the Internet and you have the ange-ftp or efs remote file
+handling package for GNU Emacs, you can retrieve and browse RFC documents
+used in Internet standard-making.  Simply use the Action Key on an RFC
+document identifier, like RFC-822.  Rfc822 and rfc 822 work as well.  The
+'rfc' implicit button type provides this service.  The 'hpath:rfc' variable
+specifies the location from which to retrieve RFCs.
+
+Once you have retrieved an RFC, an Action Key press most anywhere within a
+line typically will produce a table of contents summary of the RFC (via the
+'rfc-toc' implicit button type).  An Action Key press on any of the table of
+contents lines then displays that section, for easy random access browsing.
+
+** Site-specific Online Library Document IDs
+
+Hyperbole offers a powerful, yet easy to use facility for building online
+libraries through the use of the 'doc-id' implicit button type.  A document id
+is used just like a reference citation in traditional publications but
+it actually links to the document that it references and the card catalog
+(index) entry for the document.  One can easily pass around doc ids to point
+people to appropriate documents.  For example, a mail message in response to
+a question might say, "See [Emacs-001] for examples of what Emacs can do."
+
+Since the format and handling of document identifiers and their index entries
+is site-specific, document id handling is not completely configured in a
+default Hyperbole configuration.  If you wish to setup this facility for
+site or personal use, see the DESCRIPTION section in "hib-doc-id.el" for
+installation and use information.
+
+
+* Smart Mouse Keys
+
+If you use Emacs with mouse support under the X window system, NeXTstep,
+OpenWindows, SunView, or Apollo's DM window system, Hyperbole automatically
+configures your mouse keys for use as Smart Keys and provides additional
+display-oriented operations as demonstrated here.
+
+See the Hyperbole menu item, Doc/SmartKy, for a summary of all Smart Key
+operations.  For extensive details on Smart Key operation, see the Hyperbole
+manual section, "(hyperbole.info)Smart Key Reference".
+
+When Hyperbole is installed, a key may be bound which allows you to
+switch between the Smart Key mouse bindings and your prior ones. `C-h w
+hmouse-toggle-bindings RTN' should show you any key which performs this
+command.  If no key binding has been established or if you prefer one of
+your own, simply select a key and bind it within your "~/.emacs" file. 
+For example, (global-set-key "\C-ct" 'hmouse-toggle-bindings).
+
+
+** Context-sensitive Help
+
+Since the Smart Keys perform different operations in different contexts, it
+is important to have context-sensitive help available.  The earlier section
+on Help Buffers explained how to display such help from the keyboard.  The
+same help can be displayed using the mouse by depressing the Smart Key for
+which you want help, performing any action necessary to register a context,
+such as a drag motion, and then pressing the other Smart Key.
+
+Here is an example.  Depress the Action Key somewhere within this paragraph
+and while holding it down, depress the Assist Key.  Then release the keys in
+any order and the help display will pop up.  It explains that there was no
+particular matching Smart Key context, so a default operation is performed
+(the value of the variable 'action-key-default-function' determines the
+operation performed).
+
+** Scrolling to the Beginning and End of Buffers
+
+A left to right horizontal drag of the Action Key of 5 or more characters
+scrolls the current buffer to its end (what {M->} does by default).  A right
+to left drag of the Action Key does the opposite; it scrolls to the buffer's
+beginning (what {M-<} does by default).  Try out these operations and then
+use the Smart Key end of line scrolling capability to return here.
+
+** Creating and Deleting Windows
+
+Horizontal and vertical drags of the Assist Key within a single window can be
+used to create and delete Emacs windows.
+
+A horizontal drag of five or more characters from left to right creates a new
+window by splitting the current window into two windows, one on top of the
+other.  A horizontal drag from right to left deletes the current window.  A
+vertical drag in either direction splits the current window into two
+side-by-side windows.
+
+Let's try these.  Remember to use your Assist Key.  You need only move your
+mouse pointer a few characters to register a drag.  First, split this window
+with a left to right drag, then delete either one of the windows with a right
+to left drag.
+
+Now try a side-by-side window split.  Drag vertically in the up or down
+direction three or more lines to split the window and then use a right to
+left drag to delete either one of the side-by-side windows.
+
+** Resizing Windows
+
+You can easily resize Emacs windows by dragging their window separators
+(modelines or vertical side lines) within a frame.  Simply depress either
+Smart Key on a modeline or near a window side, hold it down while you drag to
+a new location and then release.  The window separator will then jump to the
+location of release.  Basically, just drag the window separator to where you
+want it.  If you want a single window to fill an entire frame, drag its
+modeline, and if necessary its side, to the edge of the frame.
+
+Did you follow all that?  Let's try it to be sure.  First, you need at least
+two windows, so create a new one with the drag techniques you just learned.
+Now drag with either Smart Key from the shared window edge to a new location.
+See how both windows change size?
+
+Try to drag the bottom modeline.  You see that you can't.
+
+** Swapping Buffers
+
+Swapping buffer locations is quick and easy with Hyperbole.  Simply drag
+from one window to another with the Assist Key.
+
+Split the current window into two, one above the other.  Drag the upper
+modeline so that one window is clearly bigger than the other.  Now try
+dragging from inside one window to another with the Assist Key.
+
+** Modeline Clicks
+
+Window modelines are treated specially be Hyperbole.  They are broken up into
+three regions, each with their own Smart Key operations.  The regions are:
+the left edge, the right edge, and the middle portion (the non-edge part of
+the modeline).  The edge regions are the left or rightmost three characters
+of the modeline, by default.
+
+*** Switching to Another Buffer
+
+An Action Key click in the left edge of a modeline buries the current buffer,
+i.e. puts it on the bottom of the buffer list and removes it from view, if it
+is not the only available buffer.  An Assist Key click in the left edge of a
+modeline unburies the bottom buffer.  Repeated clicks of either key allow you
+to cycle through buffers to get to the one you want.  Try this out.
+
+*** Displaying Documentation
+
+An Action Key click in the right edge of a modeline displays the Info manual
+browsing system, see "(info)".  Once in Info, you can click with your Action
+Key to follow menu items, cross references, or to jump to Info nodes
+referenced within the top header line of a node.  Try browsing a bit and
+while in Info display context-sensitive help for both the Action and Assist
+Keys to see all that they can do.
+
+If you click again with the Action Key on the right edge of the window
+displaying Info, it will hide the Info buffer.  Thus, it works as a toggle to
+display or to hide the Info buffer.  Try it.
+
+A click of the Assist Key at the right edge of a modeline toggles between
+display and removal of a Smart Key operation summary.  To remove the summary,
+you must click on the modeline of the window displaying the summary.
+
+
+*** Buffer Menu Display
+
+An Action Key click in the center portion of a modeline displays a buffer
+menu, a summary of available buffers.  An Action Key click on any buffer menu
+line then displays that buffer.
+
+This behavior is subject to change in the future if a more useful Action Key
+operation is found for the middle of modelines.
+
+
+** Saving and Restoring Window Configurations
+
+A window configuration consists of the set of windows within a single Emacs
+frame.  This includes their locations, buffers, and scrolled positions of
+their buffers.
+
+Hyperbole allows you to save and restore window configurations with simple
+diagonal mouse drags within a single window.  A diagonal drag in any
+direction of the Action Key saves the current window configuration to a ring
+of window configurations, just like the Emacs text kill ring.  (See
+"(Emacs)Kill Ring".)  Each diagonal drag in any direction of the Assist Key
+restores a prior saved window configuration from the ring.  Window
+configurations are restored in reverse order of the way they were saved.
+Since a ring is circular, after the oldest element is restored, the newest
+element will again be restored and so on.
+
+If these operations are unclear to you, just forget about them and move on.
+They are not necessary to enjoy the rest of Hyperbole.  Otherwise, give them
+a try by creating various window configurations and then saving and restoring
+them.
+
+* Outliner
+
+The Hyperbole outliner only works under GNU Emacs version 19 or higher and
+XEmacs version 19.9 or higher.  You can tell whether you are running a
+version of Emacs which supports the outliner by hitting
+@{@kbd{C-h h}@} to display the Hyperbole menu.  If you see an
+@code{Otl/} entry in the menu, then the outliner is available.
+Otherwise, the outliner does not work with your version of Emacs, so
+this section of the DEMO will not be of interest to you.
+
+The Hyperbole outliner produces structured, autonumbered documents
+composed of hierarchies of cells.  Each cell has two identifiers, a
+relative autonumber indicating its present position within the outline
+and a permanent identifier suitable for use within hyperlink references
+to the cell.
+
+If the outliner works in your Emacs, see "kotl/EXAMPLE.kotl", an outline file
+that explains how to operate the outliner.    Use the @code{Otl/Example} menu
+entry to display this file.  Additional documentation can be found in
+"(hyperbole.info)Outliner".  "(hyperbole.info)Outliner Keys"
+summarizes in alphabetical order the outliner commands which are bound
+to keys.
+
+
+* References
+
+[Stallman 87]  Stallman, Richard.  GNU Emacs Manual.  Free Software
+Foundation, Cambridge: MA, March 1987.
+
+* THE END

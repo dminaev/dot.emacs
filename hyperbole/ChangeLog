@@ -1,0 +1,248 @@
+2007-05-14  Mats Lidell  <matsl@contactor.se>
+
+	* make-dist: Created.
+
+	* man/hyperbole.texi: Set date for the release.
+
+	* README: More updates for 5.0
+	* NEWS: ditto.
+	* INSTALL: ditto.
+
+2007-05-06  Mats Lidell  <matsl@contactor.se>
+
+	* Makefile.am (BUILT_SOURCES): Create hsite.el.
+
+2007-05-05  Mats Lidell  <matsl@contactor.se>
+
+	* README: Updated for version 5.0
+
+	* install-sh: Required files for a package.
+	* INSTALL: ditto.
+	* COPYING: ditto.
+
+2007-04-29  Mats Lidell  <matsl@contactor.se>
+
+	* hui.el (hui:link-directly): Avoid XEmacs 21.5 bug(!?) with
+	visible window not beeing live.
+
+2007-02-15  Mats Lidell  <matsl@contactor.se>
+
+	* kotl/kotl-mode.el (kotl-mode): Use easymenu.
+	* kotl/kfile.el: Ditto. Menu is loaded in kotl-mode.
+	* kotl/kmenu.el: Ditto. Remove almost duplicate infodock menu.
+	* hui-menu.el: Ditto.
+
+	* hinit.el (hyperb:init-menubar): Don't use lmenu.
+
+	* hui-mouse.el (smart-man-entry-ref): xref only available in
+	XEmacs.
+
+	* hui-mini.el (hyperbole): Init menubar if vanted.
+
+2006-11-18  Mats Lidell  <matsl@contactor.se>
+
+	* *.el: New file header using common style. Boxed comments
+	turned into non boxed.
+
+2006-11-07  Mats Lidell  <matsl@contactor.se>
+
+	* kotl/kvspec.el (kvspec:update-modeline): Handle xemacs extents.
+
+	* kotl/kview.el (kcell-view:idstamp): Bad format.
+
+2006-11-05  Mats Lidell  <matsl@contactor.se>
+
+	* wrolo-menu.el: Use easymenu.
+
+	* hui-mouse.el (smart-dired): Use quit-window to quit dired.
+
+	* kotl/kotl-mode.el (kotl-mode:overview): Don't change state of
+	blank lines.
+
+2006-11-02  Mats Lidell  <matsl@contactor.se>
+
+	* hpath.el (hpath:find-file-mailcap): Use mailcap to find external
+	viewer.
+
+2006-06-05  Mats Lidell  <matsl@contactor.se>
+
+	* hui-mouse.el (smart-dired-assist): If no dired-flag-file-deleted
+	try dired-flag-file-deletion.
+	(smart-dired-assist): Use dired-unmark-all-files.
+
+	* hui-em19-b.el (hproperty:set-item-highlight): internal-facep
+	obsolete? Use facep.
+
+2006-06-05  Mats Lidell  <matsl@contactor.se>
+
+	* kotl/kotl-mode.el (kotl-mode-map): Indented-text-mode-map seems
+	to be obsolete!? Use text-mode-map.
+
+2006-06-04  Mats Lidell  <matsl@contactor.se>
+
+	* hui-window.el (hmouse-edge-sensitivity): Increase width. In
+	Emacs scrollbars adds some columns which current implementation
+	doesn't take into account.
+
+2006-04-13  Mats Lidell  <matsl@contactor.se>
+
+	* hact.el (action:params): Use compiled-function-arglist.
+
+	* hversion.el (hyperb:kotl-p): Use emacs-version>=.
+
+	* wrolo-menu.el (id-popup-wrolo-menu): Use id-tool-invoke for
+	rolo-quit. Moved Manual menu item down.
+
+	* hui-menu.el (infodock-hyperbole-menu): Extended menus for
+	sending and administrating hyperbole mail lists. Rearranged so
+	menu selection for the manual is not the first choice.
+	* hui-mini.el (hui:menus): Extended the mail list menu.
+
+2006-04-12  Mats Lidell  <matsl@contactor.se>
+
+	* *.el: Turned all hyperb:lemacs-p into hyperb:xemacs-p. A step in
+	removing support of lemacs.
+
+	* hact.el (action:commandp): Use compiled-function-interactive.
+
+	* man/hyperbole.texi: Manual is now GFDL. Updated info about mail
+	list and ftp-archive.
+
+2006-04-09  Mats Lidell  <matsl@contactor.se>
+
+	* configure.ac: No dep on Perl with simplified smart-clib-sym.
+
+	* smart-clib-sym: Use man to find out if there is a man
+	page.
+
+2006-03-07  Mats Lidell  <matsl@contactor.se>
+
+	* elisp-comp: Required loads, losts during migration, reinserted.
+
+2006-03-06  Mats Lidell  <matsl@contactor.se>
+
+	* elisp-comp: Moved up to Automake version 1.9. Added to load path
+	so that non-dot-el-files are seen as well.
+
+	* configure.ac: Always create conditional plus some cleanup.
+
+2006-03-05  Mats Lidell  <matsl@contactor.se>
+
+	* Makefile.am: Use hvm only if users configures it.
+	* configure.ac: Ditto.
+
+2006-03-04  Mats Lidell  <matsl@contactor.se>
+
+	* hui-mouse.el (smart-gnus-group): Use gnus-topic-mode if in use.
+
+	* Makefile.am (INSTALL_DIR): Added DESTDIR.
+
+2005-07-23  Mats Lidell  <matsl@contactor.se>
+
+	* README: New version of GPL notice.
+	* man/hyperbole.texi: Ditto.
+
+2005-07-14  Mats Lidell  <matsl@contactor.se>
+
+	* wconfig.el (ring): Use ring for the config ring.
+	(wconfig-get-ring): Ring is frame local.
+
+2005-07-13  Mats Lidell  <matsl@contactor.se>
+
+	* hui-em19-b.el (hproperty:color-list): Know about gtk.
+	(hproperty:good-colors): Ditto.
+
+	* hversion.el (hyperb:version): Stepped up to 5.0.
+	(sm-window-sys-term): Recognize the gtk window system.
+
+2004-08-08  Mats Lidell  <matsl@contactor.se>
+
+	* hypb.el (hypb:display-file-with-logo): Added as a
+	noop. OO-Browser calls it.
+
+	* hpath.el (hpath:push-tag-mark): Added. Used by OO-Browser.
+
+2004-07-14  Mats Lidell  <matsl@contactor.se>
+
+	* hmail.el (hmail:invoke'): Use compose-mail for user defined mail
+	agent.
+
+2004-07-09  Mats Lidell  <matsl@contactor.se>
+
+	* hyperbole.el: browse-url replaces action-key-url-function.
+
+	* hui-menu.el (infodock-hyperbole-menu): Use Customize for
+	customizing hyperbole and browse-url-browser-function.
+	(hui-menu-global-buttons-filter): Global buttons in menu.
+	(hui-menu-explicit-buttons-filter): Explicit buttons in menu.
+
+	* hsys-w3.el (www-url): Use browse-url.
+
+2004-07-08  Mats Lidell  <matsl@contactor.se>
+
+	* hsite-ex.el (smart-scroll-proportional): Customizable.
+
+	* hibtypes.el (hyp-address): Use hyperbole-users list. Removed
+	request actions. List uses mailman so the web is preferred.
+
+	* hui-mini.el (hui:menus): Use hyperbole-users list. Removed
+	request menu items. List uses mailman so the web is preferred.
+
+	* hui-menu.el (hui-menu-remove): New function added.
+	(infodock-hyperbole-menu): Use hyperbole-users list. Removed
+	request menu items. List uses mailman so the web is preferred.
+
+2004-06-23  Mats Lidell  <matsl@contactor.se>
+
+	* hibtypes.el (text-toc): Contents work as the doc string says.
+
+2004-06-20  Mats Lidell  <matsl@contactor.se>
+
+	* hinit.el (hyperbole-on-menubar): Customizable.
+
+	* hyperbole.el (hyperbole): Added customize group.
+
+2004-06-13  Mats Lidell  <matsl@contactor.se>
+
+	* Makefile.am (HYPB_EL): hvm.el added.
+
+	* hvm.el: Synced with vm.
+        (vm-assimilate-new-messages): Fixed bug. vm function had more
+	args. (Thanks to Peter Chubb for the report.)
+
+2004-05-16  Mats Lidell  <matsl@contactor.se>
+
+	* hyperbole.el (vm-mode-hook): Use hook.
+
+2004-03-31  Mats Lidell  <matsl@contactor.se>
+
+	* man/hyperbole.texi: include hypb-mouse.txt from this folder
+
+	* kotl/Makefile.am: maintainer-clean Makefile.in in subdirs.
+	* man/Makefile.am: 
+
+	* configure: Mistake. Don't version control generated files.
+
+	* configure.ac: Configure support added.
+	* Makefile.am: 
+	* kotl/Makefile.am: 
+	* man/Makefile.am: 
+	
+	* elisp-comp: Modified for hypb build.
+
+	* Makefile: Removed. Created now by configure.
+
+	* AUTHORS: Standard automake files added.
+	* NEWS: 
+
+	* ChangeLog.2: Old Changelogs up to version 4.01
+
+2004-02-24  Mats Lidell  <matsl@contactor.se>
+ 
+        * hversion.el (hyperb:emacs19-p): Version 19 and beyond.
+ 
+2004-02-21  Mats Lidell  <matsl@contactor.se>
+ 
+        * hgnus.el (gnus-msg): Use gnus-msg.
+
+        * See "ChangeLog.2" for earlier changes.

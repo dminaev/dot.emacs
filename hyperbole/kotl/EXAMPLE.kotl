@@ -1,0 +1,479 @@
+;; -*- Mode: kotl -*- 
+"Kotl-4.0" ;; file-format
+
+  1  The outliner is a part of the Hyperbole information management system.
+     It produces hierarchically structured files consisting of trees of
+     cells.
+
+    1a  A cell is an element of the outline which has its own display label
+        and unique, permanent identifier (idstamp).
+
+    1b  Idstamps support the creation of hyperlinks to cells which are
+        maintained as the structure of an outline changes.
+
+  2  Features implemented include:
+
+    2a  Full on screen editing (just like a Macintosh).  Click to type in a
+        node (we call them cells) and just enter text.  Structure is
+        automatically maintained for you.  All of the standard Emacs editor
+        command set is supported both through keyboard and mouse interaction.
+
+    2b  Advanced outline processing
+
+      2b1  Autonumbering:  Full auto-numbering in Augment (1a2) or legal
+           (1.1.2) formats.  Augment style is the default.  Single level
+           autonumbering (only the last part of the level number is shown),
+           as commonly seen in outliner products, is also available, though
+           it has not been tested very much and so is not recommended.  Use
+           {C-c C-l ?} to see the full set of label types and to select a
+           different label type.
+
+      2b2  Label Separators: By default, the outliner separates labels from
+           cell contents by two spaces.  If you want to change the separator
+           for the current outline, use {C-c M-l}.  {C-u C-c M-l} will
+           additionally change the default separator value used when new
+           outlines are created.  For example, use the value ". " to get a
+           trailing period after each cell label.  The separator must be at
+           least two characters long.
+
+      2b3  Cell Creation: {C-j} adds a new cell as a sibling following the
+           current cell.  A non-negative prefix argument, {C-u C-j} or {C-c
+           a} adds the cell as a child of the current cell.  {C-c p} adds the
+           cell as the sibling of the current cell's parent.
+
+      2b4  Cell and Tree Deletion: {C-c C-k} kills the current cell and its
+           entire subtree.  {C-c k} kills the contents of a cell from point
+           through the end of the cell.  {C-u C-c k} kills the entire
+           contents of the cell regardless of the location of point.  You may
+           then yank the contents into another cell with {C-y}.
+
+      2b5  Tree Demotion and Promotion: Trees may be demoted or promoted by
+           hitting {TAB} or {M-TAB} respectively, as in most outliners today
+           (their sub-levels move with them).  {M-0 TAB} and {M-0 M-TAB} will
+           demote and promote trees and will additionally refill each cell
+           which has not been specially marked to prevent refilling.
+           
+           You can also use a command line interface and either enter cell
+           ids or select the cells to operate upon by using your mouse.
+
+      2b6  Cell and Tree Filling: {M-q} or {M-j} refills a paragraph within a
+           cell so that its lines wrap within the current margin settings.
+           {C-c M-q} or {C-c M-j} refills all paragraphs within a cell.
+           {C-M-q} or {C-M-j} refills all cells within a tree.
+           
+           Set the variable, kotl-mode:refill-flag, to t if you want moving,
+           promoting, demoting, exchanging, splitting and appending cells to
+           also automatically refill each cell.
+
+      2b7  Cursor Movement:  In addition to normal Emacs movement commands,
+           you can move within a cell or from one cell or tree to another.
+           
+            {C-c ,}       - Move to the beginning of the current cell.
+            {C-c .}       - Move to the end of the current cell.
+           
+            {C-c C-n}     - Move to the next visible cell, regardless of level.
+            {C-c C-p}     - Move to the prev visible cell, regardless of level.
+           
+            {C-c C-f}     - Move forward  to this cell's successor, if any.
+            {C-c C-b}     - Move backward to this cell's predecessor, if any.
+           
+            {C-c C-d}     - Move to first child of current cell, if any.
+           
+            {C-c C-u}     - Move to parent cell of current cell, if any.
+           
+            {C-c <}       - Move to the first sibling at the current level.
+            {C-c >}       - Move to the last  sibling at the current level.
+           
+            {C-c ^}       - Move to the level 1 root of the current tree.
+            {C-c $}       - Move to the last cell in the tree rooted at point.
+
+      2b8  Tree Movement and Copying: Entire outline trees can be moved or
+           copied with single commands.  Simply invoke the desired command
+           and then double click with the Action Key on the desired root cell
+           for each argument for which you are prompted.
+           
+           Copying and moving only work within a single outline right now, so
+           don't use them to move trees across different outline files.  You
+           can, however, copy an outline tree to a non-outline buffer with:
+            {C-c M-c}     - Copy a koutline tree to a non-koutline buffer.
+            {C-c @}       - Copy a koutline tree to an outgoing mail message.
+           
+            {C-c c}       - Copy <tree> to follow as sibling of <cell>.
+            {C-u C-c c}   - Copy <tree> to follow as first child of <cell>.
+           
+            {C-c C-c}     - Copy <tree> to precede <cell>.
+            {C-u C-c C-c} - Copy <tree> as first child of the parent of <cell>.
+           
+            {C-c m}       - Move <tree> to follow as sibling of <cell>.
+            {C-u C-c m}   - Move <tree> to follow as first child of <cell>.
+           
+            {C-c C-m}     - Move <tree> to precede <cell>.
+            {C-u C-c C-m} - Move <tree> as first child of the parent of <cell>.
+           
+           If you have mouse support under Hyperbole, you can move entire
+           trees with mouse clicks.  Simply click the Assist Key within the
+           indentation to the left of a cell text and you will be prompted
+           for a tree to move.  Double click the Action Key within the body
+           of the root cell of the tree to move and then double click within
+           the body of the root cell of the tree you want it to follow.
+
+      2b9  Cell Transposition:  The move and copy commands rearrange entire
+           trees.  The following two commands exchange the locations of two
+           cells.
+
+        2b9a  {C-c e} prompts for two cell addresses and exchanges the cells.
+
+        2b9b  {C-c t} does not prompt.  It exchanges the current and
+              preceding cells.  If there is no preceding cell it exchanges
+              the current and next cell.
+              
+              {C-c t} with a prefix argument of zero exchanges the cells in
+              which point and mark fall.
+              
+              {C-c t} with a non-zero numeric prefix argument, N, moves
+              the current tree past maximally the next N visible cells.  If
+              there are fewer visible, it makes the current cell the last
+              cell in the outline.
+
+     2b10  Cell Splitting: You can split one cell into two adjacent cells
+           with {C-c s}.  This leaves the cell contents preceding point in
+           the current cell, minus any trailing whitespace, and moves the
+           contents following point to a new sibling cell which is inserted
+           into the outline.  {C-u C-c s} adds the new cell as the first
+           child of the original cell, rather than as its sibling.
+           
+           All cell attributes in the original cell are propagated to the new
+           one.
+
+     2b11  Cell Appending:  {C-c +} appends the contents of a specified cell
+           to the end of another cell.
+
+     2b12  Hiding and Showing:  Individual cells, branches, or particular
+           levels in the outline may be hidden or shown.  These commands work
+           even when an outline buffer is read-only, e.g. when its file is
+           not checked out of a version control system yet.
+
+       2b12a  {C-c C-h}  - Hide (collapse) tree rooted at point.
+              {C-c C-s}  - Show (expand)   tree rooted at point.
+              
+              {C-c C-a}  - Show (expand) all cells in the outline.
+              {C-x $}    - Show all cells down to a particular level.  The
+                           user is prompted for the level or a prefix
+                           argument may be given. 
+                           
+              {C-M-h}    - Hide subtree at point, excluding root. 
+              {M-x kotl-mode:show-subtree} - Show subtree at point.
+              
+              {C-c C-o}  - Overview, show only first line of outline cells.
+              {C-c C-t}  - Top-level, hide all cells below level 1 and show
+                           only the first line of each level 1 cell.
+
+       2b12b  A click or press of the Action Key within a cell's body, but
+              not on a button, toggles between hiding and showing the tree
+              rooted at point.
+
+     2b13  Cell Identifiers:  Permanent ids are associated with each cell and
+           can be used in hyperlinks that are maintained as cells are
+           reordered in a file.  (These ids may also be displayed in place of
+           the outline level relative ids.  Use {C-c C-l id RET}.)  Permanent
+           ids are numbered from 0, where 0 is the root node of the entire
+           outline.  This node is never visible within the outline.
+           Permanent ids always begin with a 0, as in 012, to distinguish
+           them from relative ids.
+
+     2b14  Cell Attributes: Each cell has its own attribute list.  The
+           attribute lists for the cells in the tree rooted at point can be
+           displayed by pressing the Assist Key.  {C-c h} prompts for a kcell
+           id and displays its attributes.  {C-u C-c h} prompts for a kcell
+           id and displays the attributes for it and its subtree; use 0 as
+           the kcell id to see attributes for all visible cells in the
+           outline.
+           
+           Use {C-c C-i}  to add an attribute or to modify an existing
+           attribute to the cell at point.
+
+     2b15  File Insertion: The elements of another buffer or file may be
+           inserted into a koutline as a set of cells by using the {C-x i}
+           command.  When prompted, you may use a buffer name or file name
+           from which to insert.
+
+       2b15a  The cells will be inserted as the successors of the current
+              cell unless {C-u C-x i} is used and then they are inserted as
+              the initial children of the current cell.
+
+       2b15b  See the documentation for the variables, kimport:mode-alist and
+              kimport:suffix-alist, for information on mode and
+              suffix-specific conversions performed on files before they are
+              inserted.  This same conversion process applies if you invoke
+              {M-x kotl-mode RET} in a non-koutline buffer or if you perform
+              a generic file import as described in <@ 2b16>.
+
+       2b15c  Use {M-x kotl-mode:insert-file-contents RET} to insert the
+              entire contents of a file into the current cell at the location
+              of point.
+
+     2b16  File Importation: The outliner presently supports conversion of
+           three types of files into koutline files.  You can choose to
+           import a file into an existing koutline, following the tree at
+           point, or to create a new koutline of the imported file contents.
+           {M-x kimport:file RET} will select the importation type based on
+           the buffer or file name suffix of the file to import.  Use one of
+           the following commands if you want to control the type of
+           importation explicitly.
+
+       2b16a  Text Files
+
+         2b16a1  In a text buffer, use {M-x kotl-mode RET} to convert
+                 the buffer into a koutline in-place.  You will lose the old
+                 format of the buffer when you do this.
+
+         2b16a2  Use {M-x kimport:text RET} and you will be prompted for a
+                 text buffer or file to import and the new koutline buffer or
+                 file to create from its text.  It will also import the
+                 contents, attributes and level structure of cells from a
+                 koutline.
+                 
+                 With this command, your original file remains intact.
+
+       2b16b  Star Outline Files: Star outlines are standard Emacs outlines
+              where each entry begins with one or more asterisk characters.
+              Use {M-x kimport:star-outline RET} and you will be prompted
+              for the star outline buffer or file to import and the new
+              koutline buffer or file to create.
+
+       2b16c  Augment Files Numbered on the Right-Side: (Skip this if you are
+              unfamiliar with this sort of file.)  Files exported from the
+              Augment system as text often have alphanumeric statement
+              identifiers on the right side.
+              
+              Use {M-x kimport:aug-post-outline RET} and you will be prompted
+              for the augment buffer or file to import and the koutline to
+              create.
+
+     2b17  View Specification: Flexible views of outlines may be specified
+           with succinct single character codes.
+
+       2b17a  The current view spec is shown in the modeline after the buffer
+              name, delimited by <|>.
+
+       2b17b  The current view spec is saved whenever the outline is saved.
+              The next time the outline is read in, this will be the initial
+              view.  The standard initial viewspec is <|ben>.
+
+       2b17c  {C-c C-v} prompts for a view spec string in which the following
+              codes are valid.  Any invalid characters in a view spec are
+              ignored.
+
+         2b17c1  a:  Show all cell levels and all lines in cells.
+
+         2b17c2  b:  Turn on blank lines between cells.  Without this code,
+                 blank lines will be turned off.  You can also use the
+                 {C-c b} key binding to toggle line numbers on and off
+                 independent of any other view settings.
+
+         2b17c3  cN: Hide any lines greater than N in each cell.  0 means
+                 don't cutoff any lines.
+
+         2b17c4  e:  Show ellipses when some content is hidden.
+
+         2b17c5  lN: Hide cells at levels deeper than N.  0 means don't hide
+                 any cells.
+
+         2b17c6  n:  Turn on the default label type.
+                 n0: Display idstamps.
+                 n1: Display alpha labels.
+                 n2: Display partial alpha labels (don't use this).
+                 n.: Display legal labels.
+                 n*: Display star labels.
+                 n~: Turn off labels.  (n viewspec is removed from modeline).
+
+       2b17d  Try a view spec of 'c2l1' to turn off blank lines, to clip each
+              cell after its second line, and to hide all cells below level
+              one.
+
+    2c  Hyperlinks may be embedded in cells and may refer to other cells.
+        Explicit Hyperbole buttons may be created as usual via mouse drags,
+        see "(hyperbole.info)By Dragging".  A klink is a special implicit
+        link button that jumps to a specific outline cell.
+
+      2c1  Here are three klink examples:
+
+        2c1a  <@ 2b=06> jumps to the cell within this outline which has
+              permanent id `06' and relative id `2b', namely the preceding
+              sibling of this cell's parent.  <@ 06> does the same thing, as
+              does <@ 2b>, though this latter form will not maintain the link
+              properly if the cell is moved elsewhere within the outline.
+
+        2c1b  <EXAMPLE.kotl, 3=012 |c1e> displays the named file, starting at
+              the unimplemented features section whose permanent identifer is
+              012, with the view specification of: blank lines turned off,
+              cutoff after one line per cell, and show ellipses for cells or
+              trees which are clipped.
+
+        2c1c  <|ben> is a klink consisting of just a view specification.
+              When activated, it sets the view in the current outline to
+              display blank lines, ellipses following collapsed lines and
+              standard alphanumeric numbering.
+
+      2c2  There are a number of easy ways to insert klinks into koutlines.
+           If you have mouse support under Hyperbole, simply click the Action
+           Key within the indentation to the left of a cell text.  If you
+           then double click on some cell, a link to that cell will be
+           inserted where you started.  From a keyboard, use {C-c l} when in
+           a koutline or {C-h h o l} when not in a koutline to insert a
+           klink.
+
+    2d  The outliner code runs on virtually any UNIX system.  It supports dumb
+        terminal, X window, and NEXTSTEP (Display Postscript) displays.
+
+  3  Features remaining to be implemented:
+
+    3a  Branch handling commands (all cells at same level).
+
+    3b  Copying a single cell without its subtree.
+
+    3c  Replacing one cell or one tree with another.
+
+    3d  Transposing two trees, rather than two cells.
+
+    3e  A small amount of work remains to enable setting different per level
+        fonts and colors, so that outline levels are visually easy to
+        distinguish.
+
+    3f  Flexible view handling has been only partially implemented.
+
+    3g  The code to export from koutlines to other formats has not yet been
+        written.  Exporting to HTML, for example would be very useful.
+
+
+"ben" ;; kvspec:current
+74 ;; id-counter
+alpha ;; label-type
+3 ;; label-min-width
+"  " ;; label-separator
+3 ;; level-indent
+
+;; depth-first kcell attributes
+[[0
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951102:11:15:03" id-counter 74 file "/usr1/dingus/weiner/hypb/kotl/EXAMPLE.kotl")]
+ [20
+  (creator "weiner" create-time "19940104:17:38:28")]
+ [34
+  (creator "weiner@pts.mot.com" create-time "19940610:16:43:55")]
+ [35
+  (creator "weiner@pts.mot.com" create-time "19940610:16:44:03")]
+ [4
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [5
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [6
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [14
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [67
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951028:04:29:13" no-fill t)]
+ [15
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [31
+  (creator "weiner" create-time "19940306:18:11:43")]
+ [7
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [46
+  (creator "weiner@oakhill.sps.mot.com" create-time "19950614:21:35:17")]
+ [43
+  (creator "weiner@pts.mot.com" create-time "19940610:22:00:46")]
+ [22
+  (creator "weiner" create-time "19940127:22:41:42")]
+ [32
+  (creator "weiner@pts.mot.com" create-time "19940610:16:31:28")]
+ [41
+  (creator "weiner@pts.mot.com" create-time "19940610:18:55:09")]
+ [42
+  (creator "weiner@pts.mot.com" create-time "19940610:18:55:57")]
+ [33
+  (creator "weiner@pts.mot.com" create-time "19940610:16:31:29")]
+ [47
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951022:22:59:26" no-fill t)]
+ [8
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [28
+  (creator "weiner" create-time "19940128:22:50:44")]
+ [29
+  (creator "weiner" create-time "19940128:22:50:54")]
+ [10
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [30
+  (creator "weiner" create-time "19940129:00:27:59")]
+ [62
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951026:08:32:57" no-fill t)]
+ [70
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951030:19:18:49" no-fill t)]
+ [71
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951030:19:19:40" no-fill t)]
+ [73
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951030:19:23:09" no-fill t)]
+ [63
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951026:19:31:34" no-fill t)]
+ [64
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951026:19:33:01" no-fill t)]
+ [69
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951029:06:24:35" no-fill t)]
+ [68
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951029:06:24:27" no-fill t)]
+ [65
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951026:19:33:08" no-fill t)]
+ [66
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951026:19:33:15" no-fill t)]
+ [48
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:05:55:19" no-fill t)]
+ [57
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:10:07:06" no-fill t)]
+ [58
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:10:07:26" no-fill t)]
+ [49
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:05:55:55" no-fill t)]
+ [55
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:08:56:41" no-fill t)]
+ [50
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:05:57:26" no-fill t)]
+ [51
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:05:58:31" no-fill t)]
+ [56
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:08:57:09" no-fill t)]
+ [52
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:05:59:59" no-fill t)]
+ [53
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:06:00:48" no-fill t)]
+ [54
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951023:06:05:50" no-fill t)]
+ [26
+  (creator "weiner" create-time "19940128:03:56:23")]
+ [27
+  (creator "weiner" create-time "19940128:22:36:54")]
+ [59
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951024:03:40:05" no-fill t)]
+ [60
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951024:03:40:13" no-fill t)]
+ [61
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951024:03:40:42" no-fill t)]
+ [1
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [11
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [12
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [44
+  (creator "bweiner@pts.mot.com" create-time "19940728:21:56:49")]
+ [36
+  (creator "weiner@pts.mot.com" create-time "19940610:16:49:34")]
+ [37
+  (creator "weiner@pts.mot.com" create-time "19940610:16:50:02")]
+ [38
+  (creator "weiner@pts.mot.com" create-time "19940610:16:50:13")]
+ [13
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [16
+  (creator "weiner" create-time "19940104:17:38:29")]
+ [74
+  (creator "weiner@oakhill.sps.mot.com" create-time "19951101:21:56:21" no-fill t)]
+ nil nil nil nil nil nil nil nil nil nil nil nil nil nil]
